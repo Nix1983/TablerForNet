@@ -11,7 +11,9 @@ global using Microsoft.Extensions.DependencyInjection;
 global using System.Reflection;
 global using Microsoft.AspNetCore.Components.Routing;
 global using System.Timers;
-
+global using Microsoft.Extensions.Options;
+global using System.Text.RegularExpressions;
+global using LinqKit;
 
 global using TablerForNet.Components.Modals.Dialog;
 global using TablerForNet.Icons;
@@ -20,3 +22,7 @@ global using TablerForNet.Components.Dropdowns;
 global using TablerForNet.Validation;
 global using TablerForNet.Components.Modals.Services;
 global using TablerForNet.Components.Toasts.Services;
+global using TablerForNet.Components.Modals;
+global using TablerForNet.Components.Tables.Components;
+global using TablerForNet.Components.Tables;
+global using TablerForNet.ArrayExtensions;
