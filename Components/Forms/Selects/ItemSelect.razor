@@ -1,0 +1,120 @@
+﻿@namespace TablerForNet.Tabler
+@inherits TablerBaseComponent
+@typeparam TItem
+@typeparam TValue
+
+@if (!string.IsNullOrWhiteSpace(Label))
+{
+    <label class="form-label">@Label</label>
+}
+
+<Dimmer Active="Disabled" ShowSpinner="false">
+    <div @onkeydown="OnKey" @onkeydown:stopPropagation="dropdown?.IsExpanded==true" class="@FieldCssClasses">
+        <Dropdown @ref="dropdown" CloseOnClick="false" OnExpanded="DropdownExpanded">
+            <ChildContent>
+                <div @onkeydown:preventDefault="dropdown?.IsExpanded==true">
+                    @if (SelectedTemplate != null)
+                    {
+                        @SelectedTemplate(selectedItems)
+                    }
+                    else
+                    {
+                        <div class="input-group input-group-flat">
+                            <div class="form-control form-select @FieldCssClasses" tabindex="0">
+                                @if (!selectedItems.Any())
+                                {
+                                    @NoSelectedText
+                                }
+                                else if (singleSelect)
+                                {
+                                    <span>@GetSelectedText(selectedItems.First())</span>
+                                }
+                                else
+                                {
+                                    <div class="badge-list">
+                                        @foreach (var selectedItem in selectedItems)
+                                        {
+                                            <Badge BackgroundColor="TablerColor.Primary">@GetSelectedText(selectedItem) <span @onclick:stopPropagation @onclick="@(()=> RemoveSelected(selectedItem))"><Icon class="ms-2" Size="16" IconType="@InternalIcons.X"></Icon></span></Badge>
+                                        }
+                                    </div>
+                                }
+                            </div>
+
+                            @if (Clearable)
+                            {
+                                <span class="input-group-text" @onclick:stopPropagation @onclick="ClearSelected">
+                                    <Icon class="icon cursor-pointer" IconType="@InternalIcons.X"/>
+                                </span>
+                            }
+                        </div>
+                    }
+                </div>
+            </ChildContent>
+            <DropdownTemplate>
+                <DropdownMenu Disposed="OnDropdownMenuClosed" class="@DropdownMenuCss" style="@GetListStyle()">
+                    @if (showSearch)
+                    {
+                        <div class="m-2">
+                            <div class="input-group input-group-flat">
+                                <input @ref="SearchInput" class="form-control" @bind="searchText" type="text" @bind:event="oninput" placeholder="@SearchPlaceholderText">
+                                <span class="input-group-text">
+
+                                    @if (!string.IsNullOrWhiteSpace(searchText))
+                                    {
+                                        <Icon IconType="@InternalIcons.X" class="icon" OnClick="ClearSearch"/>
+                                    }
+                                    else
+                                    {
+                                        <Icon IconType="@InternalIcons.Search" class="icon cursor-auto"/>
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                    }
+
+                    @if (HeaderTemplate != null)
+                    {
+                        <div class="cursor-auto">
+                            @HeaderTemplate
+                        </div>
+                    }
+
+
+                    @if (Items != null && Items.Any())
+                    {
+                        <VirtualizeOptional Items="FilteredList()" Virtualize=Virtualize>
+                            <DropdownItem Highlight="IsHighlighted(context)" Active="IsSelected(context)" Disabled="(!CanSelect() && !IsSelected(context)) || IsDisabled(context)" OnClick="(e => ToogleSelected(context))" @key="context">
+
+                                @if (ShowCheckBoxes)
+                                {
+                                    <input class="form-check-input m-0 me-2" checked="@IsSelected(context)" type="checkbox">
+                                }
+                                @if (ListTemplate == null)
+                                {
+                                    @context.ToString()
+                                }
+                                else
+                                {
+                                    @ListTemplate(context)
+                                }
+
+                            </DropdownItem>
+                        </VirtualizeOptional>
+                    }
+                    else
+                    {
+                        <span>@NoItemsText</span>
+                    }
+
+                    @if (FooterTemplate != null)
+                    {
+                        <div class="cursor-auto">
+                            @FooterTemplate
+                        </div>
+                    }
+
+                </DropdownMenu>
+            </DropdownTemplate>
+        </Dropdown>
+    </div>
+</Dimmer>

@@ -1,0 +1,23 @@
+﻿@namespace TablerForNet.Tabler
+@inherits TablerBaseComponent
+
+@using Microsoft.AspNetCore.Components
+
+
+<div class="card">
+    <CascadingValue Value="@this">
+        <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" data-toggle="tabs">
+            @ChildContent
+        </ul>
+</div>
+    </CascadingValue>
+
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active show">
+                <div> @ActiveTab?.ChildContent</div>
+            </div>
+        </div>
+    </div>
+</div>

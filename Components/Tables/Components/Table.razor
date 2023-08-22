@@ -1,0 +1,116 @@
+﻿@typeparam Item
+@inherits TableBase<Item>
+
+@using TablerForNet.Tabler.Components.Tables.Components
+@using TablerForNet.Tabler.Components.Tables
+@using TablerForNet.Tabler.Components
+@namespace TablerForNet.Tabler
+
+<CascadingValue Value="(ITable<Item>) this" Name="Table">
+    <Card>
+
+        @if (ShowHeader)
+        {
+            <CardHeader>
+
+                @if (HeaderTemplate != null)
+                {
+                    @HeaderTemplate
+                }
+                <GroupByButton Item="Item" />
+                <TableHeaderTools TableItem="Item" />
+            </CardHeader>
+        }
+
+        <CardBody>
+            <div class="the-grid">
+                <TablerForm Model="@CurrentEditItem" OnValidSubmit="@OnValidSubmit" @bind-IsValid="IsRowValid">
+
+                    @if (CurrentEditItem != null && EditMode == TableEditMode.Popup)
+                    {
+                        <PopupEdit Table=this />
+                    }
+
+                    @if (VisibleColumns.Any())
+                    {
+                        <div class="div-table-wrapper @GetTableCssClass()">
+                            <div class="div-table-table">
+                                <table @attributes="Attributes" @ref="table">
+                                    @if (ShowTableHeader)
+                                    {
+                                        <TableHeader TableItem="Item"></TableHeader>
+                                    }
+                                    <tbody>
+                                        @if (ReloadingItems)
+                                        {
+                                            <AllColumnRow TableItem="Item">
+                                                <Dimmer Active="true">
+                                                    Loading..
+                                                </Dimmer>
+                                            </AllColumnRow>
+                                        }
+                                        else if (ShowNoItemsLabel && !TempItems.Any())
+                                        {
+                                            <AllColumnRow TableItem="Item">
+                                                <h5>
+                                                    <i>No items</i>
+                                                </h5>
+                                            </AllColumnRow>
+                                        }
+                                        else
+                                        {
+                                            foreach (var group1 in TempItems)
+                                            {
+                                                var group = group1;
+                                                @if (HasGrouping)
+                                                {
+                                                    <GroupHeaderTableRow @key="group" @bind-Group="group"></GroupHeaderTableRow>
+                                                }
+                                                @if (!HasGrouping || group.Expanded)
+                                                {
+                                                    foreach (var item in group)
+                                                    {
+                                                        @if (IsEditingItem(item) && EditMode == TableEditMode.Inline)
+                                                        {
+                                                            <EditRow InlineEditTable="this" Item="item"></EditRow>
+                                                        }
+                                                        else
+                                                        {
+                                                            <TableRow @key="item" Item="item" Table="this" />
+
+                                                            @if (ShowDetailsRow(item))
+                                                            {
+                                                                <DetailsRow Item="item" Table="this"></DetailsRow>
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                                @if (AllowAdd && !IsAddInProgress)
+                                {
+                                    <button type="button" @onclick="@OnAddItem" class="m-2 add-row btn btn-primary btn-sm">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                        Add row
+                                    </button>
+                                }
+                            </div>
+                        </div>
+                    }
+                </TablerForm>
+                @ChildContent
+
+
+                @if (TotalCount > 0)
+                {
+                    <div class="card-footer d-flex align-items-center">
+                        <Pager Item="Item" />
+                    </div>
+
+                }
+            </div>
+        </CardBody>
+    </Card>
+</CascadingValue>

@@ -1,0 +1,12 @@
+﻿@namespace TablerForNet.Tabler
+@typeparam TItem
+
+@if (Items != null)
+{
+    <CascadingValue Name="Root" Value="this">
+        <TablerForNet.Tabler.Components.TreeViews.TreeViewNodes Items="Items"
+                                                      Template="Template"
+                                                      ChildSelector="ChildSelector"
+                                                      />
+    </CascadingValue>
+}

@@ -1,0 +1,47 @@
+﻿@namespace TablerForNet.Tabler
+
+@inherits ComponentBase
+
+
+
+
+@if (string.IsNullOrEmpty(Label) && string.IsNullOrEmpty(Description) && !Switch && !isSelectGroup)
+{
+
+    RenderCheckBox();
+}
+else
+{
+<label class="@ClassNames">
+    @{ RenderCheckBox(); }
+
+    @if (!isSelectGroup)
+    {
+        @if (!string.IsNullOrEmpty(Label))
+        {
+            <span class="form-check-label">@Label</span>
+        }
+        @if (!string.IsNullOrEmpty(Description))
+        {
+            <span class="form-check-description">@Description</span>
+        }
+    }
+
+</label>
+}
+
+@{
+    void RenderCheckBox()
+    {
+        <input type="checkbox" class="@inputCss" checked="@Value" @onclick="ToggleState" disabled="@Disabled">
+
+        @if (ChildContent != null)
+        {
+            <span class="form-selectgroup-label">
+                @ChildContent
+            </span>
+        }
+
+    }
+}
+

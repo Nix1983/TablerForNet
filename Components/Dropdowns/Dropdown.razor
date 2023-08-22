@@ -1,0 +1,23 @@
+﻿@inherits TablerBaseComponent
+@namespace TablerForNet.Tabler
+<ClickOutside OnClickOutside="OnClickOutside">
+    <CascadingValue Name=Dropdown Value=this>
+    <HtmlElement Tag="@(Direction==DropdownDirection.Down ? "div": "span")"
+                 class="@ClassNames"
+                 @onclick="OnDropdownClick"
+                 @attributes="@UnmatchedParameters"
+                 style="@GetSyle()">
+
+
+        @ChildContent
+
+        @if (isExpanded)
+        {
+            <div @onclick:stopPropagation="!CloseOnClick">
+                @DropdownTemplate
+            </div>
+
+        }
+    </HtmlElement>
+    </CascadingValue>
+</ClickOutside>

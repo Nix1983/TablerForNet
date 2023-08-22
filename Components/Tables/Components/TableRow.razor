@@ -1,0 +1,66 @@
+﻿@typeparam TableItem
+@inherits TableRowBase<TableItem>
+
+<tr class="@GetRowCssClass(Item)">
+    @if (Table.ShowCheckboxes)
+    {
+        <td style="width:1%" @onkeydown="@(Table.KeyboardNavigation ? (e) => OnKeyDown(e, tableCells[0]): null)" @ref="tableCells[0]">
+            <Checkbox Value="IsSelected(Item)" ValueChanged="(() => Table.SetSelectedItem(Item))" />
+        </td>
+    }
+
+    @{
+        var i = 2;
+        @foreach (IColumn<TableItem> column in Table.VisibleColumns)
+        {
+            var j = i;
+            <td style="@GetColumnWidth(column)" class="@GetColumnClass(column)" @onclick="RowClick" @onkeydown="@(Table.KeyboardNavigation ? (e) => OnKeyDown(e, tableCells[j]): null)" @ref="tableCells[j]">
+                @if (column.Template != null)
+                {
+                    @column.Template(Item)
+                }
+                else if (column.Property != null)
+                {
+                    @column.GetValue(Item);
+                }
+            </td>
+
+            i++;
+        }
+    }
+
+    @if (Table.HasRowActions && !Table.HasActionColumn)
+    {
+        <td @onkeydown="@(Table.KeyboardNavigation ? (e) => OnKeyDown(e, tableCells[1]): null)" @onclick="RowClick" @ref="tableCells[1]">
+            <div class="row-action" @onclick:stopPropagation>
+
+                @if (Table.RowActionTemplate != null)
+                {
+                    @Table.RowActionTemplate(Item)
+                }
+
+
+                @if (CanEdit())
+                {
+                    <button class="tabicon" aria-label="Button" @onclick="Edit" tabindex="@GetTabIndex()">
+                        <Icon class="icon" IconType="@InternalIcons.Edit" />
+                    </button>
+
+                }
+
+                @if (CanDelete())
+                {
+                    <button class="tabicon" aria-label="Button" @onclick="Delete" tabindex="@GetTabIndex()">
+                        <Icon class="icon" IconType="@InternalIcons.Trash" />
+                    </button>
+                }
+
+                @if (Table.RowActionEndTemplate != null)
+                {
+                    @Table.RowActionEndTemplate(Item)
+                }
+            </div>
+        </td>
+    }
+
+</tr>

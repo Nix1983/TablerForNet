@@ -1,0 +1,12 @@
+﻿@namespace TablerForNet.Tabler
+@if (!RenderForm)
+{
+    @ChildContent
+}
+else
+{
+    <EditForm EditContext="@EditContext" OnValidSubmit="HandleValidSubmit" @attributes="UnknownParameters">
+        <DynamicComponent Type="Validator.Component" @ref="@ValidatorInstance"></DynamicComponent>
+        @ChildContent
+    </EditForm>
+}

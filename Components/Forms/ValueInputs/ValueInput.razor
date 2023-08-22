@@ -1,0 +1,12 @@
+﻿@namespace TablerForNet.Tabler
+@inherits TablerBaseComponent
+@typeparam TValue
+
+
+@if (!string.IsNullOrWhiteSpace(Label))
+{
+    <label class="form-label">@Label</label>
+}
+<input type="text" class="@ClassNames" @bind="CurrentValue" @bind:event="oninput" />
+
+

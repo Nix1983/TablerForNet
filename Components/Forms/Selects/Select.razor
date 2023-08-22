@@ -1,0 +1,43 @@
+﻿@namespace TablerForNet.Tabler
+@typeparam TItem
+@typeparam TValue
+
+@inherits TablerBaseComponent
+
+
+<div class="input-group input-group-flat">
+    <select class="@ClassNames" @onchange="ValueChanged" @attributes="UnmatchedParameters">
+        @if (itemList.Count == 0)
+        {
+            <option value="null">@ItemListEmptyText</option>
+        }
+        else if (ItemNotInList())
+        {
+            <option value="null" selected="@(SelectedValue==null)">@NoSelectedText</option>
+        }
+        @foreach (var listItem in itemList)
+        {
+            if (SelectedValue != null && IsSelected(listItem.Value))
+            {
+                <option bind="selectedItem" selected value="@listItem.Id">@listItem.Text</option>
+            }
+            else
+            {
+                <option value="@listItem.Id"  disabled="@(listItem.Disabled)" >@listItem.Text</option>
+            }
+        }
+    </select>
+
+    @if (Clearable)
+    {
+        <span class="input-group-text">
+
+            @if (SelectedValue != null)
+            {
+                <a @onclick="Clear" class="link-secondary cursor-pointer">
+                    <Icon class="icon" IconType="@InternalIcons.X" />
+                </a>
+            }
+        </span>
+    }
+</div>

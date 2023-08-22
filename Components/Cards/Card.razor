@@ -1,0 +1,18 @@
+﻿@inherits TablerBaseComponent
+@namespace TablerForNet.Tabler
+
+    <HtmlElement Tag="@HtmlTag"
+                 class="@ClassNames"
+                 @onclick="OnClick"
+                 @attributes="@UnmatchedParameters">
+        @if (StatusTop != TablerColor.Default)
+        {
+            <div class="@StatusClassNames("top", StatusTop)"></div>
+        }
+        @if (StatusStart != TablerColor.Default)
+        {
+            <div class="@StatusClassNames("start", StatusStart)"></div>
+        }
+     
+        @ChildContent
+    </HtmlElement>

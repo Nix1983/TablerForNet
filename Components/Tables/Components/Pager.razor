@@ -1,0 +1,44 @@
+﻿@typeparam Item
+
+@inherits PagerBase<Item>
+
+@if (Table.TotalCount >= 1 && Table.ShowFooter)
+{
+    <div class="text-muted">
+        @($"{FirstItemNumber} - {LastItemNumber} of {Table.TotalCount}")
+    </div>
+    @if (ShowPageNumber)
+    {
+        <ul class="pagination m-0 ms-auto">
+            @if (Table.PageNumber > 0)
+            {
+                <li class="page-item cursor-pointer" @onclick="@(() => Table.FirstPage())">
+                    <a class="page-link">
+                        First
+                    </a>
+                </li>
+                <li class="page-item cursor-pointer" @onclick="@(() => Table.SetPage(Table.PageNumber-1))">
+                    <a class="page-link">@(Table.PageNumber)</a>
+                </li>
+
+            }
+
+            <li class="page-item active">
+                <a class="page-link">@(Table.PageNumber+1)</a>
+            </li>
+
+            @if (Table.PageNumber + 1 < TotalPages)
+            {
+                <li class="page-item cursor-pointer" @onclick="@(() => Table.SetPage(Table.PageNumber+1))">
+                    <a class="page-link">@(Table.PageNumber + 2)</a>
+                </li>
+
+                <li class="page-item cursor-pointer" @onclick="@(() => Table.LastPage())">
+                    <a class="page-link">
+                        Last
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+}

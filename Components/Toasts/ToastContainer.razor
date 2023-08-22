@@ -1,0 +1,13 @@
+﻿@using TablerForNet.Tabler.Services
+
+@namespace TablerForNet.Tabler
+
+@if (ToastService.Toasts.Any())
+{
+    <div class="mt-1 toast-container" style="position: fixed; right: 0; z-index: 999999;">
+        @foreach (var toast in ToastService.Toasts.ToList())
+        {
+            <TablerForNet.Tabler.Components.Toasts.ToastView Toast="toast" @key="toast" />
+        }
+    </div>
+}

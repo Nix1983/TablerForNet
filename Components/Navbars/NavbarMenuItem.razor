@@ -1,0 +1,39 @@
+﻿@inherits TablerBaseComponent
+@namespace TablerForNet.Tabler
+
+<HtmlElement Tag="@HtmlTag"
+             class="@ClassNames"
+             @onclick="OnClick"
+             @attributes="@UnmatchedParameters">
+
+    <a class="@(isSubMenu ? "dropdown-item":"nav-link") @(IsDropdown ? "dropdown-toggle": "")" @onclick="ToogleDropdown" href="@Href" lang="@Language" @onclick:stopPropagation=IsDropdown>
+
+        @if (MenuItemIcon != null)
+        {
+            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                @MenuItemIcon
+            </span>
+        }
+
+        <span class="nav-link-title">
+            @if (ChildContent != null)
+            {
+                @ChildContent
+            }
+            else
+            {
+                @Text
+            }
+        </span>
+    </a>
+
+    @if (SubMenu != null && isExpanded && Expandable)
+    {
+        <CascadingValue Value="this" Name="Parent">
+            <ul data-bs-popper="none" class="dropdown-menu show @(NavbarIsHorizontalAndDark ? "bg-dark text-muted" : "")">
+                @SubMenu
+            </ul>
+        </CascadingValue>
+    }
+
+</HtmlElement>

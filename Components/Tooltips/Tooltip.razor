@@ -1,0 +1,72 @@
+﻿@namespace TablerForNet.Tabler
+<div class="tooltip-wrapper">
+    <span class="@GetTooltipClass(Size) @GetTooltipBackgroundColor(BackgroundColor) @GetTooltipBorderColor(BorderColor)">
+        @if (TooltipTemplate != null)
+        {
+            @TooltipTemplate
+        }
+        else
+        {
+            @Text
+        }
+    </span>
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public RenderFragment TooltipTemplate { get; set; }
+
+    /// <summary>
+    /// Tooltip text
+    /// </summary>
+    [Parameter] public string Text { get; set; }
+
+    /// <summary>
+    /// Tooltip min width
+    /// </summary>
+    [Parameter] public ToolTipSize Size { get; set; } = ToolTipSize.Medium;
+
+    /// <summary>
+    /// Background color
+    /// </summary>
+    [Parameter] public TablerColor BackgroundColor { get; set; }
+
+    /// <summary>
+    /// Border color
+    /// </summary>
+    [Parameter] public TablerColor BorderColor { get; set; }
+
+    private string GetTooltipBorderColor(TablerColor color)
+    {
+        return color.GetColorClass("border");
+    }
+
+    private string GetTooltipBackgroundColor(TablerColor color)
+    {
+        return color.GetColorClass("bg");
+    }
+
+    private string GetTooltipClass(ToolTipSize size)
+    {
+        switch (size)
+        {
+            case ToolTipSize.Small:
+                return "tooltip-small";
+            case ToolTipSize.Medium:
+                return "tooltip-medium";
+            case ToolTipSize.Large:
+                return "tooltip-large";
+            default:
+                return "tooltip-medium";
+
+        }
+    }
+
+    public enum ToolTipSize
+    {
+        Small,
+        Medium,
+        Large
+    }
+}

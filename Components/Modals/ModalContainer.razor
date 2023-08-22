@@ -1,0 +1,27 @@
+﻿@implements IDisposable
+@inject TablerForNet.Tabler.Services.IModalService ModalService
+@namespace TablerForNet.Tabler
+
+@foreach (var modalModel in ModalService.Modals.Reverse())
+{
+    <ModalView @key="modalModel" Options=@modalModel.Options Title="@modalModel.Title" OnClosed="@(() => ModalClosed(modalModel))">
+        @modalModel.ModalContents
+    </ModalView>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        ModalService.OnChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ModalService.OnChanged -= StateHasChanged;
+    }
+
+    public void ModalClosed(ModalModel modalModel)
+    {
+        ModalService.Close();
+    }
+}

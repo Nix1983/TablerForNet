@@ -1,0 +1,56 @@
+﻿@namespace TablerForNet.Tabler
+@using TablerForNet.Tabler.Icons;
+@if (Options.Backdrop)
+{
+    <div class="modal-backdrop fade show" />
+}
+
+<div class="modal @(Options.BlurBackground ? "modal-blur": "") fade show" id="TablerForNet.Tabler-modal-container" @ref="BlurContainer" @onkeydown="OnKeyDown" @onclick="OnClickOutside"
+     tabindex="-1" style="display: block; z-index: @modalViewSettings.ZIndex" aria-hidden="true">
+    <div class="@GetModalCss()" role="document" @ondragend="OnDragEnd" @ondragstart="OnDragStart"
+         style=@(GetModalStyle()) @ref="dragContainer">
+        <div class="modal-content @(Options.DarkMode ? "theme-dark": "")" style="border:solid; border-color:@Options.BorderColor; max-height:@Options.MaxHeigth; max-width:@Options.MaxWidth">
+
+            @if (Options.StatusColor != null)
+            {
+                <div class="modal-status @(((TablerColor)Options.StatusColor).GetColorClass("bg"))"></div>
+            }
+            @if (Options.HeaderComponent != null)
+            {
+                @Options.HeaderComponent
+            }
+            @if (Options.ShowHeader)
+            {
+                <div class="modal-header @(Options.Draggable ? "cursor-move": "") @(Options.DarkMode ? "theme-dark": "")" style="color:@Options.TitleTextColor">
+                    @if (Options.IsTitleLeftIcon)
+                    {
+                        <Icon TextColor="@Options.TitleLeftIconColor" IconType="Options.TitleLeftIcon" Size="Options.TitleLeftIconSize" />
+                    }
+                    <h5 class="modal-title">@Title</h5>
+                    @if (Options.IsTitleRightIcon)
+                    {
+                        <Icon TextColor="@Options.TitleRightIconColor" IconType="Options.TitleRightIcon" Size="Options.TitleRightIconSize" />
+                    }
+                    @if (Options.ShowCloseButton)
+                    {
+                        <div class="container d-flex justify-content-end" style="margin-right:-45px;">
+                            <Badge Size="BadgeSize.Large" BackgroundColor="TablerColor.Danger" aria-label="Close" @onclick="Close">
+                                <Icon IconType="MDIcons.Close" Size="20" />
+                            </Badge>
+                        </div>
+                    }
+                </div>
+            }
+
+            <div class="modal-body @(Options.DarkMode ? "theme-dark": "")" @ref="contentContainer" @onclick:stopPropagation @onkeydown:stopPropagation>
+                <div style="margin-top:10px;">
+                    @ChildContent
+                </div>
+            </div>
+            @if (Options.FooterComponent != null)
+            {
+                @Options.FooterComponent
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqKit.Core" Version="1.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.10" />
+  </ItemGroup>
+
+
+
+</Project>

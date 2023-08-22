@@ -1,0 +1,34 @@
+﻿@inherits TablerBaseComponent
+@namespace TablerForNet.Tabler
+
+<CascadingValue Name="Navbar" Value=this>
+
+    <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">   
+    <HtmlElement Tag="@HtmlTag"
+                 class="@ClassNames"
+                 @onclick="OnClick"
+                 @attributes="@UnmatchedParameters">
+
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
+                <span class="navbar-toggler-icon"></span>
+            </button>          
+                @ChildContent
+        </div>
+        </HtmlElement>
+    </ClickOutside>
+</CascadingValue>
+
+@code{
+    private async Task OutsideClicked()
+    {
+        await Task.Run(() =>
+        {
+            if (IsExpanded)
+            {
+                ToogleExpand();
+            }           
+        });
+    }
+}

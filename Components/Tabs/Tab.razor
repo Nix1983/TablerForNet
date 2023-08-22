@@ -1,0 +1,16 @@
+﻿@namespace TablerForNet.Tabler
+@inherits TablerBaseComponent
+
+
+<li class="nav-item">
+    <a @onclick=Activate class="nav-link cursor-pointer @TitleCssClass" data-toggle="tab">
+        @if (Header != null)
+        {
+            @Header
+        }
+        else
+        {
+            @Title
+        }
+    </a>
+</li>

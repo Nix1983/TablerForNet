@@ -1,0 +1,32 @@
+﻿@inherits TablerBaseComponent
+@namespace TablerForNet.Tabler
+
+<HtmlElement Tag="li"
+             class="@ClassNames"
+             @onclick="OnClick"
+             @attributes="@UnmatchedParameters">
+
+   
+    <div class="list-timeline-icon @IconColor.GetColorClass("bg")">
+        @if (IconTemplate != null)
+        {
+            @IconTemplate
+        }
+        else
+        {
+            @IconText
+        }
+    </div>
+ 
+    <div class="list-timeline-content">
+        @if (!string.IsNullOrWhiteSpace(Time))
+        {
+            <div class="list-timeline-time">@Time</div>
+        }
+        @if (!string.IsNullOrWhiteSpace(Title))
+        {
+            <p class="list-timeline-title">@Title</p>
+        }
+        @ChildContent
+    </div>
+</HtmlElement>
