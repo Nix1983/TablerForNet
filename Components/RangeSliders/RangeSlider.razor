@@ -1,6 +1,6 @@
-﻿@namespace TablerForNet.Tabler
-@inherits ComponentBase
-@typeparam TValue
+﻿@typeparam TValue
+
+@inherits TablerBaseComponent
 
 <div class="d-flex flex-row" @attributes="UnmatchedParameters">
     @if (ShowLabels)
@@ -27,7 +27,7 @@
         else
         {
             <div class="multi-drag-slider">
-                @foreach (var (sliderVal, i) in currentValues.Select((value, i) => ( value, i )))
+                @foreach (var (sliderVal, i) in currentValues.Select((value, i) => (value, i)))
                 {
                     @if (Range != null)
                     {

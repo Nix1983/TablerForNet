@@ -1,7 +1,5 @@
-﻿@namespace TablerForNet.Tabler
-@inherits TablerBaseComponent
+﻿@inherits TablerBaseComponent
 @typeparam TValue
-
 
 @if (!string.IsNullOrWhiteSpace(Label))
 {
@@ -36,40 +34,40 @@ else
     </Dropdown>
 }
 
-@code{
+@code {
 
     protected RenderFragment RenderCalender => __builder =>
     {
-    <div class="datepicker @(!Inline ? "datepicker-dropdown": "")">
-        <div class="datepicker-month">
-            <span class="float-start">
-                <Icon OnClick="SetPreviousMonth" class="cursor-pointer"
-                      IconType="@InternalIcons.Arrow_left" />
-            </span>
-            <span>@GetCurrentMonth()</span>
-            <span>@currentDate.Year</span>
-            <span class="float-end">
-                <Icon OnClick="SetNextMonth" class="cursor-pointer"
-                      IconType="@InternalIcons.Arrow_right" />
-            </span>
-        </div>
-        <div class="datepicker-weekdays">
-            @foreach (var weekday in GetWeekdays())
+        <div class="datepicker @(!Inline ? "datepicker-dropdown": "")">
+            <div class="datepicker-month">
+                <span class="float-start">
+                    <Icon OnClick="SetPreviousMonth" class="cursor-pointer"
+                          IconType="@InternalIcons.Arrow_left" />
+                </span>
+                <span>@GetCurrentMonth()</span>
+                <span>@currentDate.Year</span>
+                <span class="float-end">
+                    <Icon OnClick="SetNextMonth" class="cursor-pointer"
+                          IconType="@InternalIcons.Arrow_right" />
+                </span>
+            </div>
+            <div class="datepicker-weekdays">
+                @foreach (var weekday in GetWeekdays())
                 {
-                <div @key="weekday">
-                    @weekday
-                </div>
+                    <div @key="weekday">
+                        @weekday
+                    </div>
                 }
-        </div>
-        <div class="datepicker-days">
+            </div>
+            <div class="datepicker-days">
 
-            @foreach (var date in GetDates())
+                @foreach (var date in GetDates())
                 {
-                <span @key="date" @onclick="(() => SetSelected(date))" class="@DayCss(date)">@date.Day</span>
+                    <span @key="date" @onclick="(() => SetSelected(date))" class="@DayCss(date)">@date.Day</span>
                 }
 
+            </div>
         </div>
-    </div>
     };
 }
 

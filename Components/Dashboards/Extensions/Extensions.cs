@@ -1,6 +1,4 @@
-﻿
-
-namespace TablerForNet.Tabler.Dashboards.Extensions
+﻿namespace TablerForNet.Components.Dashboards
 {
     public static class Extensions
     {

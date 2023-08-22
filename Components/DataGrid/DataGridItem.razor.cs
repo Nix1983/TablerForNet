@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.DataGrid
 {
     public partial class DataGridItem : TablerBaseComponent
     {

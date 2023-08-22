@@ -1,9 +1,5 @@
-﻿namespace TablerForNet.Tabler.Dashboards
+﻿namespace TablerForNet.Components.Dashboards
 {
-    /// <summary>
-    /// Enables the efficient, dynamic composition of query predicates.
-    /// https://petemontgomery.wordpress.com/
-    /// </summary>
     public static class PredicateBuilder
     {
         /// <summary>

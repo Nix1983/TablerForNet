@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Buttons
 {
     public enum ButtonShape
     {

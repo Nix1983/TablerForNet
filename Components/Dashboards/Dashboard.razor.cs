@@ -1,7 +1,7 @@
 
 using System.Diagnostics;
 
-namespace TablerForNet.Tabler.Dashboards
+namespace TablerForNet.Components.Dashboards
 {
     public partial class Dashboard<TItem> where TItem : class
     {

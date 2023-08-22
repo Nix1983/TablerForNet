@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Pages
 {
     public partial class PagePretitle : TablerBaseComponent
     {

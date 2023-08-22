@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Components.Web;
-
-namespace TablerForNet.Tabler.Dashboards
+namespace TablerForNet.Components.Dashboards
 {
     public partial class DateFacet<TItem> : BaseFacet<TItem> where TItem : class
     {

@@ -1,6 +1,6 @@
 ﻿@implements IDisposable
-@inject TablerForNet.Tabler.Services.IModalService ModalService
-@namespace TablerForNet.Tabler
+@inject IModalService ModalService
+
 
 @foreach (var modalModel in ModalService.Modals.Reverse())
 {

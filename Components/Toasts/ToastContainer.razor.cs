@@ -1,8 +1,4 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components;
-using TablerForNet.Tabler.Services;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Toasts
 {
     public partial class ToastContainer : ComponentBase
     {

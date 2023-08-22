@@ -1,10 +1,7 @@
-﻿@namespace TablerForNet.Tabler
-
+﻿
 <div class="popover-container">
 
-    <span  @onclick="TooglePopup">@ChildContent</span>
- 
-
+    <span @onclick="TooglePopup">@ChildContent</span>
 
     @if (showPopup)
     {
@@ -13,14 +10,11 @@
         </span>
     }
 
-
-
 </div>
 
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
     [Parameter] public RenderFragment PopoverTemplate { get; set; }
-
 
     private bool showPopup = false;
 
@@ -28,5 +22,4 @@
     {
         showPopup = !showPopup;
     }
-
 }

@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Routing;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Navbars
 {
     public partial class Navbar : TablerBaseComponent, IDisposable
     {

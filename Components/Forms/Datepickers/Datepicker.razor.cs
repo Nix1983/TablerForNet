@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Forms.Datepickers
 {
     public partial class Datepicker<TValue> : TablerBaseComponent
     {
@@ -34,8 +27,6 @@ namespace TablerForNet.Tabler
                 await SetSelected(ConvertToDateTimeOffset(SelectedDate));
 
             }
-
-
         }
 
         private TValue ConvertToTValue(DateTimeOffset? value)

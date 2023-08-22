@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.RangeSliders
 {
-    public partial class RangeSlider<TValue> : ComponentBase
+    public partial class RangeSlider<TValue> : TablerBaseComponent
     {
         [Parameter] public TValue Value { get; set; }
         [Parameter] public EventCallback<TValue> ValueChanged { get; set; }

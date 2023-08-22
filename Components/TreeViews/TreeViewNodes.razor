@@ -33,10 +33,10 @@
 
             @if (HasChildren(item) && isExpanded)
             {
-                <TablerForNet.Tabler.Components.TreeViews.TreeViewNodes Items="ChildSelector(item)"
-                                                      Template="Template"
-                                                      ChildSelector="ChildSelector"
-                                                      Level="@(Level+1)" />
+                <TreeViewNodes Items="ChildSelector(item)"
+                               Template="Template"
+                               ChildSelector="ChildSelector"
+                               Level="@(Level+1)" />
             }
         </li>
 

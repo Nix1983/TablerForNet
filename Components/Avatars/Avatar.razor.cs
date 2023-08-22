@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Avatars
 {
     public enum AvatarSize
     {

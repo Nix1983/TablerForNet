@@ -1,13 +1,11 @@
 ﻿@inherits TablerBaseComponent
-@namespace TablerForNet.Tabler
-
 
 <div class="@GetWrapperClass()" @onclick:stopPropagation="hasSubMenu">
 
     <HtmlElement Tag="a"
                  class="@ClassNames"
-                 @onclick="ItemClicked"
-                 @attributes="@UnmatchedParameters">
+    @onclick="ItemClicked"
+    @attributes="@UnmatchedParameters">
         @ChildContent
 
         @if (hasSubMenu && subMenuVisible)

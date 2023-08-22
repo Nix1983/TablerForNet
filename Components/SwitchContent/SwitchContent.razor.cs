@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Web;
-
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.SwitchContent
 {
     public partial class SwitchContent : TablerBaseComponent
     {

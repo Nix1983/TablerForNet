@@ -1,8 +1,4 @@
-﻿
-
-using TablerForNet.Tabler.Icons;
-
-namespace TablerForNet.Tabler.Dashboards
+﻿namespace TablerForNet.Components.Dashboards
 {
     public class BaseFacet<TItem> : ComponentBase where TItem : class
     {
@@ -29,21 +25,6 @@ namespace TablerForNet.Tabler.Dashboards
             base.OnInitialized();
         }
 
-        //private async Task SetFilterLabels()
-        //{
-        //    foreach (var facetFilter in Facet.Filters)
-        //    {
-        //        if(FilterLabel == null)
-        //        {
-        //            facetFilter.Label = $"{facetFilter.Filter.Name} ({facetFilter.CountFiltered}/{facetFilter.CountAll})";
-        //        }
-        //        else
-        //        {
-        //            facetFilter.Label = await FilterLabel(facetFilter);
-        //        }
-        //    }
-        //}
-
         public IIconType GetExpandedIcon()
         {
             if(IsExpanded == true) { return InternalIcons.Chevron_up; }
@@ -54,20 +35,6 @@ namespace TablerForNet.Tabler.Dashboards
         {
             IsExpanded = !IsExpanded;
         }
-
-        //public async Task<string> GetFilterLabel(FacetFilter<TItem> filter)
-        //{
-        //    if(filter == null) { return "Error!! no filter"; }
-
-        //    if(FilterLabel != null)
-        //    {
-        //        return await FilterLabel(filter);
-        //    }
-
-        //    return $"{filter.Filter.Name} ({filter.CountFiltered}/{filter.CountAll})";
-
-        //} 
-
 
         public void ResetFilters(bool runFilter)
         {

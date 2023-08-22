@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Web;
-using TablerForNet.Tabler.Services;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Modals
 {
     public partial class ModalView : ComponentBase, IDisposable
     {

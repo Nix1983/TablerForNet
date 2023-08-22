@@ -1,6 +1,4 @@
-﻿using TablerForNet.Tabler.Components.Modals;
-
-namespace TablerForNet.Tabler.Services
+﻿namespace TablerForNet.Components.Modals.Services
 {
     public interface IModalService
     {
@@ -16,11 +14,6 @@ namespace TablerForNet.Tabler.Services
 
         ModalViewSettings RegisterModalView(ModalView modalView);
         void UnRegisterModalView(ModalView modalView);
-        //int AddZIndex();
-        //int DeductZIndex();
-
-        //int AddTopOffset();
-        //int DeductTopOffset();
 
     }
 }

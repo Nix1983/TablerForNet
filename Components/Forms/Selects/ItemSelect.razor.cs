@@ -1,13 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.Forms;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Forms.Selects
 {
     public partial class ItemSelect<TItem, TValue> : TablerBaseComponent, IDisposable
     {
@@ -170,7 +161,7 @@ namespace TablerForNet.Tabler
 
             if (firstRender && userAgent == null)
             {
-                userAgent = await jSRuntime.InvokeAsync<string>("TablerForNet.Tabler.getUserAgent");
+                userAgent = await jSRuntime.InvokeAsync<string>("TheNixApp.Tabler.getUserAgent");
             }
         }
 

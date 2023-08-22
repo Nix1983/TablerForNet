@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler.Dashboards
+﻿namespace TablerForNet.Components.Dashboards
 {
     public class DataFilter<TItem> where TItem : class
     {

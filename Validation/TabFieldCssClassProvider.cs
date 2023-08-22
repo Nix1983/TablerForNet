@@ -1,23 +1,22 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-
-namespace TablerForNet.Tabler;
-
-public class TabFieldCssClassProvider : FieldCssClassProvider
+﻿namespace TablerForNet.Validation
 {
-    public override string GetFieldCssClass(EditContext editContext, in FieldIdentifier fieldIdentifier)
+    public class TabFieldCssClassProvider : FieldCssClassProvider
     {
-        var isValid = !editContext.GetValidationMessages(fieldIdentifier).Any();
-        var isModified = editContext.IsModified(fieldIdentifier);
-        if (isModified)
+        public override string GetFieldCssClass(EditContext editContext, in FieldIdentifier fieldIdentifier)
         {
-            return isValid ? "is-valid" : "is-invalid";
-        }
+            var isValid = !editContext.GetValidationMessages(fieldIdentifier).Any();
+            var isModified = editContext.IsModified(fieldIdentifier);
+            if (isModified)
+            {
+                return isValid ? "is-valid" : "is-invalid";
+            }
 
-        if (!isValid)
-        {
-            return "is-invalid";
-        }
+            if (!isValid)
+            {
+                return "is-invalid";
+            }
 
-        return "";
+            return "";
+        }
     }
 }

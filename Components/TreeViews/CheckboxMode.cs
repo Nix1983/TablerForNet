@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.TreeViews
 {
     public enum CheckboxMode
     {

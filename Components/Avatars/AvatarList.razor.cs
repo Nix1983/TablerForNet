@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿
+namespace TablerForNet.Components.Avatars
 {
     public partial class AvatarList : TablerBaseComponent
     {

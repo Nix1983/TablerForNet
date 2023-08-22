@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Statuses
 {
-
     public partial class Status : TablerBaseComponent
     {
         [Parameter] public bool Lite { get; set; }
@@ -16,11 +13,6 @@ namespace TablerForNet.Tabler
             .AddIf(TextColor.GetColorClass("text", ColorType.Default), TextColor!=TablerColor.Default)
             .AddIf("status-lite", Lite)
             .AddIf("cursor-pointer", OnClick.HasDelegate)
-
-             
-
-
-
             .ToString();
     }
 

@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Dropdowns
 {
     public partial class DropdownMenu : TablerBaseComponent, IDisposable
     {

@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Toasts
 {
     public class ToastOptions
     {

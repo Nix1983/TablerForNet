@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Navbars
 {
     public partial class NavbarMenu : TablerBaseComponent
     {

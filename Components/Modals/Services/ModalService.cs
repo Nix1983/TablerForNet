@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Routing;
-using TablerForNet.Tabler.Components.Modals;
-
-
-namespace TablerForNet.Tabler.Services
+﻿namespace TablerForNet.Components.Modals.Services
 {
     public class ModalService : IModalService, IDisposable
     {
@@ -25,7 +21,7 @@ namespace TablerForNet.Tabler.Services
         private readonly NavigationManager navigationManager;
 
         public IEnumerable<ModalModel> Modals { get { return modals; } }
-              
+
         public Task<ModalResult> ShowAsync<TComponent>(string title, RenderComponent<TComponent> component, ModalOptions modalOptions = null) where TComponent : IComponent
         {
             modalModel = new ModalModel(component.Contents, title, modalOptions);
@@ -37,12 +33,12 @@ namespace TablerForNet.Tabler.Services
         public async Task<bool> ShowDialogAsync(DialogOptions options)
         {
             var component = new RenderComponent<DialogModal>().
-                Set(e=> e.Options, options);
+                Set(e => e.Options, options);
             var result = await ShowAsync("", component, new ModalOptions { Size = ModalSize.Small, ShowHeader = false, StatusColor = options.StatusColor });
             return !result.Cancelled;
         }
-         
-        private void LocationChanged(object sender, LocationChangedEventArgs e)
+
+        private void LocationChanged(object sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
         {
             CloseAll();
         }
@@ -62,7 +58,7 @@ namespace TablerForNet.Tabler.Services
                 ModalModel modalToClose = modals.Pop();
                 modalToClose.TaskSource.SetResult(modalResult);
             }
-            
+
             OnChanged?.Invoke();
         }
 

@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.VisualBasic;
-using System.Threading.Tasks;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Dropdowns
 {
     public partial class Dropdown : TablerBaseComponent
     {

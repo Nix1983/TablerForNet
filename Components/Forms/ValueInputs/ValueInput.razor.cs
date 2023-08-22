@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Forms.ValueInputs
 {
     public partial class ValueInput<TValue> : TablerBaseComponent
     {
@@ -38,14 +30,6 @@ namespace TablerForNet.Tabler
 
                 }
 
-
-                //if (IsValid)
-                //{
-                //    ValueChanged.InvokeAsync(newValue);
-                //}
-
-
-
             }
         }
 
@@ -59,7 +43,6 @@ namespace TablerForNet.Tabler
         .Add("form-control")
         .AddIf("is-invalid", !IsValid)
         .ToString();
-
 
     }
 }

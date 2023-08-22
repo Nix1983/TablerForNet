@@ -1,11 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Inputs
 {
     public partial class Input : TablerBaseComponent
     {
         protected override string ClassNames => ClassBuilder
-            //.Add("card-tabs")
             .Add(BackgroundColor.GetColorClass("bg"))
             .Add(TextColor.GetColorClass("text"))
             .ToString();

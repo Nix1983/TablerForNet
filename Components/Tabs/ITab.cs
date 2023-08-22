@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler.Components
+﻿namespace TablerForNet.Components.Tabs
 {
     public interface ITab
     {

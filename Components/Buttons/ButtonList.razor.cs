@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Buttons
 {
     public partial class ButtonList : TablerBaseComponent
     {

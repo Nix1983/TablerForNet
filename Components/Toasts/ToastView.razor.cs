@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TablerForNet.Tabler.Services;
-
-namespace TablerForNet.Tabler.Components.Toasts
+﻿namespace TablerForNet.Components.Toasts
 {
     public partial class ToastView : IDisposable
     {

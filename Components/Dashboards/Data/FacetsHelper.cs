@@ -1,13 +1,7 @@
-﻿
-using System;
-using System.Linq;
-using TablerForNet.Tabler.Dashboards.Extensions;
-
-namespace TablerForNet.Tabler.Dashboards
+﻿namespace TablerForNet.Components.Dashboards
 {
     internal static class FacetsHelper
     {
-
         public static Expression<Func<TItem, bool>> CreateDateRangePredicate<TItem>(Expression<Func<TItem, DateTime>> expression, DateTime min, DateTime max) where TItem : class
         {
             var constantMin = Expression.Constant(min);
@@ -90,17 +84,6 @@ namespace TablerForNet.Tabler.Dashboards
                 var groupMin = chunkGroup.Min(e => e.Key);
 
                 var predicate = CreateRangePredicate(expression, groupMin, groupMax);
-
-                //var constantMin = Expression.Constant(groupMin);
-                //var bodyMin = Expression.GreaterThanOrEqual(expression.Body, constantMin);
-                //var predicateMin = Expression.Lambda<Func<TItem, bool>>(bodyMin, expression.Parameters);
-
-
-                //var constantMax = Expression.Constant(groupMax);
-                //var bodyMax = Expression.LessThanOrEqual(expression.Body, constantMax);
-                //var predicateMax = Expression.Lambda<Func<TItem, bool>>(bodyMax, expression.Parameters);
-
-                //var predicate = PredicateBuilder.And(predicateMin, predicateMax);
 
                 var groupItems = chunkGroup.ToList().SelectMany(e => e.ToList()).ToList();
 

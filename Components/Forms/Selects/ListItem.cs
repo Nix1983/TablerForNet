@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TablerForNet.Tabler.Components.Selects
+﻿namespace TablerForNet.Components.Forms.Selects
 {
     public class ListItem<TItem, TValue>
     {

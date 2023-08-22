@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Modals
 {
     public class ModalResult
     {

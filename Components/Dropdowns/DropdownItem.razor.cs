@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Dropdowns
 {
     public partial class DropdownItem : TablerBaseComponent, IDisposable
     {
@@ -27,7 +21,7 @@ namespace TablerForNet.Tabler
                 ParentMenu?.AddSubMenuItem(this);
             }
         }
-     
+
         private void ItemClicked(MouseEventArgs e)
         {
             if (hasSubMenu)
@@ -71,7 +65,7 @@ namespace TablerForNet.Tabler
         {
             if (hasSubMenu)
             {
-                if(Dropdown.SubMenusDirection == DropdownDirection.Down)
+                if (Dropdown.SubMenusDirection == DropdownDirection.Down)
                 {
                     return "dropdown";
                 }
@@ -79,7 +73,6 @@ namespace TablerForNet.Tabler
                 {
                     return "dropend";
                 }
-                
             }
             return "";
         }

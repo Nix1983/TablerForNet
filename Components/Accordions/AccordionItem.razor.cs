@@ -1,18 +1,19 @@
-﻿namespace TablerForNet.Tabler;
-
-public class AccordionItem : TablerBaseComponent
+﻿namespace TablerForNet.Components.Accordions
 {
-    [CascadingParameter(Name = "Accordion")]
-    public Accordion Accordion { get; set; }
-
-    [Parameter] public string Title { get; set; }
-    [Parameter] public RenderFragment TitleTemplate { get; set; }
-    [Parameter] public bool Expanded { get; set; }
-    public bool IsExpanded { get; set; }
-
-    protected override void OnInitialized()
+    public class AccordionItem : TablerBaseComponent
     {
-        IsExpanded = Expanded;    
-        Accordion.AddAccordionItem(this);
+        [CascadingParameter(Name = "Accordion")]
+        public Accordion Accordion { get; set; }
+
+        [Parameter] public string Title { get; set; }
+        [Parameter] public RenderFragment TitleTemplate { get; set; }
+        [Parameter] public bool Expanded { get; set; }
+        public bool IsExpanded { get; set; }
+
+        protected override void OnInitialized()
+        {
+            IsExpanded = Expanded;
+            Accordion.AddAccordionItem(this);
+        }
     }
 }

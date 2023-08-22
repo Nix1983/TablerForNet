@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Statuses
 {
-
     public partial class StatusIndicator : TablerBaseComponent
     {
         [Parameter] public bool Animate { get; set; }

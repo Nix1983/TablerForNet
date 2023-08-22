@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Cards
 {
     public partial class CardTabs : TablerBaseComponent
     {

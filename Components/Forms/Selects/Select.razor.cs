@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using TablerForNet.Tabler.Components.Selects;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Forms.Selects
 {
     public partial class Select<TItem, TValue> : TablerBaseComponent
     {

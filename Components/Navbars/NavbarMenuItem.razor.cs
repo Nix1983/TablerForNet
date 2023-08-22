@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Navbars
 {
     public partial class NavbarMenuItem : TablerBaseComponent, IDisposable
     {

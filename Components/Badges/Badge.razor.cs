@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Rendering;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Badges
 {
     public enum BadgeShape
     {

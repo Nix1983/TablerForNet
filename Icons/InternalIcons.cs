@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler.Icons
+﻿namespace TablerForNet.Icons
 {
     internal static class InternalIcons
     {

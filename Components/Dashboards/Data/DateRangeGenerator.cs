@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TablerForNet.Tabler.Dashboards.Extensions;
-namespace TablerForNet.Tabler.Dashboards
+﻿namespace TablerForNet.Components.Dashboards
 {
     public static class DateRangeGenerator
     {
@@ -69,9 +63,6 @@ namespace TablerForNet.Tabler.Dashboards
         }
 
     }
-
-   
-
 
     public class DateRange
     {

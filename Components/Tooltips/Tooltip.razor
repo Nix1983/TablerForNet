@@ -1,4 +1,4 @@
-﻿@namespace TablerForNet.Tabler
+﻿
 <div class="tooltip-wrapper">
     <span class="@GetTooltipClass(Size) @GetTooltipBackgroundColor(BackgroundColor) @GetTooltipBorderColor(BorderColor)">
         @if (TooltipTemplate != null)
@@ -15,6 +15,7 @@
 
 @code {
     [Parameter] public RenderFragment ChildContent { get; set; }
+
     [Parameter] public RenderFragment TooltipTemplate { get; set; }
 
     /// <summary>

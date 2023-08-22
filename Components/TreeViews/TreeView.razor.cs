@@ -1,12 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.TreeViews
 {
     public partial class TreeView<TItem> : ComponentBase
     {

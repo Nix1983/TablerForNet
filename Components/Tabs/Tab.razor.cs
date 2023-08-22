@@ -1,6 +1,4 @@
-﻿using TablerForNet.Tabler.Components;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Tabs
 {
    public partial class Tab : TablerBaseComponent, ITab
     {

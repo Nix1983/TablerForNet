@@ -1,20 +1,20 @@
-﻿namespace TablerForNet.Tabler;
-
-public partial class Accordion : TablerBaseComponent
+﻿namespace TablerForNet.Components.Accordions
 {
-    private List<AccordionItem> Items { get; set; } = new();
-    [Parameter]public bool MultipleOpen { get; set; }
-
-    public void AddAccordionItem(AccordionItem item)
+    public partial class Accordion : TablerBaseComponent
     {
-        Items.Add(item);
-        StateHasChanged();
-    }
+        private List<AccordionItem> Items { get; set; } = new();
+        [Parameter] public bool MultipleOpen { get; set; }
 
-    private void SetExpanded(AccordionItem item)
-    {
-        var oldExpanded = item.IsExpanded;
-        
+        public void AddAccordionItem(AccordionItem item)
+        {
+            Items.Add(item);
+            StateHasChanged();
+        }
+
+        private void SetExpanded(AccordionItem item)
+        {
+            var oldExpanded = item.IsExpanded;
+
             foreach (var accordionItem in Items)
             {
                 if (item == accordionItem)
@@ -23,11 +23,11 @@ public partial class Accordion : TablerBaseComponent
                 }
                 else if (!MultipleOpen)
                 {
-                    accordionItem.IsExpanded = false;    
+                    accordionItem.IsExpanded = false;
                 }
             }
-        
-        
-        StateHasChanged();
+
+            StateHasChanged();
+        }
     }
 }

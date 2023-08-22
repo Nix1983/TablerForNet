@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Tabler.Services
+﻿namespace TablerForNet.Services
 {
     public class TablerService
     {

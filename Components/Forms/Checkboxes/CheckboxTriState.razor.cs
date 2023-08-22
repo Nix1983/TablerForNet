@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
-using TablerForNet.Tabler.Services;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Forms.Checkboxes
 {
     public partial class CheckboxTriState : ComponentBase
     {

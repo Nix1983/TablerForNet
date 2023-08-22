@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
-
-namespace TablerForNet.Tabler
+﻿namespace TablerForNet.Components.Forms.Checkboxes
 {
     public partial class Checkbox : ComponentBase
     {
