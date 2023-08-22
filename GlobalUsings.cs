@@ -14,6 +14,10 @@ global using System.Timers;
 global using Microsoft.Extensions.Options;
 global using System.Text.RegularExpressions;
 global using LinqKit;
+global using System.Collections;
+global using System.Collections.Concurrent;
+global using Microsoft.AspNetCore.Components.Web.Virtualization;
+global using System.ComponentModel;
 
 global using TablerForNet.Components.Modals.Dialog;
 global using TablerForNet.Icons;
@@ -26,3 +30,6 @@ global using TablerForNet.Components.Modals;
 global using TablerForNet.Components.Tables.Components;
 global using TablerForNet.Components.Tables;
 global using TablerForNet.ArrayExtensions;
+global using TablerForNet.Components.QuickTables.Infrastructure;
+global using TablerForNet.Components.QuickTables.Columns;
+global using TablerForNet.Components.QuickTables.Pagination;
