@@ -1,5 +1,4 @@
-﻿
-namespace TablerForNet.Components.Toasts
+﻿namespace TablerForNet.Components.Toasts.Services
 {
     public class ToastService
     {

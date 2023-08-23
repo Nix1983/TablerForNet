@@ -31,3 +31,4 @@ global using TablerForNet.ArrayExtensions;
 global using TablerForNet.Components.QuickTables.Infrastructure;
 global using TablerForNet.Components.QuickTables.Columns;
 global using TablerForNet.Components.QuickTables.Pagination;
+global using TablerForNet.Components.Toasts.Services;
