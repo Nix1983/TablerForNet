@@ -1,4 +1,6 @@
-﻿namespace TablerForNet
+﻿using TablerForNet.Components.Toasts;
+
+namespace TablerForNet
 {
     public static class TablerExtensions
     {

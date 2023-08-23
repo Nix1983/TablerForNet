@@ -1,4 +1,6 @@
-﻿namespace TablerForNet.Components
+﻿using System.ComponentModel;
+
+namespace TablerForNet.Components
 {
     public static class Extensions
     {
