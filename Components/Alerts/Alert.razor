@@ -1,11 +1,12 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 @if (!dismissed)
 {
     <HtmlElement Tag="div"
                  class="@ClassNames"
-                 @onclick="OnClick"
-                 @attributes="@UnmatchedParameters">
+    @onclick="OnClick"
+    @attributes="@UnmatchedParameters">
 
         @if (Dismissible)
         {
@@ -19,4 +20,25 @@
 
         @ChildContent
     </HtmlElement>
+}
+
+@code {
+
+    [Parameter] public string Title { get; set; }
+    [Parameter] public bool Dismissible { get; set; }
+    [Parameter] public bool Important { get; set; }
+    private bool dismissed;
+
+    protected override string ClassNames => ClassBuilder
+        .Add("alert")
+        .Add(BackgroundColor.GetColorClass("alert"))
+        .Add(TextColor.GetColorClass("text"))
+        .AddIf("alert-dismissible", Dismissible)
+        .AddIf("alert-important", Important)
+        .ToString();
+
+    protected void DismissAlert()
+    {
+        dismissed = true;
+    }
 }
