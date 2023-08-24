@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Accordions
+﻿namespace TablerForNet.Components
 {
     public class AccordionItem : TablerBaseComponent
     {
