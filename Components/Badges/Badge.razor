@@ -1,7 +1,25 @@
-﻿@inherits TablerBaseComponent
-<HtmlElement Tag="@HtmlTag"
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
+
+<HtmlElement Tag="span"
              class="@ClassNames"
              @onclick="OnClick"
-             @attributes="@UnmatchedParameters">
+@attributes="@UnmatchedParameters">
     @ChildContent
 </HtmlElement>
+
+@code {
+    [Parameter] public BadgeShape Shape { get; set; } = BadgeShape.Default;
+    [Parameter] public BadgeSize Size { get; set; } = BadgeSize.Default;
+
+    protected override string ClassNames => ClassBuilder
+        .Add("badge")
+        .Add(TextColor.GetColorClass("text"))
+        .Add("badge-default")
+        .AddCompare("badge-md", Size, BadgeSize.Default)
+        .Add(BackgroundColor.GetColorClass("bg", ColorType.Default))
+        .AddCompare("badge-pill", Shape, BadgeShape.Pill)
+        .AddIf("cursor-pointer", OnClick.HasDelegate)
+        .ToString();
+
+}
