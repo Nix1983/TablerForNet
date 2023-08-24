@@ -177,6 +177,7 @@ body {
     font-weight: var(--tblr-font-weight-medium);
     line-height: 1.2
 }
+
     h1:focus {
         outline: none;
     }
@@ -25187,3 +25188,4 @@ img {
     -webkit-font-smoothing: auto;
     -moz-osx-font-smoothing: auto
 }
+
