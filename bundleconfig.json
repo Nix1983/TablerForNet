@@ -1,0 +1,25 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/tablerForNet.min.css",
+    "inputFiles": [
+      "wwwroot/css/tablerForNet.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/tablerForNet.min.js",
+    "inputFiles": [
+      "wwwroot/js/tablerForNet.js"
+
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
