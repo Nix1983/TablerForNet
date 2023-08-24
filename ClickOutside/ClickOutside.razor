@@ -9,7 +9,7 @@
     private string Id { get; set; } = Guid.NewGuid().ToString();
 
     /// <summary>
-    ///     If the clickhandler shall be registered when the component is rendered or when the component is clicked.
+    ///     If the click handler shall be registered when the component is rendered or when the component is clicked.
     ///     Default is RegisterStrategy.OnClick.
     /// </summary>
     [Parameter]
@@ -23,8 +23,8 @@
 
     /// <summary>
     ///     Number of clicks received one or many
-    ///     If ConcurrenceStrategy.One the eventhandler is unregistered after the first click outside.
-    ///     To reduce stress on blazor use RegisterStrategy= OnClick and Concurrence=One
+    ///     If ConcurrenceStrategy.One the event handler is unregistered after the first click outside.
+    ///     To reduce stress on Blazor use RegisterStrategy= OnClick and Concurrence=One
     /// Default is ConcurrenceStrategy.One
     /// </summary>
     [Parameter]

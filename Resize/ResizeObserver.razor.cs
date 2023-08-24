@@ -4,7 +4,7 @@ namespace TablerForNet.Resize
     {
         [Inject] private IJSRuntime jSRuntime { get; set; }
         [Parameter] public string Tag { get; set; } = "div";
-         [Parameter] public EventCallback<ResizeObserverEntry> OnResized { get; set; }
+        [Parameter] public EventCallback<ResizeObserverEntry> OnResized { get; set; }
         [Parameter] public EventCallback<ResizeObserverEntry> OnWidthResized { get; set; }
         [Parameter] public EventCallback<ResizeObserverEntry> OnHeightResized { get; set; }
 
@@ -33,7 +33,7 @@ namespace TablerForNet.Resize
             {
                 await OnWidthResized.InvokeAsync(resizeObserverEntry);
             }
-           
+
             if (currentEntry?.ContentRect?.Height != resizeObserverEntry?.ContentRect?.Height)
             {
                 await OnHeightResized.InvokeAsync(resizeObserverEntry);

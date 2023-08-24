@@ -1,6 +1,4 @@
-﻿using TablerForNet.Components.Toasts;
-
-namespace TablerForNet
+﻿namespace TablerForNet
 {
     public static class TablerExtensions
     {
