@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Modals
+﻿namespace TablerForNet.Components
 {
     public class ModalResult
     {
@@ -15,7 +15,6 @@
 
         public static ModalResult Ok() => new ModalResult(default, typeof(object),false);
         public static ModalResult Ok<T>(T result) => new ModalResult(result, typeof(T), false);
-
         public static ModalResult Cancel() => new ModalResult(default, typeof(object), true);
     }
 }

@@ -14,6 +14,5 @@
 
         ModalViewSettings RegisterModalView(ModalView modalView);
         void UnRegisterModalView(ModalView modalView);
-
     }
 }
