@@ -21,7 +21,6 @@ global using Microsoft.AspNetCore.Components.Web.Virtualization;
 global using TablerForNet.Components.Modals.Dialog;
 global using TablerForNet.Icons;
 global using TablerForNet.Services;
-global using TablerForNet.Components.Dropdowns;
 global using TablerForNet.Validation;
 global using TablerForNet.Components.Modals.Services;
 global using TablerForNet.Components.Modals;

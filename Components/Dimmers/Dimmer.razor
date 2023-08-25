@@ -1,11 +1,12 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 @if (Active)
 {
     <HtmlElement Tag="div"
                  class="@ClassNames"
-                 @onclick="OnClick"
-                 @attributes="@UnmatchedParameters">
+    @onclick="OnClick"
+    @attributes="@UnmatchedParameters">
 
         @if (ShowSpinner)
         {
@@ -20,6 +21,16 @@
 else
 {
     @ChildContent
+}
+
+@code {
+    [Parameter] public bool Active { get; set; }
+    [Parameter] public bool ShowSpinner { get; set; } = true;
+
+    protected override string ClassNames => ClassBuilder
+      .Add("dimmer")
+      .AddIf("active", Active)
+      .ToString();
 }
 
 
