@@ -1,4 +1,7 @@
-﻿@if (PropertyValue != null)
+﻿@namespace TablerForNet.Components
+@inject IModalService ModalService
+
+@if (PropertyValue != null)
 {
     <span class="cursor-pointer value-wrapper" @onclick="(() => ObjectDetails())">
         @if (ChildContent == null)
@@ -16,4 +19,17 @@ else
     <i>null</i>
 }
 
+@code{
 
+    [Parameter] public object PropertyValue { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    private async Task ObjectDetails()
+    {
+        if (PropertyValue != null)
+        {
+            var component = new RenderComponent<ObjectBrowser>().Set(e => e.Object, PropertyValue);
+            var result = await ModalService.ShowAsync(PropertyValue.GetType().FullName, component, new ModalOptions { Size = ModalSize.XLarge });
+        }
+    }
+}
