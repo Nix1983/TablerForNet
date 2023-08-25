@@ -1,4 +1,8 @@
-﻿<div class="toast show me-1 mb-1" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false" data-toggle="toast" style="border-color:@(Toast.Options.DarkMode ? "teal": "")">
+﻿@namespace TablerForNet.Components
+@inject ToastService ToastService
+@implements IDisposable
+
+<div class="toast show me-1 mb-1" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false" data-toggle="toast" style="border-color:@(Toast.Options.DarkMode ? "teal": "")">
 
     @if (Toast.Options.ShowHeader)
     {
@@ -37,3 +41,42 @@
     }
     
 </div>
+
+@code{
+
+    [Parameter] public ToastModel Toast { get; set; }
+
+    private ToastTimer _countdownTimer;
+    private int _progress = 100;
+
+    protected override void OnInitialized()
+    {
+        if (Toast.Options.AutoClose)
+        {
+            _countdownTimer = new ToastTimer(Toast.Options.Delay * 1000);
+            _countdownTimer.OnTick += CalculateProgress;
+            _countdownTimer.Start();
+        }
+    }
+
+    private async void CalculateProgress(int percentComplete)
+    {
+        _progress = 100 - percentComplete;
+        if (percentComplete >= 100)
+        {
+            await Close();
+        }
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public async Task Close()
+    {
+        await ToastService.RemoveToastAsync(Toast);
+    }
+
+    public void Dispose()
+    {
+        _countdownTimer?.Dispose();
+        _countdownTimer = null;
+    }
+}

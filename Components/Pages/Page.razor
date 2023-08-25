@@ -1,8 +1,17 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
-    <HtmlElement Tag="div"
-                 class="@ClassNames"
-                 @onclick="OnClick"
-                 @attributes="@UnmatchedParameters">
-        @ChildContent
-    </HtmlElement>
+<HtmlElement Tag="div"
+             class="@ClassNames"
+@onclick="OnClick"
+@attributes="@UnmatchedParameters">
+    @ChildContent
+</HtmlElement>
+
+@code {
+    protected override string ClassNames => ClassBuilder
+       .Add("page")
+       .Add(BackgroundColor.GetColorClass("bg"))
+       .Add(TextColor.GetColorClass("text"))
+       .ToString();
+}

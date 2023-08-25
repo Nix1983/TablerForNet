@@ -1,4 +1,5 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 <HtmlElement Tag="div" 
              class="@ClassNames"
@@ -6,3 +7,11 @@
              @attributes="@UnmatchedParameters">
     @ChildContent
 </HtmlElement>
+
+@code{
+    protected override string ClassNames => ClassBuilder
+           .Add("btn-list")
+           .Add(BackgroundColor.GetColorClass("bg"))
+           .Add(TextColor.GetColorClass("text"))
+           .ToString();
+}

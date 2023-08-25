@@ -1,10 +1,10 @@
-﻿namespace TablerForNet.Components.Tables.Components
+﻿namespace TablerForNet.Components
 {
     public class TableHeaderBase<TableItem> : TableRowComponentBase<TableItem>
     {
         [CascadingParameter(Name = "Table")] public ITable<TableItem> Table { get; set; }
 
-        public string GetColumnHeaderClass(IColumn<TableItem> column)
+        public string GetColumnHeaderClass(ITableColumn<TableItem> column)
         {
             return new ClassBuilder()
                 .AddIf("cursor-pointer", column.Sortable)
@@ -12,7 +12,7 @@
          }
 
 
-        protected string GetSortIconClass(IColumn<TableItem> column)
+        protected string GetSortIconClass(ITableColumn<TableItem> column)
         {
             if (!column.SortColumn && column.Sortable) { return "sorting"; }
             if (column.SortColumn && column.SortDescending) { return "sorting_desc"; }
@@ -20,7 +20,7 @@
             return string.Empty;
         }
 
-        protected IIconType GetSortIcon(IColumn<TableItem> column)
+        protected IIconType GetSortIcon(ITableColumn<TableItem> column)
         {
             if (!column.SortColumn && column.Sortable) { return InternalIcons.Sortable; }
             if (column.SortColumn && column.SortDescending) { return InternalIcons.Sort_Desc; }

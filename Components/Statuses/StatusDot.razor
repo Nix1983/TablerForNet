@@ -1,4 +1,5 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 <HtmlElement Tag="span"
              class="@ClassNames"
@@ -6,3 +7,15 @@
              @attributes="@UnmatchedParameters">
     @ChildContent
 </HtmlElement>
+
+@code{
+    [Parameter] public bool Animate { get; set; }
+
+
+    protected override string ClassNames => ClassBuilder
+        .Add("status-dot")
+        .AddIf(BackgroundColor.GetColorClass("status", ColorType.Default), BackgroundColor != TablerColor.Default)
+        .AddIf("status-dot-animated", Animate)
+        .AddIf("cursor-pointer", OnClick.HasDelegate)
+        .ToString();
+}

@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Modals
+﻿namespace TablerForNet.Components
 {
     public class ModalModel
     {
@@ -10,16 +10,13 @@
             Options = options ?? new ModalOptions();
         }
 
-   
         internal TaskCompletionSource<ModalResult> TaskSource { get; }
 
         public Task<ModalResult> Task { get { return TaskSource.Task; } }
         public string Title { get; set; }
-     
-       public RenderFragment ModalContents { get; private set; }
+
+        public RenderFragment ModalContents { get; private set; }
         public ModalOptions Options { get; }
 
-       
-        
     }
 }

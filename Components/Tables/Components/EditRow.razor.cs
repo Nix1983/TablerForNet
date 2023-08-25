@@ -1,5 +1,5 @@
 ﻿
-namespace TablerForNet.Components.Tables.Components
+namespace TablerForNet.Components
 {
     public class EditRowBase<TableItem> : TableRowComponentBase<TableItem>
     {

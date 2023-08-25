@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.Dashboards
+namespace TablerForNet.Components
 {
     public partial class GroupFacet<TItem> : BaseFacet<TItem> where TItem : class
     {

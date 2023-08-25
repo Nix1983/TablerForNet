@@ -1,39 +1,5 @@
-﻿namespace TablerForNet.Components.SwitchContent
-{
-    public partial class SwitchContent : TablerBaseComponent
-    {
-        [Parameter] public bool Active { get; set; }
-        [Parameter] public EventCallback<bool> ActiveChanged { get; set; }
-        [Parameter] public RenderFragment DefaultTemplate { get; set; }
-        [Parameter] public RenderFragment ActiveTemplate { get; set; }
-
-        [Parameter] public bool Disabled { get; set; }
-
-        [Parameter] public SwitchAnimation Animation { get; set; }
-
-        bool isActive;
-        protected override string ClassNames => ClassBuilder
-           .Add("switch-icon")
-           .AddIf("active", isActive)
-           .AddIf("disabled", Disabled)
-           .Add(Animation.GetCssClass())
-           .ToString();
-
-
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-            isActive = Active;
-        }
-
-        private async Task ToogleActive(MouseEventArgs e)
-        {
-            isActive = !isActive;
-            await ActiveChanged.InvokeAsync(isActive);
-            await OnClick.InvokeAsync(e);
-        }
-    }
-
+﻿namespace TablerForNet.Components
+{  
     public enum SwitchAnimation
     {
         None = 0,
@@ -63,6 +29,5 @@
                 _ => "",
             };
         }
-
     }
 }

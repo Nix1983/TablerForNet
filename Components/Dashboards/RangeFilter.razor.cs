@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.Dashboards
+namespace TablerForNet.Components
 {
     public partial class RangeFilter<TItem> : DashboardComponent<TItem> where TItem : class
     {

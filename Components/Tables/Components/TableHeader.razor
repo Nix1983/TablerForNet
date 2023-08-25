@@ -1,5 +1,5 @@
-﻿@typeparam TableItem
-
+﻿@namespace TablerForNet.Components
+@typeparam TableItem
 @inherits TableHeaderBase<TableItem>
 
 <thead>
@@ -14,7 +14,7 @@
             </th>
         }
 
-        @foreach (IColumn<TableItem> column in Table.VisibleColumns)
+        @foreach (ITableColumn<TableItem> column in Table.VisibleColumns)
         {
 
             <th style="@GetColumnWidth(column)" class="@GetColumnHeaderClass(column)" @onclick="@(() => column.SortByAsync())">

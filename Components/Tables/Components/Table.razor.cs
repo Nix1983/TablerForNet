@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Tables.Components
+﻿namespace TablerForNet.Components
 {
     public class TableBase<Item> : ComponentBase, IPopupEditTable<Item>, ITable<Item>, IInlineEditTable<Item>, IDetailsTable<Item>, ITableRow<Item>, ITableState<Item>
     {
@@ -44,9 +44,9 @@
         [Parameter] public bool ConfirmDelete { get; set; } = true;
         [Parameter] public TableEditMode EditMode { get; set; }
 
-        [Parameter] public OnCancelStrategy? CancelStrategy { get; set; }
+        [Parameter] public TableOnCancelStrategy? CancelStrategy { get; set; }
         [Parameter] public Action<TableEditPopupOptions<Item>> EditPopupMutator { get; set; }
-        [Parameter] public IDataProvider<Item> DataProvider { get; set; }
+        [Parameter] public ITableDataProvider<Item> DataProvider { get; set; }
         public bool IsRowValid { get; set; }
         public bool HasRowActions => RowActionTemplate != null || RowActionEndTemplate != null || AllowDelete || AllowEdit;
 
@@ -56,8 +56,8 @@
         public bool ShowSearch { get; set; } = true;
 
         protected IEnumerable<TableResult<object, Item>> TempItems { get; set; } = Enumerable.Empty<TableResult<object, Item>>();
-        public List<IColumn<Item>> Columns { get; } = new List<IColumn<Item>>();
-        public List<IColumn<Item>> VisibleColumns => Columns.Where(x => x.Visible).ToList();
+        public List<ITableColumn<Item>> Columns { get; } = new List<ITableColumn<Item>>();
+        public List<ITableColumn<Item>> VisibleColumns => Columns.Where(x => x.Visible).ToList();
         public int PageNumber { get; set; }
         public int VisibleColumnCount => Columns.Count(x => x.Visible) + (HasRowActions ? 1 : 0) + (ShowCheckboxes ? 1 : 0);
         public bool IsAddInProgress { get; set; }
@@ -97,7 +97,7 @@
 
         protected override void OnInitialized()
         {
-            DataProvider = DataProvider ?? new TheGridDataFactory<Item>();
+            DataProvider = DataProvider ?? new TableGridDataFactory<Item>();
 
             if (Hover)
             {
@@ -292,7 +292,7 @@
             }
         }
 
-        public void AddColumn(IColumn<Item> column)
+        public void AddColumn(ITableColumn<Item> column)
         {
             Columns.Add(column);
 
@@ -300,7 +300,7 @@
             StateHasChanged();
         }
 
-        public void RemoveColumn(IColumn<Item> column)
+        public void RemoveColumn(ITableColumn<Item> column)
         {
             Columns.Remove(column);
             StateHasChanged();
@@ -414,7 +414,7 @@
         public void EditItem(Item tableItem)
         {
             var onCancelStrategy = CancelStrategy ?? tablerOptions.CurrentValue.DefaultOnCancelStrategy;
-            if (!IsAddInProgress && onCancelStrategy == OnCancelStrategy.Revert)
+            if (!IsAddInProgress && onCancelStrategy == TableOnCancelStrategy.Revert)
             {
                 StateBeforeEdit = tableItem.Copy();
             }

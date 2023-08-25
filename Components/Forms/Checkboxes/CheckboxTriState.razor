@@ -1,14 +1,15 @@
-﻿@inherits ComponentBase
+﻿@namespace TablerForNet.Components
+@inherits ComponentBase
+@inject TablerService TablerService
 
 @if (string.IsNullOrEmpty(Label) && string.IsNullOrEmpty(Description))
 {
-
-    RenderCheckBox();
+    @RenderCheckBox
 }
 else
 {
     <label class="form-check">
-        @{ RenderCheckBox(); }
+        @RenderCheckBox
         @if (!string.IsNullOrEmpty(Label))
         {
             <span class="form-check-label">@Label</span>
@@ -20,10 +21,46 @@ else
     </label>
 }
 
-@{
-    void RenderCheckBox()
+
+@code {
+    private RenderFragment RenderCheckBox => __builder =>
     {
         <input type="checkbox" class="form-check-input cursor-pointer" @ref="element" checked="@Value" @onclick="ToggleState" disabled="@Disabled">
+    };
+
+    [Parameter] public string Label { get; set; }
+    [Parameter] public string Description { get; set; }
+    [Parameter] public bool? Value { get; set; }
+    [Parameter] public EventCallback<bool?> ValueChanged { get; set; }
+    [Parameter] public EventCallback Changed { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+
+    protected ElementReference element { get; set; }
+
+    private bool isInitialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender || isInitialized)
+        {
+            isInitialized = true;
+            await TablerService.SetElementProperty(element, "indeterminate", !Value.HasValue);
+        }
+    }
+
+    protected async Task ToggleState()
+    {
+        if (Value == null)
+        {
+            Value = true;
+        }
+        else
+        {
+            Value = !Value;
+        }
+
+        await ValueChanged.InvokeAsync(Value);
+        await Changed.InvokeAsync();
     }
 }
 

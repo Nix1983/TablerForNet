@@ -1,7 +1,18 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
+
 <HtmlElement Tag="div" 
              class="@ClassNames"
              @onclick="OnClick"
              @attributes="@UnmatchedParameters">
     @ChildContent
 </HtmlElement>
+
+@code{
+
+    [Parameter] public bool Stacked { get; set; }
+    protected override string ClassNames => ClassBuilder
+        .Add("avatar-list")
+        .AddIf("avatar-list-stacked", Stacked)
+       .ToString();
+}

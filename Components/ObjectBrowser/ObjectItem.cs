@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.ObjectBrowser
+﻿namespace TablerForNet.Components
 {
     internal class ObjectItem
     {
@@ -59,6 +59,4 @@
         }
 
     }
-
-
 }
