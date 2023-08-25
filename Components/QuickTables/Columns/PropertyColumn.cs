@@ -1,6 +1,6 @@
 namespace TablerForNet.Components.QuickTables.Columns
 {
-    public class PropertyColumn<TGridItem, TProp> : ColumnBase<TGridItem>, ISortBuilderColumn<TGridItem>
+    public class PropertyColumn<TGridItem, TProp> : QuickTableColumn<TGridItem>, ISortBuilderColumn<TGridItem>
     {
         private Func<TGridItem, string> _cellTextFunc;
         private Expression<Func<TGridItem, TProp>> _lastAssignedProperty;

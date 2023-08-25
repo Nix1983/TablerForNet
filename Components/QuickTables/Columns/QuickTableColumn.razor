@@ -19,7 +19,7 @@
     public Align Align { get; set; }
 
     [Parameter]
-    public RenderFragment<ColumnBase<TGridItem>> HeaderTemplate { get; set; }
+    public RenderFragment<QuickTableColumn<TGridItem>> HeaderTemplate { get; set; }
 
     [Parameter]
     public RenderFragment ColumnOptions { get; set; }
@@ -44,7 +44,7 @@
         return false;
     }
 
-    public ColumnBase()
+    public QuickTableColumn()
     {
         HeaderContent = RenderDefaultHeaderContent;
     }

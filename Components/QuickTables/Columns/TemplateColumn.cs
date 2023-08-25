@@ -1,6 +1,6 @@
 namespace TablerForNet.Components.QuickTables.Columns
 {
-    public class TemplateColumn<TGridItem> : ColumnBase<TGridItem>, ISortBuilderColumn<TGridItem>
+    public class TemplateColumn<TGridItem> : QuickTableColumn<TGridItem>, ISortBuilderColumn<TGridItem>
     {
         private static readonly RenderFragment<TGridItem> EmptyChildContent = _ => builder => { };
 

@@ -1,6 +1,6 @@
 namespace TablerForNet.Components.QuickTables.Columns
 {
-    public abstract partial class ColumnBase<TGridItem>
+    public abstract partial class QuickTableColumn<TGridItem>
     {
     }
 }
