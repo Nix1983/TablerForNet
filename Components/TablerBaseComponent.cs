@@ -1,4 +1,4 @@
-﻿namespace TablerForNet
+﻿namespace TablerForNet.Components
 {
     public abstract class TablerBaseComponent : ComponentBase
     {

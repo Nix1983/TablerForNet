@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components
+﻿namespace TablerForNet
 {
     public static class EnumHelper
     {

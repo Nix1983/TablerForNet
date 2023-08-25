@@ -1,4 +1,4 @@
-﻿namespace TablerForNet
+﻿namespace TablerForNet.Components
 {
     public class HtmlElement : ComponentBase
     {

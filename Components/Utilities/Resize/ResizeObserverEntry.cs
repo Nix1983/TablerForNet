@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Resize
+﻿namespace TablerForNet.Components
 {
     public class ResizeObserverEntry
     {

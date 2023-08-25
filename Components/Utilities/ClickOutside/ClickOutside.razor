@@ -1,4 +1,5 @@
-﻿@inject IJSRuntime JSRuntime;
+﻿@namespace TablerForNet.Components
+@inject IJSRuntime JSRuntime;
 @implements IAsyncDisposable
 
 <span id="@Id" @attributes="@Attributes" @onclick="AddClickOutsideHandler">
@@ -75,7 +76,7 @@
     {
         if (Strategy == RegisterStrategy.OnClick)
         {
-            await JSRuntime.InvokeVoidAsync("tabBlazor.clickOutsideHandler.addEvent", Id, Concurrence == ConcurrenceStrategy.One, DotNetObjectReference.Create(this));
+            await JSRuntime.InvokeVoidAsync("tabler.clickOutsideHandler.addEvent", Id, Concurrence == ConcurrenceStrategy.One, DotNetObjectReference.Create(this));
         }
     }
 
