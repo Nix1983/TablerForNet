@@ -1,0 +1,21 @@
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
+
+<HtmlElement Tag="div"
+                class="@ClassNames"
+                @onclick="OnClick"
+                @attributes="@UnmatchedParameters">
+    @ChildContent
+</HtmlElement>
+
+@code{
+
+    [Parameter] public bool HasCards { get; set; }
+
+    protected override string ClassNames => ClassBuilder
+        .Add("row")
+        .Add(BackgroundColor.GetColorClass("bg"))
+        .Add(TextColor.GetColorClass("text"))
+        .AddIf("row-cards", HasCards)
+        .ToString();
+}
