@@ -1,4 +1,5 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 <HtmlElement Tag="@HtmlTag"
              class="@ClassNames"
@@ -6,3 +7,14 @@
              @attributes="@UnmatchedParameters">
     @ChildContent
 </HtmlElement>
+
+@code{
+
+    [Parameter] public string HtmlTag { get; set; } = "h1";
+
+    protected override string ClassNames => ClassBuilder
+        .Add("page-title")
+        .Add(BackgroundColor.GetColorClass("bg"))
+        .Add(TextColor.GetColorClass("text"))
+        .ToString();
+}
