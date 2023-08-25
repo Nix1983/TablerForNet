@@ -2,7 +2,7 @@
 {
     public class TablerOptions
     {
-        public OnCancelStrategy DefaultOnCancelStrategy { get; set; } = OnCancelStrategy.AsIs;
+        public TableOnCancelStrategy DefaultOnCancelStrategy { get; set; } = TableOnCancelStrategy.AsIs;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace TablerForNet.Components
 {
-    public interface IColumn<Item>
+    public interface ITableColumn<Item>
     {
         ITable<Item> Table { get; set; }
         string Title { get; set; }

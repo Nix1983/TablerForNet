@@ -2,12 +2,12 @@
 {
     public abstract class TableRowComponentBase<TableItem> : ComponentBase
     {
-        public string GetColumnWidth(IColumn<TableItem> column)
+        public string GetColumnWidth(ITableColumn<TableItem> column)
         {
             return !string.IsNullOrEmpty(column.Width) ? $"width:{column.Width}; " : null;
         }
 
-        public virtual string GetColumnClass(IColumn<TableItem> column)
+        public virtual string GetColumnClass(ITableColumn<TableItem> column)
         {
             return new ClassBuilder()
                 .Add(column.CssClass)

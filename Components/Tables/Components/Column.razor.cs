@@ -1,6 +1,6 @@
 ﻿namespace TablerForNet.Components
 {
-    public class ColumnBase<Item> : ComponentBase, IColumn<Item>
+    public class ColumnBase<Item> : ComponentBase, ITableColumn<Item>
     {
         [Inject] protected TableFilterService FilterService { get; set; }
 
@@ -26,7 +26,7 @@
         [Parameter] public RenderFragment<TableResult<object, Item>> GroupingTemplate { get; set; }
         [Parameter] public Expression<Func<Item, object>> Property { get; set; }
         [Parameter] public Expression<Func<Item, string, bool>> SearchExpression { get; set; }
-        [Parameter] public SortOrder? Sort { get; set; }
+        [Parameter] public TableSortOrder? Sort { get; set; }
         public bool SortColumn { get; set; }
 
         [Parameter] public bool Group { get; set; }
@@ -47,7 +47,7 @@
             if (Sort != null)
             {
                 SortColumn = true;
-                SortDescending = Sort == SortOrder.Descending;
+                SortDescending = Sort == TableSortOrder.Descending;
             }
 
             Table.AddColumn(this);

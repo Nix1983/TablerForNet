@@ -1,8 +1,8 @@
-﻿namespace TablerForNet.Components
+﻿namespace TablerForNet.Services
 {
     public class TableFilterService
     {
-        public Expression<Func<T, bool>> GetFilter<T>(IColumn<T> column, string value)
+        public Expression<Func<T, bool>> GetFilter<T>(ITableColumn<T> column, string value)
         {
             var property = column.Property;
             if (column.SearchExpression != null)

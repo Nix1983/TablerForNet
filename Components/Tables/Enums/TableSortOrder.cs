@@ -1,6 +1,6 @@
 ﻿namespace TablerForNet.Components
 {
-    public enum SortOrder
+    public enum TableSortOrder
     {
         Ascending,
         Descending

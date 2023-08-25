@@ -12,7 +12,7 @@
         int VisibleColumnCount { get; }
         List<TableItem> SelectedItems { get; set; }
         IList<TableItem> Items { get; }
-        IDataProvider<TableItem> DataProvider { get; set; }
+        ITableDataProvider<TableItem> DataProvider { get; set; }
         RenderFragment<TableItem> RowActionTemplate { get; set; }
         bool ShowCheckboxes { get; set; }
         bool HasRowActions { get; }
@@ -22,10 +22,10 @@
         Task PreviousPage();
         Task LastPage();
         Task ClearSelectedItem();
-        List<IColumn<TableItem>> Columns { get; }
-        List<IColumn<TableItem>> VisibleColumns { get; }
-        void AddColumn(IColumn<TableItem> column);
-        void RemoveColumn(IColumn<TableItem> column);
+        List<ITableColumn<TableItem>> Columns { get; }
+        List<ITableColumn<TableItem>> VisibleColumns { get; }
+        void AddColumn(ITableColumn<TableItem> column);
+        void RemoveColumn(ITableColumn<TableItem> column);
         Task RefreshItems(MouseEventArgs args);
         Task Search(string searchText);
         Task SelectAll();
@@ -55,8 +55,8 @@
 
     public interface IPopupEditTable<TItem>
     {
-        List<IColumn<TItem>> Columns { get; }
-        List<IColumn<TItem>> VisibleColumns { get; }
+        List<ITableColumn<TItem>> Columns { get; }
+        List<ITableColumn<TItem>> VisibleColumns { get; }
 
         bool ShowCheckboxes { get; }
         TItem CurrentEditItem { get; }
@@ -71,8 +71,8 @@
 
     public interface IInlineEditTable<TableItem>
     {
-        List<IColumn<TableItem>> Columns { get; }
-        List<IColumn<TableItem>> VisibleColumns { get; }
+        List<ITableColumn<TableItem>> Columns { get; }
+        List<ITableColumn<TableItem>> VisibleColumns { get; }
         bool ShowCheckboxes { get; }
         IList<TableItem> Items { get; }
         TableItem CurrentEditItem { get; }
@@ -84,8 +84,8 @@
 
     public interface ITableRow<TableItem>
     {
-        List<IColumn<TableItem>> Columns { get; }
-        List<IColumn<TableItem>> VisibleColumns { get; }
+        List<ITableColumn<TableItem>> Columns { get; }
+        List<ITableColumn<TableItem>> VisibleColumns { get; }
         IList<TableItem> Items { get; }
         TableItem SelectedItem { get; }
         List<TableItem> SelectedItems { get; }

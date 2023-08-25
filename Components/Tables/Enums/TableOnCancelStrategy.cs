@@ -1,6 +1,6 @@
 ﻿namespace TablerForNet.Components
 {
-    public enum OnCancelStrategy
+    public enum TableOnCancelStrategy
     {
         AsIs,
         Revert
