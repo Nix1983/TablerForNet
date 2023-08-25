@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Tabs
+﻿namespace TablerForNet.Components
 {
     public interface ITab
     {

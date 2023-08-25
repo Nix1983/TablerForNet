@@ -1,4 +1,5 @@
-﻿
+﻿@namespace TablerForNet.Components
+
 <div class="tooltip-wrapper">
     <span class="tooltip-content @GetTooltipClass(Size) @GetTooltipBackgroundColor(BackgroundColor) @GetTooltipBorderColor(BorderColor)">
         @if (TooltipTemplate != null)
@@ -62,12 +63,5 @@
                 return "tooltip-medium";
 
         }
-    }
-
-    public enum ToolTipSize
-    {
-        Small,
-        Medium,
-        Large
     }
 }
