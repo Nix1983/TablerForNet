@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Tables
+﻿namespace TablerForNet.Components
 {
     public interface ITable<TableItem>
     {
@@ -27,14 +27,12 @@
         void AddColumn(IColumn<TableItem> column);
         void RemoveColumn(IColumn<TableItem> column);
         Task RefreshItems(MouseEventArgs args);
-        //Task OnSearchChanged(ChangeEventArgs args);
         Task Search(string searchText);
         Task SelectAll();
         Task UnSelectAll();
         Task Update(bool resetPage = false);
         void SetPageSize(int pageSize);
         string SearchText { get; set; }
-        //List<MenuDropdownItem<TableItem>> AllRowActions { get; }
         string GetColumnWidth();
         Func<Task<IList<TableItem>>> OnRefresh { get; set; }
         bool HasActionColumn { get; }
@@ -75,7 +73,6 @@
     {
         List<IColumn<TableItem>> Columns { get; }
         List<IColumn<TableItem>> VisibleColumns { get; }
-        //bool IsAddInProgress { get; }
         bool ShowCheckboxes { get; }
         IList<TableItem> Items { get; }
         TableItem CurrentEditItem { get; }
@@ -113,7 +110,6 @@
 
     public interface ITableRowActions<TableItem>
     {
-        //List<MenuDropdownItem<TableItem>> AllRowActions { get; }
         Func<TableItem, bool> AllowDeleteExpression { get; }
         bool AllowDelete { get; }
         string GetColumnWidth();

@@ -21,8 +21,6 @@ global using System.Diagnostics;
 global using TablerForNet.Icons;
 global using TablerForNet.Services;
 global using TablerForNet.Validation;
-global using TablerForNet.Components.Tables.Components;
-global using TablerForNet.Components.Tables;
 global using TablerForNet.ArrayExtensions;
 global using TablerForNet.Components.QuickTables.Infrastructure;
 global using TablerForNet.Components.QuickTables.Columns;

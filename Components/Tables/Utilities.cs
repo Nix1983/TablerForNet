@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Tables
+﻿namespace TablerForNet.Components
 {
     internal static class Utilities
     {

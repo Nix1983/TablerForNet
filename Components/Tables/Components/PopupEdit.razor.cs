@@ -1,25 +1,25 @@
-
-namespace TablerForNet.Components.Tables.Components;
-
-public partial class PopupEdit<TItem>
+namespace TablerForNet.Components
 {
-    [Parameter] public IPopupEditTable<TItem> Table { get; set; }
-    [CascadingParameter] public EditContext EditContext { get; set; }
-
-    private TableEditPopupOptions<TItem> popupOptions = new TableEditPopupOptions<TItem>();
-
-    protected override void OnParametersSet()
+    public partial class PopupEdit<TItem>
     {
-        popupOptions.Title = Table.IsAddInProgress ? "Add" : "Edit";
-        popupOptions.IsAddInProgress = Table.IsAddInProgress;
-        popupOptions.ModalOptions = new ModalOptions { Size = ModalSize.Large };
-        popupOptions.CurrentEditItem = Table.CurrentEditItem;
+        [Parameter] public IPopupEditTable<TItem> Table { get; set; }
+        [CascadingParameter] public EditContext EditContext { get; set; }
 
-        Table.EditPopupMutator?.Invoke(popupOptions);
-    }
+        private TableEditPopupOptions<TItem> popupOptions = new TableEditPopupOptions<TItem>();
 
-    private async Task CancelEdit()
-    {
-        await Table.CancelEdit();
+        protected override void OnParametersSet()
+        {
+            popupOptions.Title = Table.IsAddInProgress ? "Add" : "Edit";
+            popupOptions.IsAddInProgress = Table.IsAddInProgress;
+            popupOptions.ModalOptions = new ModalOptions { Size = ModalSize.Large };
+            popupOptions.CurrentEditItem = Table.CurrentEditItem;
+
+            Table.EditPopupMutator?.Invoke(popupOptions);
+        }
+
+        private async Task CancelEdit()
+        {
+            await Table.CancelEdit();
+        }
     }
 }

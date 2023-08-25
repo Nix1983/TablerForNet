@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Tables.Components
+﻿namespace TablerForNet.Components
 {
     public class TableBase<Item> : ComponentBase, IPopupEditTable<Item>, ITable<Item>, IInlineEditTable<Item>, IDetailsTable<Item>, ITableRow<Item>, ITableState<Item>
     {

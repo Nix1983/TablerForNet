@@ -1,14 +1,7 @@
-﻿namespace TablerForNet.Components.Tables
+﻿namespace TablerForNet.Components
 {
     public class TableFilterService
     {
-        // private readonly IStringLocalizer<object> loc;
-
-        //public TableFilterService(IStringLocalizer<object> loc)
-        //{
-        //    this.loc = loc;
-        //}
-
         public Expression<Func<T, bool>> GetFilter<T>(IColumn<T> column, string value)
         {
             var property = column.Property;
@@ -67,15 +60,5 @@
             }
             return enumValue.ToString().Contains(text, StringComparison.OrdinalIgnoreCase);
         }
-
-        //public static bool EnumTranslationContains(object value, string text, IStringLocalizer<object> loc)
-        //{
-        //    if (!(value is Enum enumValue))
-        //    {
-        //        return false;
-        //    }
-        //    return enumValue.ToString().Contains(text, StringComparison.OrdinalIgnoreCase);
-        //    // return loc.GetString(enumValue).ToString().Contains(text, StringComparison.OrdinalIgnoreCase);
-        //}
     }
 }

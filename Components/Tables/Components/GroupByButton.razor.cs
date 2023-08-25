@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Tables.Components
+﻿namespace TablerForNet.Components
 {
     public partial class GroupByButtonBase<Item> : ComponentBase
     {
