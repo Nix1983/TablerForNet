@@ -1,0 +1,16 @@
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
+
+<HtmlElement Tag="input"
+             class="@ClassNames"
+@onclick="OnClick"
+@attributes="@UnmatchedParameters">
+    @ChildContent
+</HtmlElement>
+
+@code {
+    protected override string ClassNames => ClassBuilder
+        .Add(BackgroundColor.GetColorClass("bg"))
+        .Add(TextColor.GetColorClass("text"))
+        .ToString();
+    }

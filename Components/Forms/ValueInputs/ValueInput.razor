@@ -1,5 +1,5 @@
-﻿@typeparam TValue
-
+﻿@namespace TablerForNet.Components
+@typeparam TValue
 @inherits TablerBaseComponent
 
 @if (!string.IsNullOrWhiteSpace(Label))
@@ -8,4 +8,46 @@
 }
 <input type="text" class="@ClassNames" @bind="CurrentValue" @bind:event="oninput" />
 
+@code{
 
+    private string currentValue;
+
+    [Parameter] public TValue Value { get; set; }
+    [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
+    [Parameter] public string Label { get; set; }
+
+    public bool IsValid { get; set; } = true;
+
+    private string CurrentValue
+    {
+        get => currentValue;
+
+        set
+        {
+            currentValue = value;
+            TValue newValue;
+            if (typeof(TValue) == typeof(Guid))
+            {
+                IsValid = Guid.TryParse(value, out var guidValue);
+                newValue = (TValue)(object)guidValue;
+            }
+            else
+            {
+                IsValid = BindConverter.TryConvertTo<TValue>(value, CultureInfo.CurrentCulture, out newValue);
+
+            }
+
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        currentValue = Value.ToString();
+        base.OnParametersSet();
+    }
+
+    protected override string ClassNames => ClassBuilder
+    .Add("form-control")
+    .AddIf("is-invalid", !IsValid)
+    .ToString();
+}
