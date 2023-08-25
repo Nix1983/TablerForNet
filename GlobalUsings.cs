@@ -23,7 +23,6 @@ global using TablerForNet.Components.Modals.Dialog;
 global using TablerForNet.Icons;
 global using TablerForNet.Services;
 global using TablerForNet.Validation;
-global using TablerForNet.Components.Modals.Services;
 global using TablerForNet.Components.Modals;
 global using TablerForNet.Components.Tables.Components;
 global using TablerForNet.Components.Tables;

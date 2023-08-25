@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Modals.Services
+﻿namespace TablerForNet.Services
 {
     public interface IModalService
     {
