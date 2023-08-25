@@ -1,4 +1,9 @@
-﻿@if (ToastService.Toasts.Any())
+﻿@namespace TablerForNet.Components
+@inherits ComponentBase
+@inject ToastService ToastService
+@implements IDisposable
+
+@if (ToastService.Toasts.Any())
 {
     <div class="mt-1 toast-container" style="position: fixed; right: 0; z-index: 999999;">
         @foreach (var toast in ToastService.Toasts.ToList())
@@ -6,4 +11,21 @@
             <ToastView Toast="toast" @key="toast" />
         }
     </div>
+}
+
+@code{
+    protected override void OnInitialized()
+    {
+        ToastService.OnChanged += OnToastChanged;
+    }
+
+    public async Task OnToastChanged()
+    {
+        await InvokeAsync(() => { StateHasChanged(); });
+    }
+
+    public void Dispose()
+    {
+        ToastService.OnChanged -= OnToastChanged;
+    }
 }

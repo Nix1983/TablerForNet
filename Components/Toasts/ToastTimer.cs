@@ -1,6 +1,6 @@
-﻿namespace TablerForNet.Components.Toasts
-{
-    internal class CountdownTimer : IDisposable
+﻿namespace TablerForNet.Components { 
+
+    internal class ToastTimer : IDisposable
     {
         private Timer _timer;
         private int _percentComplete;
@@ -8,7 +8,7 @@
         internal Action<int> OnTick;
         
 
-        internal CountdownTimer(int timeout)
+        internal ToastTimer(int timeout)
         {
             _timer = new Timer(timeout)
             {
