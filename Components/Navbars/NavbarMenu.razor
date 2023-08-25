@@ -1,4 +1,5 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 <HtmlElement Tag="@HtmlTag"
              class="@ClassNames"
@@ -11,3 +12,22 @@
         </ul>
  
 </HtmlElement>
+
+@code{
+    [CascadingParameter(Name = "Navbar")] Navbar Navbar { get; set; }
+
+    private bool isExpanded => Navbar.IsExpanded;
+    protected string HtmlTag => "div";
+    protected override string ClassNames => ClassBuilder
+          .Add("navbar-collapse")
+          .AddIf("collapse", !isExpanded)
+          .ToString();
+
+    public void ToogleExpanded()
+    {
+
+        Navbar.ToogleExpand();
+    }
+
+    private string menuCollapse => isExpanded ? "" : "collapse";
+}
