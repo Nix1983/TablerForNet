@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Modals.Dialog
+﻿namespace TablerForNet.Components
 {
     public class DialogOptions
     {

@@ -16,7 +16,6 @@
                 .AddScoped<TablerService>()
                 .AddScoped<IModalService, ModalService>()
                 .AddScoped<TableFilterService>();
-        }
-       
+        }    
     }
 }

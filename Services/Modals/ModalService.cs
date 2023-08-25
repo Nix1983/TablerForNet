@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Modals.Services
+﻿namespace TablerForNet.Services
 {
     public class ModalService : IModalService, IDisposable
     {
@@ -38,7 +38,7 @@
             return !result.Cancelled;
         }
 
-        private void LocationChanged(object sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+        private void LocationChanged(object sender, LocationChangedEventArgs e)
         {
             CloseAll();
         }
@@ -105,30 +105,5 @@
             zIndex -= zIndexIncrement;
             topOffset -= topOffsetIncrement;
         }
-
-        //public int AddZIndex()
-        //{
-        //    zIndex += zIndexIncrement;
-        //    return zIndex;
-        //}
-
-        //public int DeductZIndex()
-        //{
-        //    zIndex -= zIndexIncrement;
-        //    return zIndex;
-        //}
-
-        //public int AddTopOffset()
-        //{
-        //    var offset = yOffset;
-        //    yOffset += yOffsetIncrement;
-        //    return offset;
-        //}
-
-        //public int DeductTopOffset()
-        //{
-        //    yOffset -= yOffsetIncrement;
-        //    return yOffset;
-        //}
     }
 }
