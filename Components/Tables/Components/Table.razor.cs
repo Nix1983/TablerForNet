@@ -97,7 +97,7 @@
 
         protected override void OnInitialized()
         {
-            DataProvider = DataProvider ?? new TheGridDataFactory<Item>();
+            DataProvider = DataProvider ?? new TableGridDataFactory<Item>();
 
             if (Hover)
             {

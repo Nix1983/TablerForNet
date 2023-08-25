@@ -1,6 +1,6 @@
 ﻿namespace TablerForNet.Components
 {
-    public class TheGridDataFactory<Item> : ITableDataProvider<Item>
+    public class TableGridDataFactory<Item> : ITableDataProvider<Item>
     {
 
         public async Task<IEnumerable<TableResult<object, Item>>> GetData(List<ITableColumn<Item>> columns, ITableState<Item> state,IEnumerable<Item> items, bool resetPage = false, bool addSorting = true, Item moveToItem = default)
