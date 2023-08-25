@@ -17,6 +17,7 @@ global using LinqKit;
 global using System.Collections;
 global using System.Collections.Concurrent;
 global using Microsoft.AspNetCore.Components.Web.Virtualization;
+global using System.Diagnostics;
 
 global using TablerForNet.Components.Modals.Dialog;
 global using TablerForNet.Icons;

@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Dashboards
+﻿namespace TablerForNet.Components
 {
     public class BaseFacet<TItem> : ComponentBase where TItem : class
     {

@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Dashboards
+﻿namespace TablerForNet.Components
 {
     internal static class FacetsHelper
     {
@@ -12,7 +12,7 @@
             var bodyMax = Expression.LessThanOrEqual(expression.Body, constantMax);
             var predicateMax = Expression.Lambda<Func<TItem, bool>>(bodyMax, expression.Parameters);
 
-            return PredicateBuilder.And(predicateMin, predicateMax);
+            return DashBoardPredicateBuilder.And(predicateMin, predicateMax);
         }
 
         public static Expression<Func<TItem, bool>> CreateRangePredicate<TItem>(Expression<Func<TItem, decimal>> expression, decimal min, decimal max) where TItem : class
@@ -25,7 +25,7 @@
             var bodyMax = Expression.LessThanOrEqual(expression.Body, constantMax);
             var predicateMax = Expression.Lambda<Func<TItem, bool>>(bodyMax, expression.Parameters);
 
-            return PredicateBuilder.And(predicateMin, predicateMax);
+            return DashBoardPredicateBuilder.And(predicateMin, predicateMax);
 
         }
 

@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.Dashboards
+namespace TablerForNet.Components
 {
     public partial class DateFacet<TItem> : BaseFacet<TItem> where TItem : class
     {

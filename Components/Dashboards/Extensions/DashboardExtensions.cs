@@ -1,6 +1,6 @@
-﻿namespace TablerForNet.Components.Dashboards
+﻿namespace TablerForNet.Components
 {
-    public static class Extensions
+    public static class DashboardExtensions
     {
 
 
@@ -41,8 +41,6 @@
         public static DateTime EndOfDay(this DateTime date)
         {
             return date.StartOfDay().AddDays(1).AddTicks(-1);
-        }
-
-        
+        }       
     }
 }

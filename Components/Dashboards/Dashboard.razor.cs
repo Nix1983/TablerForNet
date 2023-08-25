@@ -1,7 +1,4 @@
-
-using System.Diagnostics;
-
-namespace TablerForNet.Components.Dashboards
+namespace TablerForNet.Components
 {
     public partial class Dashboard<TItem> where TItem : class
     {
@@ -108,7 +105,7 @@ namespace TablerForNet.Components.Dashboards
                 {
                     if (predicate == null)
                     {
-                        predicate = PredicateBuilder.Create(filter.Filter.Expression);
+                        predicate = DashBoardPredicateBuilder.Create(filter.Filter.Expression);
                     }
                     else
                     {

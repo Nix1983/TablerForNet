@@ -1,4 +1,4 @@
-﻿namespace TablerForNet.Components.Dashboards
+﻿namespace TablerForNet.Components
 {
     public static class DateRangeGenerator
     {

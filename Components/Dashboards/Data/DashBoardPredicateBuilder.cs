@@ -1,6 +1,6 @@
-﻿namespace TablerForNet.Components.Dashboards
+﻿namespace TablerForNet.Components
 {
-    public static class PredicateBuilder
+    public static class DashBoardPredicateBuilder
     {
         /// <summary>
         /// Creates a predicate that evaluates to true.
