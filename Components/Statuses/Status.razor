@@ -1,4 +1,5 @@
-﻿@inherits TablerBaseComponent
+﻿@namespace TablerForNet.Components
+@inherits TablerBaseComponent
 
 <HtmlElement Tag="span"
              class="@ClassNames"
@@ -13,3 +14,18 @@
 
     @ChildContent
 </HtmlElement>
+
+@code{
+    [Parameter] public bool Lite { get; set; }
+
+    [Parameter] public StatusDotType DotType { get; set; } = StatusDotType.None;
+
+
+    protected override string ClassNames => ClassBuilder
+        .Add("status")
+        .Add(BackgroundColor.GetColorClass("status", ColorType.Default))
+        .AddIf(TextColor.GetColorClass("text", ColorType.Default), TextColor != TablerColor.Default)
+        .AddIf("status-lite", Lite)
+        .AddIf("cursor-pointer", OnClick.HasDelegate)
+        .ToString();
+}
