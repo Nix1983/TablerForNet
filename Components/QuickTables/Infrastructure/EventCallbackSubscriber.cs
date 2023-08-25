@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.QuickTables.Infrastructure
+namespace TablerForNet.Components
 {
     internal class EventCallbackSubscriber<T> : IDisposable
     {

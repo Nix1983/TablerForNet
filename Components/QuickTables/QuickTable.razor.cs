@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.QuickTables
+namespace TablerForNet.Components
 {
 
     [CascadingTypeParameter(nameof(TGridItem))]
@@ -12,10 +12,10 @@ namespace TablerForNet.Components.QuickTables
 
         private IAsyncQueryExecutor asyncQueryExecutor;
         private bool collectingColumns;
-        private List<Columns.QuickTableColumn<TGridItem>> columns;
+        private List<QuickTableColumn<TGridItem>> columns;
         private ICollection<TGridItem> currentNonVirtualizedViewItems = Array.Empty<TGridItem>();
 
-        private Columns.QuickTableColumn<TGridItem> displayOptionsForColumn;
+        private QuickTableColumn<TGridItem> displayOptionsForColumn;
 
         private InternalGridContext<TGridItem> internalGridContext;
         private object lastAssignedItemsOrProvider;
@@ -28,7 +28,7 @@ namespace TablerForNet.Components.QuickTables
 
         public QuickTable()
         {
-            columns = new List<Columns.QuickTableColumn<TGridItem>>();
+            columns = new List<QuickTableColumn<TGridItem>>();
             internalGridContext = new InternalGridContext<TGridItem>(this);
             currentPageItemsChanged =
                 new EventCallbackSubscriber<PaginationState>(
@@ -53,7 +53,7 @@ namespace TablerForNet.Components.QuickTables
         [Parameter] public PaginationState Pagination { get; set; }
 
         [Inject] private IServiceProvider Services { get; set; } = default!;
-        public Columns.QuickTableColumn<TGridItem> SortByColumn { get; set; }
+        public QuickTableColumn<TGridItem> SortByColumn { get; set; }
         public bool SortByAscending { get; set; }
 
         public ValueTask DisposeAsync()
@@ -70,7 +70,7 @@ namespace TablerForNet.Components.QuickTables
             if (Items is not null && ItemsProvider is not null)
             {
                 throw new InvalidOperationException(
-                    $"{nameof(QuickTables)} requires one of {nameof(Items)} or {nameof(ItemsProvider)}, but both were specified.");
+                    $" Quicktables requires one of {nameof(Items)} or {nameof(ItemsProvider)}, but both were specified.");
             }
 
             // Perform a re-query only if the data source or something else has changed
@@ -88,7 +88,7 @@ namespace TablerForNet.Components.QuickTables
             return columns.Count > 0 && mustRefreshData ? RefreshDataCoreAsync() : Task.CompletedTask;
         }
 
-        internal void AddColumn(Columns.QuickTableColumn<TGridItem> column, SortDirection? isDefaultSortDirection)
+        internal void AddColumn(QuickTableColumn<TGridItem> column, SortDirection? isDefaultSortDirection)
         {
             if (collectingColumns)
             {
@@ -113,7 +113,7 @@ namespace TablerForNet.Components.QuickTables
             collectingColumns = false;
         }
 
-        public Task SortByColumnAsync(Columns.QuickTableColumn<TGridItem> column, SortDirection direction = SortDirection.Auto)
+        public Task SortByColumnAsync(QuickTableColumn<TGridItem> column, SortDirection direction = SortDirection.Auto)
         {
             SortByAscending = direction switch
             {
@@ -129,7 +129,7 @@ namespace TablerForNet.Components.QuickTables
             return RefreshDataAsync();
         }
 
-        public void ShowColumnOptions(Columns.QuickTableColumn<TGridItem> column)
+        public void ShowColumnOptions(QuickTableColumn<TGridItem> column)
         {
             displayOptionsForColumn = column;
             StateHasChanged();
@@ -253,14 +253,14 @@ namespace TablerForNet.Components.QuickTables
             return GridItemsProviderResult.From(Array.Empty<TGridItem>(), 0);
         }
 
-        private string AriaSortValue(Columns.QuickTableColumn<TGridItem> column)
+        private string AriaSortValue(QuickTableColumn<TGridItem> column)
         {
             return SortByColumn == column
                 ? SortByAscending ? "ascending" : "descending"
                 : "none";
         }
 
-        private string ColumnHeaderClass(Columns.QuickTableColumn<TGridItem> column)
+        private string ColumnHeaderClass(QuickTableColumn<TGridItem> column)
         {
             return SortByColumn == column
                 ? $"{ColumnClass(column)} {(SortByAscending ? "col-sort-asc" : "col-sort-desc")}"
@@ -272,7 +272,7 @@ namespace TablerForNet.Components.QuickTables
             return $"table-responsive {Class} {(pendingDataLoadCancellationTokenSource is null ? null : "loading")}";
         }
 
-        private static string ColumnClass(Columns.QuickTableColumn<TGridItem> column)
+        private static string ColumnClass(QuickTableColumn<TGridItem> column)
         {
             return column.Align switch
             {

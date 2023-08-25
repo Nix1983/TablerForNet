@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.QuickTables
+namespace TablerForNet.Components
 {
     public struct GridItemsProviderResult<TGridItem>
     {

@@ -1,4 +1,4 @@
-namespace TablerForNet.Components.QuickTables.Pagination
+namespace TablerForNet.Components
 {
     public class PaginationState
     {

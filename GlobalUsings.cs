@@ -22,7 +22,4 @@ global using TablerForNet.Icons;
 global using TablerForNet.Services;
 global using TablerForNet.Validation;
 global using TablerForNet.ArrayExtensions;
-global using TablerForNet.Components.QuickTables.Infrastructure;
-global using TablerForNet.Components.QuickTables.Columns;
-global using TablerForNet.Components.QuickTables.Pagination;
 global using TablerForNet.Components;
