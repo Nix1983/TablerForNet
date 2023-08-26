@@ -23,3 +23,4 @@ global using TablerForNet.Services;
 global using TablerForNet.Validation;
 global using TablerForNet.ArrayExtensions;
 global using TablerForNet.Components;
+global using TablerForNet.Flags;

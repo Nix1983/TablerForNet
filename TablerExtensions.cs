@@ -15,8 +15,8 @@
                 .AddScoped<ToastService>()
                 .AddScoped<TablerService>()
                 .AddScoped<IModalService, ModalService>()
-                .AddScoped<TableFilterService>();
-        }
-       
+                .AddScoped<TableFilterService>()
+                .AddSingleton<FlagService>();
+        }    
     }
 }
