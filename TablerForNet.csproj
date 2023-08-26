@@ -1,22 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Title>Tabler for .NET | Blazor | SEO</Title>
+		<Authors>Nix</Authors>
+		<Company>GhostlyInc</Company>
+		<Description>Blazor SEO optimized libary based on Tabler</Description>
+		<Copyright>Copyright © 2022-2023 GhostlyInc.com</Copyright>
+		<PackageProjectUrl>https://ghostlyinc.com/en-US/</PackageProjectUrl>
+		<PackageTags>Blazor; SEO;.NET;Tabler;</PackageTags>
+		<RepositoryUrl>https://github.com/Nix1983/TablerForNet</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
-    <PackageReference Include="LinqKit.Core" Version="1.2.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
-    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.10" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
 
 
