@@ -10,15 +10,15 @@
         [Parameter] public string Width  { get; set; }
         [Parameter] public string Height { get; set; }
 
-        protected override void OnParametersSet()
+        protected override async Task OnParametersSetAsync()
         {
-            if (FlagType == null && !string.IsNullOrWhiteSpace(CountryCode))
+            if (FlagType == null && !string.IsNullOrWhiteSpace(CountryCode) || (FlagType != null && !FlagType.Country.Alpha2.Equals(CountryCode)))
             {
                 FlagType = FlagService.GetFlagType(CountryCode);
+                await InvokeAsync(StateHasChanged);
             }
-
-            base.OnParametersSet();
         }
+
         protected override string ClassNames => ClassBuilder
             .Add("flag")
             .AddIf("flag-xs", Size == FlagSize.XSmall)
