@@ -2,7 +2,7 @@
 {
     public static class TablerExtensions
     {
-        public static IServiceCollection AddTabler(this IServiceCollection services, Action<TablerOptions> tablerOptions = null)
+        public static IServiceCollection AddTablerForNet(this IServiceCollection services, Action<TablerOptions> tablerOptions = null)
         {
             if (tablerOptions is null)
             {
