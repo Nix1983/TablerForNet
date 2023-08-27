@@ -18,7 +18,4 @@ This example page was created using TablerForNet, a versatile and SEO-friendly l
 
 Explore the [Example Page](https://ghostlyInc.com) and discover the powerful features of TablerForNet, providing seamless integration with Blazor projects and ensuring your web applications are optimally visible to search engines.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
