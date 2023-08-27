@@ -1,4 +1,6 @@
-[![NuGet](https://img.shields.io/nuget/v/TablerForNet.svg)](https://www.nuget.org/packages/TablerForNet/)
+<a href="https://www.nuget.org/packages/TablerForNet/" target="_blank" rel="noopener noreferrer">
+    <img alt="NuGet" src="https://img.shields.io/nuget/v/TablerForNet.svg">
+</a>
 
 # TablerForNet
 
