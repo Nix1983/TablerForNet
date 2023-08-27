@@ -11,6 +11,35 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 - Offers a collection of components tailored for Blazor development.
 - Focuses on SEO optimization to ensure better search engine visibility.
 - Simplifies the process of creating responsive web applications.
+
+## Installtion
+
+Install nuget package tablerForNet
+<pre>
+  dotnet add package TablerForNet --version 1.0.1
+</pre>
+
+Add to file Program.cs
+<pre>
+using TablerForNet;
+
+builder.Services.AddTabler();  
+</pre>
+
+
+Add to file _Host.cshtml
+
+`<link href="_content/TablerForNet/css/tablerForNet.min.css" rel="stylesheet"/>`
+
+`<script src="_content/TablerForNet/js/tablerForNet.min.js"></script>`
+
+
+Add to file _Imports.razor
+<pre>
+@using TablerForNet.Icons
+@using TablerForNet.Flags
+@using TablerForNet.Components
+</pre>
   
 ## Example Page
 
