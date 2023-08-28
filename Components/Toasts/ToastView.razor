@@ -2,47 +2,46 @@
 @inject ToastService ToastService
 @implements IDisposable
 
-<div class="toast show me-1 mb-1" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false" data-toggle="toast" style="border-color:@(Toast.Options.DarkMode ? "teal": "")">
-
-    @if (Toast.Options.ShowHeader)
-    {
-        <div class="toast-header @(Toast.Options.DarkMode ? "theme-dark": "")" style="border:@(Toast.Options.DarkMode ? "none": "")">
-            <strong class="me-auto">@Toast.Title</strong>
-            <small>@Toast.SubTitle</small>
-            @if (Toast.Options.ShowHeaderClose)
+<div class="card">
+    <div class="card-body show">
+            @if (Toast.Options.ShowHeader)
             {
-                <button type="button" class="ms-2 btn-close" data-dismiss="toast" aria-label="Close" @onclick="() => ToastService.RemoveToastAsync(Toast)">
-                </button>
+                <div class="toast-header">
+                    <strong class="me-auto">@Toast.Title</strong>
+                    <small>@Toast.SubTitle</small>
+                    @if (Toast.Options.ShowHeaderClose)
+                    {
+                        <button type="button" class="ms-2 btn-close" data-dismiss="toast" aria-label="Close" @onclick="() => ToastService.RemoveToastAsync(Toast)">
+                        </button>
+                    }
+                </div>
+            }
+
+            <div class="toast-body">
+
+                @if (Toast.Contents != null)
+                {
+                    <CascadingValue Value="this">
+                        @Toast.Contents
+                    </CascadingValue>
+                }
+                else
+                {
+                    @Toast.Message
+                }
+
+            </div>
+
+            @if (Toast.Options.AutoClose && Toast.Options.ShowProgress)
+            {
+                <div class="progress progress-sm">
+                    <div class="progress-bar" style="width: @(_progress)%; transition:none;" />
+                </div>
             }
         </div>
-    }
-
-    <div class="toast-body @(Toast.Options.DarkMode ? "theme-dark": "")" style="border:@(Toast.Options.DarkMode ? "none": "")">
-
-        @if (Toast.Contents != null)
-        {
-            <CascadingValue Value="this">
-                @Toast.Contents
-            </CascadingValue>
-        }
-        else
-        {
-            @Toast.Message
-        }
-
-    </div>
-
-
-    @if (Toast.Options.AutoClose && Toast.Options.ShowProgress)
-    {
-        <div class="progress progress-sm" style="border:">
-            <div class="progress-bar" style="width: @(_progress)%; transition:none; background-color:@(Toast.Options.DarkMode ? "teal": "");" />
-        </div>
-    }
-    
 </div>
 
-@code{
+@code {
 
     [Parameter] public ToastModel Toast { get; set; }
 
