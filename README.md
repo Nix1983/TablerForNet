@@ -25,7 +25,7 @@ Add to file Program.cs
 <pre>
 using TablerForNet;
 
-builder.Services.AddTabler();  
+builder.Services.AddTablerForNet(); 
 </pre>
 
 
