@@ -42,6 +42,8 @@ Add to file _Imports.razor
 @using TablerForNet.Flags
 @using TablerForNet.Components
 </pre>
+
+[More information](https://ghostlyInc.com/en-US/tabler-for-net-and-balzor-usage/)
   
 ## Example Page
 
