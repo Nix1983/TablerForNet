@@ -5,24 +5,19 @@
 
 <CascadingValue Name="Navbar" Value=this>
 
-    <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">   
-    <HtmlElement Tag="@HtmlTag"
-                 class="@ClassNames"
-                 @onclick="OnClick"
-                 @attributes="@UnmatchedParameters">
-
-        <div class="container">
-
-            <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
-                <span class="navbar-toggler-icon"></span>
-            </button>          
+    <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
+        <div class="navbar navbar-expand-md">
+            <div class="container-xl">
+                <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 @ChildContent
+            </div>
         </div>
-        </HtmlElement>
     </ClickOutside>
 </CascadingValue>
 
-@code{
+@code {
 
     [Parameter] public NavbarBackground Background { get; set; }
     [Parameter] public NavbarDirection Direction { get; set; }
@@ -96,7 +91,7 @@
             if (IsExpanded)
             {
                 ToogleExpand();
-            }           
+            }
         });
     }
 }

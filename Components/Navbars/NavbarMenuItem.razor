@@ -2,10 +2,7 @@
 @inherits TablerBaseComponent
 @implements IDisposable
 
-<HtmlElement Tag="@HtmlTag"
-             class="@ClassNames"
-             @onclick="OnClick"
-             @attributes="@UnmatchedParameters">
+<div class="navbar-item cursor-pointer @(IsDropdown && !isDropEnd ? "dropdown": "") @(IsDropdown && isDropEnd ? "dropend":"")">
 
     <a class="@(isSubMenu ? "dropdown-item":"nav-link") @(IsDropdown ? "dropdown-toggle": "")" @onclick="ToogleDropdown" href="@Href" lang="@Language" @onclick:stopPropagation=IsDropdown>
 
@@ -37,9 +34,9 @@
         </CascadingValue>
     }
 
-</HtmlElement>
+</div>
 
-@code{
+@code {
 
     [CascadingParameter(Name = "Navbar")] Navbar Navbar { get; set; }
     [CascadingParameter(Name = "Parent")] NavbarMenuItem ParentMenuItem { get; set; }
@@ -70,13 +67,6 @@
 
     private bool isDropEnd => Navbar.Direction == NavbarDirection.Horizontal && ParentMenuItem?.IsDropdown == true;
 
-    protected override string ClassNames => ClassBuilder
-        .Add("nav-item")
-        .Add("cursor-pointer")
-        .AddIf("dropdown", IsDropdown && !isDropEnd)
-        .AddIf("dropend", IsDropdown && isDropEnd)
-        .ToString();
-
     public void CloseDropdown()
     {
         isExpanded = false;
@@ -92,7 +82,6 @@
         }
 
         isExpanded = expand;
-
     }
 
     public void Dispose()

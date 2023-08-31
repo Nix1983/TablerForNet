@@ -1,33 +1,21 @@
 ﻿@namespace TablerForNet.Components
 @inherits TablerBaseComponent
 
-<HtmlElement Tag="@HtmlTag"
-             class="@ClassNames"
-             @onclick="OnClick"
-             @attributes="@UnmatchedParameters">
-
-    
+<div class="navbar-collapse @(!isExpanded ? "collapse":"")">
+  
         <ul class="navbar-nav" @onclick=Navbar.ToogleExpand>
             @ChildContent
         </ul>
- 
-</HtmlElement>
+</div>
 
 @code{
     [CascadingParameter(Name = "Navbar")] Navbar Navbar { get; set; }
 
     private bool isExpanded => Navbar.IsExpanded;
-    protected string HtmlTag => "div";
-    protected override string ClassNames => ClassBuilder
-          .Add("navbar-collapse")
-          .AddIf("collapse", !isExpanded)
-          .ToString();
 
     public void ToogleExpanded()
     {
 
         Navbar.ToogleExpand();
     }
-
-    private string menuCollapse => isExpanded ? "" : "collapse";
 }
