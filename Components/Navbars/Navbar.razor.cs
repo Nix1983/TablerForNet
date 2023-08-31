@@ -14,4 +14,10 @@
 
     }
 
+    public enum NavbarSticky
+    {
+        Top,
+        Bottom,
+        None
+    }
 }

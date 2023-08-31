@@ -9,7 +9,7 @@
 
         @if (Background == NavbarBackground.Dark)
         {
-            <div class="navbar navbar-expand-md" data-bs-theme="dark">
+            <div class="navbar navbar-expand-md @(Sticky == NavbarSticky.Top ? "sticky-top":"") @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")" data-bs-theme="dark">
                 <div class="container-xl">
                     <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                         <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
         }
         else
         {
-            <div class="navbar navbar-expand-md">
+            <div class="navbar navbar-expand-md @(Sticky == NavbarSticky.Top ? "sticky-top":"") @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")">
                 <div class="container-xl">
                     <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                         <span class="navbar-toggler-icon"></span>
@@ -37,6 +37,7 @@
 
     [Parameter] public NavbarBackground Background { get; set; }
     [Parameter] public NavbarDirection Direction { get; set; }
+    [Parameter] public NavbarSticky Sticky { get; set; }
     protected string HtmlTag => "div";
     public bool IsExpanded = false;
 
