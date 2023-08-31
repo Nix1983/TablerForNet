@@ -6,14 +6,30 @@
 <CascadingValue Name="Navbar" Value=this>
 
     <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
-        <div class="navbar navbar-expand-md">
-            <div class="container-xl">
-                <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                @ChildContent
+
+        @if (Background == NavbarBackground.Dark)
+        {
+            <div class="navbar navbar-expand-md" data-bs-theme="dark">
+                <div class="container-xl">
+                    <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @ChildContent
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="navbar navbar-expand-md">
+                <div class="container-xl">
+                    <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    @ChildContent
+                </div>
+            </div>
+        }
+
     </ClickOutside>
 </CascadingValue>
 
