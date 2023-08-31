@@ -20,4 +20,10 @@
         Bottom,
         None
     }
+
+    public enum NavBarOverlap
+    {
+        Overlap,
+        None
+    }
 }
