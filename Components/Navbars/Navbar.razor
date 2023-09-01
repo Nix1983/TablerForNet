@@ -9,10 +9,11 @@
 
         @if (Background == NavbarBackground.Dark)
         {
-            <div class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"") 
-                                                @(Sticky == NavbarSticky.Top ? "sticky-top":"") 
-                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")" 
-                                                data-bs-theme="dark">
+            <div class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
+                                                @(Sticky == NavbarSticky.Top ? "sticky-top":"")
+                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")
+                                                @(Direction == NavbarDirection.Vertical ? "navbar-vertical":"")"
+                 data-bs-theme="dark">
                 <div class="container-xl">
                     <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                         <span class="navbar-toggler-icon"></span>
@@ -23,9 +24,10 @@
         }
         else
         {
-            <div class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"") 
-                                                @(Sticky == NavbarSticky.Top ? "sticky-top":"") 
-                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")">
+            <div class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
+                                                @(Sticky == NavbarSticky.Top ? "sticky-top":"")
+                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")
+                                                @(Direction == NavbarDirection.Vertical ? "navbar-vertical":"")">
                 <div class="container-xl">
                     <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                         <span class="navbar-toggler-icon"></span>
