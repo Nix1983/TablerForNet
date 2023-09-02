@@ -5,39 +5,34 @@
 
 <CascadingValue Name="Navbar" Value=this>
 
-    <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
+    @if (Direction == NavbarDirection.Horizontal)
+    {
+        <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
 
-        @if (Background == NavbarBackground.Dark)
-        {
-            <div class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
+            <header class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
                                                 @(Sticky == NavbarSticky.Top ? "sticky-top":"")
-                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")
-                                                @(Direction == NavbarDirection.Vertical ? "navbar-vertical":"")"
-                 data-bs-theme="dark">
+                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")"
+                 data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
                 <div class="container-xl">
                     <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     @ChildContent
                 </div>
+            </header>
+        </ClickOutside>
+    }
+    else
+    {
+        <aside class="navbar navbar-expand-md navbar-vertical @(Direction == NavbarDirection.VerticalRight ? "navbar-right" : "")" data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
+            <div class="container-xl">
+                <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @ChildContent
             </div>
-        }
-        else
-        {
-            <div class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
-                                                @(Sticky == NavbarSticky.Top ? "sticky-top":"")
-                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")
-                                                @(Direction == NavbarDirection.Vertical ? "navbar-vertical":"")">
-                <div class="container-xl">
-                    <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    @ChildContent
-                </div>
-            </div>
-        }
-
-    </ClickOutside>
+        </aside>
+    }
 </CascadingValue>
 
 @code {
@@ -46,7 +41,6 @@
     [Parameter] public NavbarDirection Direction { get; set; }
     [Parameter] public NavbarSticky Sticky { get; set; }
     [Parameter] public NavBarOverlap Overlap { get; set; }
-    protected string HtmlTag => "div";
     public bool IsExpanded = false;
 
     private List<NavbarMenuItem> navbarItems = new();
@@ -64,14 +58,6 @@
             CloseAll();
         }
     }
-
-    protected override string ClassNames => ClassBuilder
-          .Add("navbar navbar-expand-md")
-          .AddIf("navbar-dark", Background == NavbarBackground.Dark)
-          .AddIf("navbar-light", Background == NavbarBackground.Light)
-         .AddIf("navbar-transparent", Background == NavbarBackground.Transparent)
-          .AddIf("navbar-vertical", Direction == NavbarDirection.Vertical)
-          .ToString();
 
     public void ToogleExpand()
     {

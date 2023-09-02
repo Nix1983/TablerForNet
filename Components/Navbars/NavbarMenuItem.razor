@@ -2,17 +2,14 @@
 @inherits TablerBaseComponent
 @implements IDisposable
 
-<div class="navbar-item cursor-pointer @(IsDropdown && !isDropEnd ? "dropdown": "") @(IsDropdown && isDropEnd ? "dropend":"")">
-
-    <a class="@(isSubMenu ? "dropdown-item":"nav-link") @(IsDropdown ? "dropdown-toggle": "")" @onclick="ToogleDropdown" href="@Href" lang="@Language" @onclick:stopPropagation=IsDropdown>
+<div class="navbar-item cursor-pointer @(IsDropdown ? (isDropEnd ? "dropend" : "dropdown") : "")">
+    <a class="@(isSubMenu ? "dropdown-item" : "nav-link") @(IsDropdown ? "dropdown-toggle" : "")"
+    @onclick="ToogleDropdown" href="@Href" lang="@Language" @onclick:stopPropagation=IsDropdown>
 
         @if (MenuItemIcon != null)
         {
-            <span class="nav-link-icon d-md-none d-lg-inline-block">
-                @MenuItemIcon
-            </span>
+            <span class="nav-link-icon d-md-none d-lg-inline-block">@MenuItemIcon</span>
         }
-
         <span class="nav-link">
             @if (ChildContent != null)
             {
@@ -29,11 +26,12 @@
     {
         <CascadingValue Value="this" Name="Parent">
             <ul data-bs-popper="none" class="dropdown-menu show @(NavbarIsHorizontalAndDark ? "bg-dark text-muted" : "")">
-                @SubMenu
+                <div @onclick="Navbar.Direction == NavbarDirection.Horizontal ? (Action)CloseDropdown : (Action)(() => {} )">
+                    @SubMenu
+                </div>
             </ul>
         </CascadingValue>
     }
-
 </div>
 
 @code {
@@ -51,7 +49,6 @@
 
     public bool IsTopMenuItem => ParentMenuItem == null;
 
-    protected string HtmlTag => "li";
     protected bool isExpanded;
     protected bool IsDropdown => SubMenu != null && Expandable;
 
@@ -71,6 +68,7 @@
     {
         isExpanded = false;
     }
+
 
     public void ToogleDropdown()
     {
