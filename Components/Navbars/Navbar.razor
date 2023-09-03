@@ -5,14 +5,14 @@
 
     @if (Direction == NavbarDirection.Horizontal)
     {
-        <ClickOutside OnClickOutside=@(()=>ToggleExpand()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
+        <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
 
             <header class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
                                                 @(Sticky == NavbarSticky.Top ? "sticky-top":"")
                                                 @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")"
-                 data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
+                    data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
                 <div class="container-xl">
-                    <button class="navbar-toggler" type="button" @onclick="ToggleExpand" aria-label="Main menu toggler button">
+                    <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     @ChildContent
@@ -24,7 +24,7 @@
     {
         <aside class="navbar navbar-expand-md navbar-vertical @(Direction == NavbarDirection.VerticalRight ? "navbar-right" : "")" data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
             <div class="container-xl">
-                <button class="navbar-toggler" type="button" @onclick="ToggleExpand" aria-label="Main menu toggler button">
+                <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 @ChildContent
@@ -44,6 +44,21 @@
 
     private List<NavbarMenuItem> navbarItems = new();
 
+    public void ToogleExpand()
+    {
+        IsExpanded = !IsExpanded;
+    }
+
+    public void CloseAll()
+    {
+        foreach (var item in navbarItems.Where(e => e.IsTopMenuItem))
+        {
+            item.CloseDropdown();
+        }
+
+        StateHasChanged();
+    }
+
     public void AddNavbarMenuItem(NavbarMenuItem item)
     {
         if (!navbarItems.Contains(item))
@@ -60,14 +75,13 @@
         }
     }
 
-
-    public async Task ToggleExpand()
+    private async Task OutsideClicked()
     {
         await Task.Run(() =>
         {
             if (IsExpanded)
             {
-                IsExpanded = !IsExpanded;
+                ToogleExpand();
             }
         });
     }
