@@ -54,18 +54,20 @@
             @if (Navbar?.Direction == NavbarDirection.Horizontal)
             {
                 <ClickOutside OnClickOutside=@(()=>CloseDropdown()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
-                    <ul data-bs-popper="none" class="dropdown-menu show">
+                    <div data-bs-popper="none" class="dropdown-menu show">
                         <div @onclick="CloseDropdown">
                             @SubMenu
                         </div>
-                    </ul>
+                    </div>
                 </ClickOutside>
             }
             else
             {
-                <ul data-bs-popper="none" class="dropdown-menu show">
-                    @SubMenu
-                </ul>
+                <div data-bs-popper="none" class="dropdown-menu show">
+                    <div>
+                        @SubMenu
+                    </div>
+                </div>
             }
         </CascadingValue>
     }
