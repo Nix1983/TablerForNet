@@ -25,11 +25,22 @@
     @if (SubMenu != null && isExpanded && Expandable)
     {
         <CascadingValue Value="this" Name="Parent">
-            <ul data-bs-popper="none" class="dropdown-menu show @(NavbarIsHorizontalAndDark ? "bg-dark text-muted" : "")">
-                <div @onclick="Navbar.Direction == NavbarDirection.Horizontal ? (Action)CloseDropdown : (Action)(() => {} )">
+            @if (Navbar.Direction == NavbarDirection.Horizontal)
+            {
+                <ClickOutside OnClickOutside=@(()=>CloseDropdown()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
+                    <ul data-bs-popper="none" class="dropdown-menu show">
+                        <div @onclick="CloseDropdown">
+                            @SubMenu
+                        </div>
+                    </ul>
+                </ClickOutside>
+            }
+            else
+            {
+                <ul data-bs-popper="none" class="dropdown-menu show">
                     @SubMenu
-                </div>
-            </ul>
+                </ul>
+            }
         </CascadingValue>
     }
 </div>
@@ -59,8 +70,6 @@
         isExpanded = Expanded;
         Navbar?.AddNavbarMenuItem(this);
     }
-
-    private bool NavbarIsHorizontalAndDark => Navbar?.Background == NavbarBackground.Dark && Navbar?.Direction == NavbarDirection.Horizontal;
 
     private bool isDropEnd => Navbar.Direction == NavbarDirection.Horizontal && ParentMenuItem?.IsDropdown == true;
 

@@ -3,7 +3,7 @@
 
 <div class="navbar-collapse @(!isExpanded ? "collapse":"")">
   
-        <ul class="navbar-nav" @onclick=Navbar.ToogleExpand>
+        <ul class="navbar-nav">
             @ChildContent
         </ul>
 </div>
@@ -16,6 +16,6 @@
     public void ToogleExpanded()
     {
 
-        Navbar.ToogleExpand();
+        Navbar?.ToogleExpand();
     }
 }
