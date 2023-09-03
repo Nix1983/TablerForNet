@@ -79,13 +79,13 @@
     }
 
 
-    public void ToogleDropdown()
+    public async Task ToogleDropdown()
     {
         var expand = !isExpanded;
 
         if (expand && IsTopMenuItem)
         {
-            Navbar.CloseAll();
+           await Navbar.ToggleExpand();
         }
 
         isExpanded = expand;
