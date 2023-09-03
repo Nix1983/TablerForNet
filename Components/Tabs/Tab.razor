@@ -1,8 +1,7 @@
 ﻿@namespace TablerForNet.Components
-@inherits TablerBaseComponent
 
-<li class="nav-item">
-    <a @onclick=Activate class="nav-link cursor-pointer @TitleCssClass" data-toggle="tab">
+<li class="nav-item @(IsRight ? "ms-auto" : "")">
+    <a @onclick=Activate class="nav-link cursor-pointer @IsActive" data-toggle="tab">
         @if (Header != null)
         {
             @Header
@@ -14,13 +13,17 @@
     </a>
 </li>
 
-@code{
+@code {
 
     [CascadingParameter] Tabs? ContainerTabSet { get; set; }
     [Parameter] public string? Title { get; set; }
     [Parameter] public RenderFragment? Header { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool IsRight { get; set; } = false;
 
-    string TitleCssClass => ContainerTabSet.ActiveTab == this ? "active" : null;
+
+    string IsActive => ContainerTabSet?.ActiveTab == this ? "active" : "";
 
     protected override void OnInitialized()
     {

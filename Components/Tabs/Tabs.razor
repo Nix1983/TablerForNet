@@ -1,13 +1,12 @@
 ﻿@namespace TablerForNet.Components
-@inherits TablerBaseComponent
 
 <div class="card">
     <CascadingValue Value="@this">
         <div class="card-header">
-        <ul class="nav nav-tabs card-header-tabs" data-toggle="tabs">
-            @ChildContent
-        </ul>
-</div>
+            <ul class="nav nav-tabs card-header-tabs @(FullWidthTabs ? "nav-fill": "")" data-toggle="tabs">
+                @ChildContent
+            </ul>
+        </div>
     </CascadingValue>
 
     <div class="card-body">
@@ -19,39 +18,42 @@
     </div>
 </div>
 
-@code{
+@code {
+
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool FullWidthTabs { get; set; } = false;
 
     public Tab? ActiveTab { get; private set; }
 
-    public void AddTab(Tab tab)
+    public async Task AddTab(Tab tab)
     {
         if (ActiveTab == null)
         {
-            SetActivateTab(tab);
+            await SetActivateTab(tab);
         }
     }
 
-    public void RemoveTab(Tab tab)
+    public async Task RemoveTab(Tab tab)
     {
         if (ActiveTab == tab)
         {
-            SetActivateTab(null);
+            await  SetActivateTab(null);
         }
     }
 
-    public void SetActivateTab(Tab? tab)
+    public async Task SetActivateTab(Tab? tab)
     {
         if (tab == null)
         {
             ActiveTab = null;
-            StateHasChanged();
+            await InvokeAsync(StateHasChanged);
             return;
         }
 
         if (ActiveTab != tab)
         {
             ActiveTab = tab;
-            StateHasChanged();
+            await InvokeAsync(StateHasChanged);
         }
     }
 }
