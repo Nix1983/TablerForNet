@@ -1,4 +1,5 @@
 ﻿@namespace TablerForNet.Components
+@inherits TabBase
 
 <div class="card">
     <CascadingValue Value="@this">
@@ -20,7 +21,6 @@
 
 @code {
 
-    [Parameter] public RenderFragment? ChildContent { get; set; }
     [Parameter] public bool FullWidthTabs { get; set; } = false;
 
     public Tab? ActiveTab { get; private set; }
