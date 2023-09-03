@@ -3,24 +3,50 @@
 @implements IDisposable
 
 <div class="navbar-item cursor-pointer @(IsDropdown ? (isDropEnd ? "dropend" : "dropdown") : "")">
-    <a class="@(isSubMenu ? "dropdown-item" : "nav-link") @(IsDropdown ? "dropdown-toggle" : "")"
-    @onclick="ToogleDropdown" href="@Href" lang="@Language" @onclick:stopPropagation=IsDropdown>
 
-        @if (MenuItemIcon != null)
-        {
-            <span class="nav-link-icon d-md-none d-lg-inline-block">@MenuItemIcon</span>
-        }
-        <span class="nav-link">
-            @if (ChildContent != null)
+    @if (Href != null)
+    {
+        <a class="@(isSubMenu ? "dropdown-item" : "nav-link") @(IsDropdown ? "dropdown-toggle" : "")"
+        @onclick="ToogleDropdown" href="@Href" title="@LinkTitle" lang="@Language" @onclick:stopPropagation=IsDropdown>
+
+            @if (MenuItemIcon != null)
             {
-                @ChildContent
+                <span class="nav-link-icon d-md-none d-lg-inline-block">@MenuItemIcon</span>
             }
-            else
+            <span class="nav-link">
+                @if (ChildContent != null)
+                {
+                    @ChildContent
+                }
+                else
+                {
+                    @Text
+                }
+            </span>
+        </a>
+    }
+    else
+    {
+        <div class="@(isSubMenu ? "dropdown-item" : "nav-link") @(IsDropdown ? "dropdown-toggle" : "")"
+        @onclick="ToogleDropdown" @onclick:stopPropagation=IsDropdown>
+
+            @if (MenuItemIcon != null)
             {
-                @Text
+                <span class="nav-link-icon d-md-none d-lg-inline-block">@MenuItemIcon</span>
             }
-        </span>
-    </a>
+            <span class="nav-link">
+                @if (ChildContent != null)
+                {
+                    @ChildContent
+                }
+                else
+                {
+                    @Text
+                }
+            </span>
+        </div>
+    }
+
 
     @if (SubMenu != null && isExpanded && Expandable)
     {
@@ -45,12 +71,14 @@
     }
 </div>
 
+
 @code {
 
     [CascadingParameter(Name = "Navbar")] Navbar? Navbar { get; set; }
     [CascadingParameter(Name = "Parent")] NavbarMenuItem? ParentMenuItem { get; set; }
 
     [Parameter] public string? Href { get; set; }
+    [Parameter] public string? LinkTitle { get; set; }
     [Parameter] public string Text { get; set; } = string.Empty;
     [Parameter] public string Language { get; set; } = string.Empty;
     [Parameter] public RenderFragment? MenuItemIcon { get; set; }
@@ -70,6 +98,22 @@
         isExpanded = Expanded;
         Navbar?.AddNavbarMenuItem(this);
     }
+
+    private RenderFragment RenderContent() => builder =>
+    {
+        if (MenuItemIcon != null)
+        {
+            builder.OpenElement(0, "span");
+            builder.AddAttribute(1, "class", "nav-link-icon d-md-none d-lg-inline-block");
+            builder.AddContent(2, MenuItemIcon);
+            builder.CloseElement();
+        }
+
+        builder.OpenElement(3, "span");
+        builder.AddAttribute(4, "class", "nav-link");
+        builder.AddContent(5, ChildContent);
+        builder.CloseElement();
+    };
 
     private bool isDropEnd => Navbar?.Direction == NavbarDirection.Horizontal && ParentMenuItem?.IsDropdown == true;
 
