@@ -1,5 +1,5 @@
 ﻿@namespace TablerForNet.Components
-@inherits TablerBaseComponent
+@inherits NavbarBase
 @inject NavigationManager NavigationManager
 
 <CascadingValue Name="Navbar" Value=this>
@@ -41,6 +41,7 @@
     [Parameter] public NavbarSticky Sticky { get; set; }
     [Parameter] public NavBarOverlap Overlap { get; set; }
     public bool IsExpanded = false;
+
 
     private List<NavbarMenuItem> navbarItems = new();
 

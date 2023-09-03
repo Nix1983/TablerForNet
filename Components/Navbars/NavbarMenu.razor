@@ -1,7 +1,7 @@
 ﻿@namespace TablerForNet.Components
-@inherits TablerBaseComponent
+@inherits Navbar
 
-<div class="navbar-collapse @(!Navbar.IsExpanded ? "collapse":"")">
+<div class="navbar-collapse @GetNavbarCollapseClass()">
   
         <ul class="navbar-nav">
             @ChildContent
@@ -10,6 +10,11 @@
 
 @code{
 
-    [CascadingParameter(Name = "Navbar")] Navbar Navbar { get; set; }
+    [CascadingParameter(Name = "Navbar")] Navbar? Navbar { get; set; }
 
+    private string GetNavbarCollapseClass()
+    {
+        if (Navbar == null) return string.Empty;
+        return Navbar.IsExpanded ? string.Empty : "collapse";
+    }
 }
