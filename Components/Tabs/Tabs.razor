@@ -21,9 +21,9 @@
 
 @code{
 
-    public ITab ActiveTab { get; private set; }
+    public Tab? ActiveTab { get; private set; }
 
-    public void AddTab(ITab tab)
+    public void AddTab(Tab tab)
     {
         if (ActiveTab == null)
         {
@@ -31,7 +31,7 @@
         }
     }
 
-    public void RemoveTab(ITab tab)
+    public void RemoveTab(Tab tab)
     {
         if (ActiveTab == tab)
         {
@@ -39,7 +39,7 @@
         }
     }
 
-    public void SetActivateTab(ITab tab)
+    public void SetActivateTab(Tab? tab)
     {
         if (tab == null)
         {
