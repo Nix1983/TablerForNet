@@ -7,13 +7,13 @@
     @if (Href != null)
     {
         <a class="@(isSubMenu ? "dropdown-item" : "nav-link") @(IsDropdown ? "dropdown-toggle" : "")"
-        @onclick="ToogleDropdown" href="@Href" title="@LinkTitle" lang="@Language" @onclick:stopPropagation=IsDropdown>
+        @onclick="ToogleDropdown" href="@Href" title="@LinkTitle" lang="@Language" @onclick:stopPropagation="@(Disabled || IsDropdown)">
 
             @if (MenuItemIcon != null)
             {
-                <span class="nav-link-icon d-md-none d-lg-inline-block">@MenuItemIcon</span>
+                <span class="nav-link-icon d-md-none d-lg-inline-block @(Disabled ? "disabled":"")">@MenuItemIcon</span>
             }
-            <span class="nav-link">
+            <span class="nav-link @(Disabled ? "disabled":"")">
                 @if (ChildContent != null)
                 {
                     @ChildContent
@@ -28,13 +28,13 @@
     else
     {
         <div class="@(isSubMenu ? "dropdown-item" : "nav-link") @(IsDropdown ? "dropdown-toggle" : "")"
-        @onclick="ToogleDropdown" @onclick:stopPropagation=IsDropdown>
+        @onclick="ToogleDropdown" @onclick:stopPropagation="@(Disabled || IsDropdown)">
 
             @if (MenuItemIcon != null)
             {
-                <span class="nav-link-icon d-md-none d-lg-inline-block">@MenuItemIcon</span>
+                <span class="nav-link-icon d-md-none d-lg-inline-block @(Disabled ? "disabled":"")">@MenuItemIcon</span>
             }
-            <span class="nav-link">
+            <span class="nav-link @(Disabled ? "disabled":"")">
                 @if (ChildContent != null)
                 {
                     @ChildContent
@@ -55,7 +55,7 @@
             {
                 <ClickOutside OnClickOutside=@(()=>CloseDropdown()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
                     <div data-bs-popper="none" class="dropdown-menu show">
-                        <div @onclick="CloseDropdown">
+                        <div @onclick="ToogleDropdown">
                             @SubMenu
                         </div>
                     </div>
@@ -87,6 +87,7 @@
     [Parameter] public RenderFragment? SubMenu { get; set; }
     [Parameter] public bool Expanded { get; set; }
     [Parameter] public bool Expandable { get; set; } = true;
+    [Parameter] public bool Disabled { get; set; } = false;
 
     public bool IsTopMenuItem => ParentMenuItem == null;
 
@@ -101,22 +102,6 @@
         Navbar?.AddNavbarMenuItem(this);
     }
 
-    private RenderFragment RenderContent() => builder =>
-    {
-        if (MenuItemIcon != null)
-        {
-            builder.OpenElement(0, "span");
-            builder.AddAttribute(1, "class", "nav-link-icon d-md-none d-lg-inline-block");
-            builder.AddContent(2, MenuItemIcon);
-            builder.CloseElement();
-        }
-
-        builder.OpenElement(3, "span");
-        builder.AddAttribute(4, "class", "nav-link");
-        builder.AddContent(5, ChildContent);
-        builder.CloseElement();
-    };
-
     private bool isDropEnd => Navbar?.Direction == NavbarDirection.Horizontal && ParentMenuItem?.IsDropdown == true;
 
     public void CloseDropdown()
@@ -125,8 +110,10 @@
     }
 
 
-    public async Task ToogleDropdown()
+    private async Task ToogleDropdown(MouseEventArgs e)
     {
+        if (Disabled) return;
+
         var expand = !isExpanded;
         if (expand && IsTopMenuItem)
         {
@@ -135,8 +122,10 @@
                 Navbar.ToogleExpand();
             }
         }
+
         await OnClick.InvokeAsync();
         isExpanded = expand;
+
     }
 
     public void Dispose()
