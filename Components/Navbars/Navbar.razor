@@ -8,8 +8,10 @@
         <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
 
             <header class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
-                                                @(Sticky == NavbarSticky.Top ? "sticky-top":"")
-                                                @(Sticky == NavbarSticky.Bottom ? "sticky-bottom":"")"
+                                                   @(Sticky == NavbarPinned.StickyTop ? "sticky-top":"")
+                                                   @(Sticky == NavbarPinned.StickyBottom ? "sticky-bottom":"")
+                                                   @(Sticky == NavbarPinned.FixedTop ? "fixed-top":"")
+                                                   @(Sticky == NavbarPinned.FixedBottom ? "fixed-bottom":"")"
                     data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
                 <div class="container-xl">
                     <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
@@ -37,7 +39,7 @@
 
     [Parameter] public NavbarBackground Background { get; set; }
     [Parameter] public NavbarDirection Direction { get; set; }
-    [Parameter] public NavbarSticky Sticky { get; set; }
+    [Parameter] public NavbarPinned Sticky { get; set; }
     [Parameter] public NavBarOverlap Overlap { get; set; }
     public bool IsExpanded = false;
 

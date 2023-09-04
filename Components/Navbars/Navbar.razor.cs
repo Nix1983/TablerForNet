@@ -14,10 +14,12 @@
 
     }
 
-    public enum NavbarSticky
+    public enum NavbarPinned
     {
-        Top,
-        Bottom,
+        StickyTop,
+        StickyBottom,
+        FixedTop,
+        FixedBottom,
         None
     }
 
