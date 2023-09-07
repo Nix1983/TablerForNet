@@ -6,20 +6,20 @@
     @if (Direction == NavbarDirection.Horizontal)
     {
         <ClickOutside OnClickOutside=@(()=>OutsideClicked()) Strategy="ClickOutside.RegisterStrategy.OnRender" Concurrence="ClickOutside.ConcurrenceStrategy.Many">
-
-            <header class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
+            <div class="@(Sticky == NavbarPinned.StickyTop ? "sticky-top":"")
+                        @(Sticky == NavbarPinned.StickyBottom ? "sticky-bottom":"")">
+                <header class="navbar navbar-expand-md @(Overlap == NavBarOverlap.Overlap ? "navbar-overlap":"")
                                                    @(Sticky == NavbarPinned.StickyTop ? "sticky-top":"")
-                                                   @(Sticky == NavbarPinned.StickyBottom ? "sticky-bottom":"")
-                                                   @(Sticky == NavbarPinned.FixedTop ? "fixed-top":"")
-                                                   @(Sticky == NavbarPinned.FixedBottom ? "fixed-bottom":"")"
-                    data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
-                <div class="container-xl">
-                    <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    @ChildContent
-                </div>
-            </header>
+                                                   @(Sticky == NavbarPinned.StickyBottom ? "sticky-bottom":"")"
+                        data-bs-theme="@(Background == NavbarBackground.Dark ? "dark" : "")">
+                    <div class="container-xl">
+                        <button class="navbar-toggler" type="button" @onclick="ToogleExpand" aria-label="Main menu toggler button">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        @ChildContent
+                    </div>
+                </header>
+            </div>
         </ClickOutside>
     }
     else

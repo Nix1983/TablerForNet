@@ -18,8 +18,6 @@
     {
         StickyTop,
         StickyBottom,
-        FixedTop,
-        FixedBottom,
         None
     }
 
