@@ -20110,7 +20110,7 @@ page.theme-dark .hide-theme-dark, page[data-bs-theme=dark] .hide-theme-dark {
 
 .alert {
     --tblr-alert-color: var(--tblr-muted);
-    background: #ffffff;
+    background: var(--tblr-bg-surface);
     border: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color-translucent);
     border-left: 0.25rem var(--tblr-border-style) var(--tblr-alert-color);
     box-shadow: rgba(24, 36, 51, 0.04) 0 2px 4px 0;
