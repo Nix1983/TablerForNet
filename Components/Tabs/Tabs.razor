@@ -20,6 +20,7 @@
 </div>
 
 @code {
+    private List<Tab> TabsList = new List<Tab>();
 
     [Parameter] public bool FullWidthTabs { get; set; } = false;
     [Parameter] public TabAlignment Alignment { get; set; } = TabAlignment.Left;
@@ -27,6 +28,7 @@
 
     public async Task AddTab(Tab tab)
     {
+        TabsList.Add(tab);
         if (ActiveTab == null)
         {
             await SetActivateTab(tab);
@@ -35,6 +37,7 @@
 
     public async Task RemoveTab(Tab tab)
     {
+        TabsList.Remove(tab);
         if (ActiveTab == tab)
         {
             await SetActivateTab(null);
@@ -57,7 +60,30 @@
         }
     }
 
-    // Rest of your existing code
+    public void ActivateAlternativeTab(Tab deactivatedTab)
+    {
+
+        if (TabsList.Count <= 1) return;
+
+
+        int index = TabsList.IndexOf(deactivatedTab);
+
+
+        if (index > 0 && !TabsList[index - 1].IsDisabled)
+        {
+            SetActivateTab(TabsList[index - 1]);
+            return;
+        }
+
+        for (int i = index + 1; i < TabsList.Count; i++)
+        {
+            if (!TabsList[i].IsDisabled)
+            {
+                SetActivateTab(TabsList[i]);
+                return;
+            }
+        }
+    }
 
     private string GetAlignmentClass()
     {

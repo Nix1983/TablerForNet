@@ -15,13 +15,26 @@
 </li>
 
 @code {
-
     [CascadingParameter] Tabs? ContainerTabSet { get; set; }
     [Parameter] public string? Title { get; set; }
     [Parameter] public RenderFragment? Header { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
-    [Parameter] public bool IsDisabled { get; set; } = false;
 
+    private bool _isDisabled;
+
+    [Parameter]
+    public bool IsDisabled
+    {
+        get => _isDisabled;
+        set
+        {
+            if (value && ContainerTabSet?.ActiveTab == this)
+            {
+                ContainerTabSet?.ActivateAlternativeTab(this);
+            }
+            _isDisabled = value;
+        }
+    }
 
     string IsActive => ContainerTabSet?.ActiveTab == this ? "active" : "";
 
