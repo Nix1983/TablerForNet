@@ -26,6 +26,7 @@
     [Parameter] public string? Title { get; set; }
     [Parameter] public RenderFragment? Header { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+    public bool IsContentLoaded { get; set; } = false;
 
     private bool _isDisabled;
 
@@ -48,7 +49,12 @@
     protected override void OnInitialized()
     {
         ContainerTabSet?.AddTab(this);
+        if (ContainerTabSet?.ActiveTab == this)
+        {
+            IsContentLoaded = true;
+        }
     }
+
 
     public void Dispose()
     {
@@ -61,7 +67,9 @@
         {
             return;
         }
+        IsContentLoaded = true; 
         ContainerTabSet?.SetActivateTab(this);
         OnClick.InvokeAsync();
     }
+
 }
