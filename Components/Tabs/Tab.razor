@@ -2,7 +2,7 @@
 @inherits TabBase
 
 <li class="nav-item">
-    <a @onclick=Activate class="nav-link cursor-pointer @(IsDisabled ? "disabled" : IsActive)" data-toggle="tab" style="cursor: @(IsDisabled ? "not-allowed" : "pointer");">
+    <a @onclick="Activate" class="nav-link cursor-pointer @(IsDisabled ? "disabled" : IsActive)" data-toggle="tab" style="cursor: @(IsDisabled ? "not-allowed" : "pointer")">
         @if (Header != null)
         {
             @Header

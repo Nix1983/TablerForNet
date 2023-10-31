@@ -4,4 +4,11 @@
     {
         [Parameter] public RenderFragment? ChildContent { get; set; }
     }
+
+    public enum TabAlignment
+    {
+        Left,
+        Right,
+        Center
+    }
 }

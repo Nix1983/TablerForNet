@@ -20,12 +20,6 @@
 </div>
 
 @code {
-    public enum TabAlignment
-    {
-        Left,
-        Right,
-        Center
-    }
 
     [Parameter] public bool FullWidthTabs { get; set; } = false;
     [Parameter] public TabAlignment Alignment { get; set; } = TabAlignment.Left;
