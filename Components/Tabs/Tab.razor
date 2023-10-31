@@ -1,7 +1,7 @@
 ﻿@namespace TablerForNet.Components
 @inherits TabBase
 
-<li class="nav-item @(IsRight ? "ms-auto" : "")">
+<li class="nav-item">
     <a @onclick=Activate class="nav-link cursor-pointer @(IsDisabled ? "disabled" : IsActive)" data-toggle="tab" style="cursor: @(IsDisabled ? "not-allowed" : "pointer");">
         @if (Header != null)
         {
@@ -20,7 +20,6 @@
     [Parameter] public string? Title { get; set; }
     [Parameter] public RenderFragment? Header { get; set; }
     [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
-    [Parameter] public bool IsRight { get; set; } = false;
     [Parameter] public bool IsDisabled { get; set; } = false;
 
 

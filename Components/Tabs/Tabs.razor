@@ -4,7 +4,7 @@
 <div class="card">
     <CascadingValue Value="@this">
         <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs @(FullWidthTabs ? "nav-fill": "")" data-toggle="tabs">
+            <ul class="nav nav-tabs card-header-tabs @(FullWidthTabs ? "nav-fill": "") @(GetAlignmentClass())" data-toggle="tabs">
                 @ChildContent
             </ul>
         </div>
@@ -20,9 +20,15 @@
 </div>
 
 @code {
+    public enum TabAlignment
+    {
+        Left,
+        Right,
+        Center
+    }
 
     [Parameter] public bool FullWidthTabs { get; set; } = false;
-
+    [Parameter] public TabAlignment Alignment { get; set; } = TabAlignment.Left;
     public Tab? ActiveTab { get; private set; }
 
     public async Task AddTab(Tab tab)
@@ -37,7 +43,7 @@
     {
         if (ActiveTab == tab)
         {
-            await  SetActivateTab(null);
+            await SetActivateTab(null);
         }
     }
 
@@ -55,5 +61,18 @@
             ActiveTab = tab;
             await InvokeAsync(StateHasChanged);
         }
+    }
+
+    // Rest of your existing code
+
+    private string GetAlignmentClass()
+    {
+        return Alignment switch
+        {
+            TabAlignment.Left => "",
+            TabAlignment.Right => "justify-content-end",
+            TabAlignment.Center => "justify-content-center",
+            _ => ""
+        };
     }
 }
