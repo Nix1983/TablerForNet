@@ -3,7 +3,7 @@
 
 <div class="card">
     <CascadingValue Value="@this">
-        <div class="card-header">
+        <div class="card-header" role="tablist">
             <ul class="nav nav-tabs card-header-tabs @(FullWidthTabs ? "nav-fill": "") @(GetAlignmentClass())" data-toggle="tabs">
                 @ChildContent
             </ul>
@@ -12,12 +12,13 @@
 
     <div class="card-body">
         <div class="tab-content">
-            <div class="tab-pane active show">
+            <div class="tab-pane active show" role="tabpanel" id="@ActiveTab?.Title-id">
                 <div> @ActiveTab?.ChildContent</div>
             </div>
         </div>
     </div>
 </div>
+
 
 @code {
     private List<Tab> TabsList = new List<Tab>();

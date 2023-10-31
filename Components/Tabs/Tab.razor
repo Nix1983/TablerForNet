@@ -1,8 +1,15 @@
 ﻿@namespace TablerForNet.Components
 @inherits TabBase
 
-<li class="nav-item">
-    <a @onclick="Activate" class="nav-link cursor-pointer @(IsDisabled ? "disabled" : IsActive)" data-toggle="tab" style="cursor: @(IsDisabled ? "not-allowed" : "pointer")">
+<li class="nav-item" role="presentation">
+    <a @onclick="Activate"
+       class="nav-link cursor-pointer @(IsDisabled ? "disabled" : IsActive)"
+       data-toggle="tab"
+       role="tab"
+       aria-controls="@Title-id"
+       aria-selected="@(IsActive == "active")"
+       id="@Title-tab"
+       style="cursor: @(IsDisabled ? "not-allowed" : "pointer")">
         @if (Header != null)
         {
             @Header
