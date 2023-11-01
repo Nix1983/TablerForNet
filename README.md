@@ -18,7 +18,7 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 
 Install nuget package tablerForNet
 <pre>
-  dotnet add package TablerForNet --version 1.0.1
+  dotnet add package TablerForNet --version 1.0.6
 </pre>
 
 Add to file Program.cs
