@@ -1,6 +1,7 @@
+[![Auto Increment Version](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml)
 <a href="https://www.nuget.org/packages/TablerForNet/" target="_blank" rel="noopener noreferrer">
     <img alt="NuGet" src="https://img.shields.io/nuget/v/TablerForNet.svg">
-</a>
+</a> 
 
 # TablerForNet
 
@@ -18,7 +19,7 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 
 Install nuget package tablerForNet
 <pre>
-  dotnet add package TablerForNet --version 1.0.6
+  dotnet add package TablerForNet --version 1.0.7
 </pre>
 
 Add to file Program.cs
