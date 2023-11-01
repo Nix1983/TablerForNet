@@ -1,8 +1,10 @@
-name: .NET
+# .github/workflows/auto-increment-version.yml
+name: Auto Increment Version
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master  # Trigger when pushed to master branch
 
 jobs:
   build:
@@ -10,23 +12,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        submodules: 'recursive'  # Checkt Submodule rekursiv aus
+      uses: actions/checkout@v2
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
-
-    # Increase Version number
-    - name: Bump version
-      run: |
-        version=$(grep -oP '<Version>\K(.*)(?=<)' TablerForNet.csproj)
-        IFS='.' read -ra PARTS <<< "$version"
-        new_version="${PARTS[0]}.${PARTS[1]}.${PARTS[2]}.$((PARTS[3] + 1))"
-        sed -i "s|<Version>$version</Version>|<Version>$new_version</Version>|g" TablerForNet.csproj
-      shell: bash
+        dotnet-version: 't.x'  # Update to your project's .NET version
 
     - name: Restore dependencies
       run: dotnet restore
@@ -37,11 +28,21 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    # Commit changes
-    - name: Commit and push
+    - name: Increment version number
       run: |
-        git config --local user.email "nixgithub@gmail.com"
-        git config --local user.name "Nix1983"
-        git add .
-        git commit -m "Bump version"
-        git push https://${{secrets.WorkflowTablerForNet}}@github.com/Nix1983/TablerForNet.git
+        # Retrieve the old version number from your .csproj file
+        OLD_VERSION=$(grep -oP '(?<=<Version>).*?(?=</Version>)' TablerForNet.csproj)
+        
+        # Increment the version number (You can adjust the logic as needed)
+        NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
+
+        # Update the .csproj file with the new version
+        sed -i "s/<Version>$OLD_VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" TablerForNet.csproj
+
+    - name: Push new version
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git TablerForNet.csproj
+        git commit -m "Increment version to $NEW_VERSION"
+        git push
