@@ -22,7 +22,6 @@ jobs:
     # Increase Version number
     - name: Bump version
       run: |
-        cd TablerForNet
         version=$(grep -oP '<Version>\K(.*)(?=<)' TablerForNet.csproj)
         IFS='.' read -ra PARTS <<< "$version"
         new_version="${PARTS[0]}.${PARTS[1]}.${PARTS[2]}.$((PARTS[3] + 1))"
