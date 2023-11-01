@@ -26,10 +26,10 @@ jobs:
         sed -i "s|<Version>$version</Version>|<Version>$new_version</Version>|g" TablerForNet.csproj
 
     # Commit changes
-    - name: Commit and push
+     - name: Commit and push
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Bump version"
-        git push
+        git push https://${{secrets.GITHUB_TOKEN}}@github.com/Nix1983/TablerForNet.git
