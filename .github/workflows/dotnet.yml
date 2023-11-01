@@ -40,8 +40,8 @@ jobs:
     # Commit changes
     - name: Commit and push
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "nixgithub@gmail.com"
+        git config --local user.name "Nix1983"
         git add .
         git commit -m "Bump version"
         git push https://${{secrets.BumpVersionToken}}@github.com/Nix1983/TablerForNet.git
