@@ -43,6 +43,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add TablerForNet.csproj
+        git add path/to/TablerForNet.csproj
         git commit -m "Increment version to $NEW_VERSION"
-        git push
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Nix1983/TablerForNet.git
+
