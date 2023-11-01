@@ -35,10 +35,10 @@ jobs:
         OLD_ASSEMBLY_VERSION=$(grep -oP '(?<=<AssemblyVersion>).*?(?=</AssemblyVersion>)' TablerForNet.csproj)
         OLD_FILE_VERSION=$(grep -oP '(?<=<FileVersion>).*?(?=</FileVersion>)' TablerForNet.csproj)
 
-        # Increment the version numbers (You can adjust the logic as needed)
-        NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
-        NEW_ASSEMBLY_VERSION=$(echo $OLD_ASSEMBLY_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
-        NEW_FILE_VERSION=$(echo $OLD_FILE_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
+        # Increment the version numbers 
+        NEW_VERSION=$(echo $OLD_VERSION | awk -F. 'BEGIN {OFS="."} {$NF++; print $0}')
+        NEW_ASSEMBLY_VERSION=$(echo $OLD_ASSEMBLY_VERSION | awk -F. 'BEGIN {OFS="."} {$NF++; print $0}')
+        NEW_FILE_VERSION=$(echo $OLD_FILE_VERSION | awk -F. 'BEGIN {OFS="."} {$NF++; print $0}')
 
         # Update the .csproj file with the new version numbers
         sed -i "s/<Version>$OLD_VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" TablerForNet.csproj
