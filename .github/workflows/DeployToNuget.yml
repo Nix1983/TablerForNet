@@ -49,9 +49,10 @@ jobs:
         sed -i "s/<AssemblyVersion>$OLD_ASSEMBLY_VERSION<\/AssemblyVersion>/<AssemblyVersion>$NEW_ASSEMBLY_VERSION<\/AssemblyVersion>/" TablerForNet.csproj
         sed -i "s/<FileVersion>$OLD_FILE_VERSION<\/FileVersion>/<FileVersion>$NEW_FILE_VERSION<\/FileVersion>/" TablerForNet.csproj
 
-
-    - name: Pack
-      run: dotnet pack --no-build -c Release -o out
+    - name: Build and Pack
+      run: |
+        dotnet build --configuration Release
+        dotnet pack --no-build -c Release -o out
 
     - name: Push new version
       run: |
