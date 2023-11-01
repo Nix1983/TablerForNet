@@ -1,0 +1,35 @@
+name: Bump Version
+
+on:
+  push:
+    branches:
+      - main  # Trigger nur für Änderungen im `main` Branch
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '7.0.x'
+
+    # Erhöhe die Versionsnummer
+    - name: Bump version
+      run: |
+        version=$(grep -oP '<Version>\K(.*)(?=<)' TablerForNet.csproj)
+        IFS='.' read -ra PARTS <<< "$version"
+        new_version="${PARTS[0]}.${PARTS[1]}.${PARTS[2]}.$((PARTS[3] + 1))"
+        sed -i "s|<Version>$version</Version>|<Version>$new_version</Version>|g" TablerForNet.csproj
+
+    # Committe und pushe die Änderungen
+    - name: Commit and push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Bump version"
+        git push
