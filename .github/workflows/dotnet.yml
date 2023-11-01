@@ -28,16 +28,23 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
-    - name: Increment version number
+    - name: Increment version numbers
       run: |
-        # Retrieve the old version number from your .csproj file
+        # Retrieve the old version numbers from your .csproj file
         OLD_VERSION=$(grep -oP '(?<=<Version>).*?(?=</Version>)' TablerForNet.csproj)
-        
-        # Increment the version number (You can adjust the logic as needed)
-        NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
+        OLD_ASSEMBLY_VERSION=$(grep -oP '(?<=<AssemblyVersion>).*?(?=</AssemblyVersion>)' TablerForNet.csproj)
+        OLD_FILE_VERSION=$(grep -oP '(?<=<FileVersion>).*?(?=</FileVersion>)' TablerForNet.csproj)
 
-        # Update the .csproj file with the new version
+        # Increment the version numbers (You can adjust the logic as needed)
+        NEW_VERSION=$(echo $OLD_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
+        NEW_ASSEMBLY_VERSION=$(echo $OLD_ASSEMBLY_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
+        NEW_FILE_VERSION=$(echo $OLD_FILE_VERSION | awk -F. '{$NF++; OFS="."; print $0}')
+
+        # Update the .csproj file with the new version numbers
         sed -i "s/<Version>$OLD_VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" TablerForNet.csproj
+        sed -i "s/<AssemblyVersion>$OLD_ASSEMBLY_VERSION<\/AssemblyVersion>/<AssemblyVersion>$NEW_ASSEMBLY_VERSION<\/AssemblyVersion>/" TablerForNet.csproj
+        sed -i "s/<FileVersion>$OLD_FILE_VERSION<\/FileVersion>/<FileVersion>$NEW_FILE_VERSION<\/FileVersion>/" TablerForNet.csproj
+
 
     - name: Push new version
       run: |
