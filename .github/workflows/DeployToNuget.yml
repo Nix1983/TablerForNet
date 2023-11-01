@@ -25,16 +25,6 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-
-    - name: Increment version number
-      run: |
-        # Retrieve the old version number from your .csproj file
-        OLD_VERSION=$(grep -oP '(?<=<Version>).*?(?=</Version>)' TablerForNet.csproj)
-        
-        # Parse out the individual parts of the version
-        MAJOR=$(echo $OLD_VERSION | cut -d'.' -f1)
-        MINOR=$(echo $OLD_VERSION | cut -d'.' -f2)
-        PATCH=$(echo $OLD_VERSION | cut -d'.' -f3)
         
     - name: Increment version numbers
       run: |
