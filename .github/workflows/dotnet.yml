@@ -17,7 +17,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 't.x'  # Update to your project's .NET version
+        dotnet-version: '7.x'  # Update to your project's .NET version
 
     - name: Restore dependencies
       run: dotnet restore
