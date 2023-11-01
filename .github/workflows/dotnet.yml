@@ -48,8 +48,8 @@ jobs:
 
     - name: Push new version
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "nixgithub@gmail.com"
+        git config --local user.name "Nix1983"
         git add TablerForNet.csproj
         git commit -m "Increment version to $NEW_VERSION"
         git pull --rebase https://x-access-token:${{ secrets.BUMPVERSIONTOKEN }}@github.com/Nix1983/TablerForNet.git master
