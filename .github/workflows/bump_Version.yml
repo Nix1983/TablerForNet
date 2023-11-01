@@ -32,4 +32,4 @@ jobs:
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "Bump version"
-        git push https://${{secrets.GITHUB_TOKEN}}@github.com/Nix1983/TablerForNet.git
+        git push https://${{secrets.BUMPVERSIONTOKEN}}@github.com/Nix1983/TablerForNet.git
