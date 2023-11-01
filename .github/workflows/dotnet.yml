@@ -52,5 +52,7 @@ jobs:
         git config --local user.name "GitHub Action"
         git add TablerForNet.csproj
         git commit -m "Increment version to $NEW_VERSION"
-        git push https://x-access-token:${{ secrets.BUMPVERSIONTOKEN }}@github.com/Nix1983/TablerForNet.git
+        git pull --rebase https://x-access-token:${{ secrets.BUMPVERSIONTOKEN }}@github.com/Nix1983/TablerForNet.git master
+        git push https://x-access-token:${{ secrets.BUMPVERSIONTOKEN }}@github.com/Nix1983/TablerForNet.git master
+
 
