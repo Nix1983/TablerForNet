@@ -1,3 +1,4 @@
+[![CodeQL](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql)
 [![Auto Increment Version](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml)
 <a href="https://www.nuget.org/packages/TablerForNet/" target="_blank" rel="noopener noreferrer">
     <img alt="NuGet" src="https://img.shields.io/nuget/v/TablerForNet.svg">
