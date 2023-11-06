@@ -34,8 +34,8 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="LinqKit.Core" Version="1.2.4" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.10" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.13" />
+		<PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="7.0.13" />
 	</ItemGroup>
 
 	<ItemGroup>
