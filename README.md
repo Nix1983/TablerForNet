@@ -1,10 +1,8 @@
 [![CodeQL](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql)
 [![Auto Increment Version](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml)
-<a href="https://www.nuget.org/packages/TablerForNet/" target="_blank" rel="noopener noreferrer">
-    <img alt="NuGet" src="https://img.shields.io/nuget/v/TablerForNet.svg">
-</a> 
+![NuGet](https://img.shields.io/nuget/v/TablerForNet.svg)
 
-# TablerForNet
+# TablerForNet: Create SEO-optimized web apps.
 
 TablerForNet is a versatile and SEO-optimized library for building web applications using Blazor. It is based on the Tabler UI framework and aims to provide developers with a set of components and tools to create modern and responsive user interfaces.
 
@@ -19,16 +17,16 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 ## Installtion
 
 Install nuget package tablerForNet
-<pre>
-  dotnet add package TablerForNet --version 1.0.7
-</pre>
+
+`dotnet add package TablerForNet`
+
 
 Add to file Program.cs
-<pre>
-using TablerForNet;
 
-builder.Services.AddTablerForNet(); 
-</pre>
+`using TablerForNet;`
+
+`builder.Services.AddTablerForNet();`
+
 
 
 Add to file _Host.cshtml
@@ -39,11 +37,13 @@ Add to file _Host.cshtml
 
 
 Add to file _Imports.razor
-<pre>
-@using TablerForNet.Icons
-@using TablerForNet.Flags
-@using TablerForNet.Components
-</pre>
+
+`@using TablerForNet.Icons`
+
+`@using TablerForNet.Flags`
+
+`@using TablerForNet.Components`
+
 
 [More information](https://ghostlyInc.com/en-US/tabler-for-net-and-balzor-usage/)
   
