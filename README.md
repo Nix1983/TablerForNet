@@ -38,6 +38,8 @@ Add to file _Host.cshtml
 
 Add to file _Imports.razor
 
+`@using TablerForNet`
+
 `@using TablerForNet.Icons`
 
 `@using TablerForNet.Flags`
