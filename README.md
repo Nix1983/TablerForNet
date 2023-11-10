@@ -13,6 +13,8 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 - Offers a collection of components tailored for Blazor development.
 - Focuses on SEO optimization to ensure better search engine visibility.
 - Simplifies the process of creating responsive web applications.
+  
+![TablerForNet SEO Example](GoogleSeo.png)
 
 ## Installtion
 
