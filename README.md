@@ -1,5 +1,5 @@
 [![CodeQL](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql)
-[![Auto Increment Version](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/dotnet.yml)
+[![Blazor Server Example Repo](https://img.shields.io/badge/Blazor%20Server%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorServerTablerForNetExample)
 ![NuGet](https://img.shields.io/nuget/v/TablerForNet.svg)
 
 # TablerForNet: Create SEO-optimized web apps.
@@ -14,7 +14,7 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 - Focuses on SEO optimization to ensure better search engine visibility.
 - Simplifies the process of creating responsive web applications.
   
-![TablerForNet SEO Example](GoogleSeo.png)
+![TablerForNet SEO Example](https://github.com/Nix1983/TablerForNet/blob/master/GoogleSeo.png)
 
 ## Installtion
 
