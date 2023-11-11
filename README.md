@@ -14,7 +14,8 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 - Focuses on SEO optimization to ensure better search engine visibility.
 - Simplifies the process of creating responsive web applications.
   
-![TablerForNet SEO Example](https://github.com/Nix1983/TablerForNet/blob/master/GoogleSeo.png)
+[![TablerForNet SEO Example](src/assets/GoogleSeo.png)](https://github.com/Nix1983/TablerForNet/tree/master)
+
 
 ## Installtion
 
