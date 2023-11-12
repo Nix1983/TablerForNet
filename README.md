@@ -1,5 +1,6 @@
 [![CodeQL](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Nix1983/TablerForNet/actions/workflows/github-code-scanning/codeql)
 [![Blazor Server Example Repo](https://img.shields.io/badge/Blazor%20Server%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorServerTablerForNetExample)
+[![Blazor WASM Example Repo](https://img.shields.io/badge/Blazor%20WASM%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorWasmTablerForNetExample)
 ![NuGet](https://img.shields.io/nuget/v/TablerForNet.svg)
 
 # TablerForNet: Create SEO-optimized web apps.
