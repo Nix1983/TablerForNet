@@ -1,3 +1,4 @@
+[![CodeQL](https://github.com/Nix1983/TablerForNet/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/Nix1983/TablerForNet/actions/workflows/codeql.yml)
 [![Blazor Server Example Repo](https://img.shields.io/badge/Blazor%20Server%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorServerTablerForNetExample)
 [![Blazor WASM Example Repo](https://img.shields.io/badge/Blazor%20WASM%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorWasmTablerForNetExample)
 ![NuGet](https://img.shields.io/nuget/v/TablerForNet.svg)
