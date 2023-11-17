@@ -23,16 +23,17 @@
 		<FileVersion>1.0.19.7</FileVersion>
 		<ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
 		<Version>1.0.19.7</Version>
+		<SupportedTargetFrameworks>.NETFramework,Version=v7.0;.NETFramework,Version=v8.0</SupportedTargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Remove="bundleconfig.json" />
+		<Content Remove="bundleconfig.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="bundleconfig.json">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </None>
+		<None Include="bundleconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -44,17 +45,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="favicon.png">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="LICENSE">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
-	  <None Include="README.md">
-	    <Pack>True</Pack>
-	    <PackagePath>\</PackagePath>
-	  </None>
+		<None Include="favicon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
 	</ItemGroup>
+
 </Project>
