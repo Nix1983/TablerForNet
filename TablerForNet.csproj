@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
@@ -44,15 +44,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="favicon.png">
+	  <None Include="favicon.png">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
-	  <None Update="LICENSE">
+	  <None Include="LICENSE">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
-	  <None Update="README.md">
+	  <None Include="README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
