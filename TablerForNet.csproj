@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Title>Tabler for .NET | Blazor | SEO</Title>
+		<Title>Tabler for .NET | Blazor | SEO </Title>
 		<Authors>Nix</Authors>
 		<Company>GhostlyInc</Company>
 		<Description>Blazor SEO optimized libary based on Tabler</Description>
@@ -40,7 +40,7 @@
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
 		<PackageReference Include="LinqKit.Core" Version="1.2.4" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.14" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.25" />
 	</ItemGroup>
 
 	<ItemGroup>
