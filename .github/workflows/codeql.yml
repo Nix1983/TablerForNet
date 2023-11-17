@@ -42,7 +42,7 @@ jobs:
       # Builds the code using the .NET SDK.
       - name: Build
         run: |
-          dotnet build -c Release -f net7.0
+          dotnet build -c Release -f net6.0
 
       # Performs CodeQL Analysis
       - name: Perform CodeQL Analysis
