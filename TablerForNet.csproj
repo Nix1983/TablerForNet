@@ -19,10 +19,10 @@
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<PackageIcon>favicon.png</PackageIcon>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<AssemblyVersion>1.0.19.9</AssemblyVersion>
-		<FileVersion>1.0.19.9</FileVersion>
+		<AssemblyVersion>1.0.19.10</AssemblyVersion>
+		<FileVersion>1.0.19.10</FileVersion>
 		<ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
-		<Version>1.0.19.9</Version>
+		<Version>1.0.19.10</Version>
 	</PropertyGroup>
 
 	<ItemGroup>
