@@ -16,6 +16,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         language: [ 'csharp', 'javascript-typescript' ]
+        framework: [ 'net7.0', 'net8.0' ]
 
     steps:
     - name: Checkout repository
@@ -26,9 +27,15 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
+    - name: Display .NET SDK version
+      run: dotnet --version
+
     - name: Build
       run: |
         dotnet build -c Release -f ${{ matrix.framework }}
+      env:
+        DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+        DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
