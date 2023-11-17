@@ -13,9 +13,9 @@ jobs:
   analyze:
     name: Analyze
     # Runner size impacts CodeQL analysis time. To learn more, please see:
-    #  - https://gh.io/recommended-hardware-resources-for-running-codeql
-    #  - https://gh.io/supported-runners-and-hardware-resources
-    #  - https://gh.io/using-larger-runners
+    #   - https://gh.io/recommended-hardware-resources-for-running-codeql
+    #   - https://gh.io/supported-runners-and-hardware-resources
+    #   - https://gh.io/using-larger-runners
     # Consider using larger runners for possible analysis time improvements.
     runs-on: ubuntu-latest
     timeout-minutes: 360
@@ -30,22 +30,22 @@ jobs:
         language: [ 'csharp', 'javascript-typescript' ]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: ${{ matrix.language }}
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
 
-    # Builds the code using the .NET SDK.
-    - name: Build
-      run: |
-        dotnet build -c Release -f net8.0
+      # Builds the code using the .NET SDK.
+      - name: Build
+        run: |
+          dotnet build -c Release -f net8.0
 
-    # Performs CodeQL Analysis
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-      with:
-        category: "/language:${{matrix.language}}"
+      # Performs CodeQL Analysis
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:${{matrix.language}}"
