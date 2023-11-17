@@ -23,7 +23,6 @@
 		<FileVersion>1.0.19.21</FileVersion>
 		<ApplicationIcon>wwwroot\favicon.ico</ApplicationIcon>
 		<Version>1.0.19.18</Version>
-		<SupportedTargetFrameworks>.NETFramework,Version=v7.0;.NETFramework,Version=v8.0</SupportedTargetFrameworks>
 	</PropertyGroup>
 
 	<ItemGroup>
