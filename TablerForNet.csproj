@@ -30,8 +30,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Include=".github\workflows\CodeQL.yml" />
-		<None Include=".github\workflows\Deploy.yml" />
 		<None Include="bundleconfig.json">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
