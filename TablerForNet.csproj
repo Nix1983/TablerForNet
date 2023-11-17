@@ -30,6 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include=".github\workflows\Deploy.yml" />
 		<None Include="bundleconfig.json">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
