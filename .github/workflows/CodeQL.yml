@@ -14,9 +14,9 @@ jobs:
   analyze:
     name: Analyze
     # Runner size impacts CodeQL analysis time. To learn more, please see:
-    # - https://gh.io/recommended-hardware-resources-for-running-codeql
-    # - https://gh.io/supported-runners-and-hardware-resources
-    # - https://gh.io/using-larger-runners
+    #Â - https://gh.io/recommended-hardware-resources-for-running-codeql
+    #Â - https://gh.io/supported-runners-and-hardware-resources
+    #Â - https://gh.io/using-larger-runners
     # Consider using larger runners for possible analysis time improvements.
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
     timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
@@ -47,7 +47,7 @@ jobs:
       # Builds the code using the .NET SDK.
       - name: Build
         run: |
-          dotnet build -c Release -f net7.0
+          dotnet build -c Release -f net7
 
       # Performs CodeQL Analysis
       - name: Perform CodeQL Analysis
