@@ -25,7 +25,26 @@ jobs:
         
     - name: Increment version numbers
       run: |
-        # ... (dein bestehendes Skript zur Versionsinkrementierung)
+        # Retrieve the old version numbers from your .csproj file
+        OLD_VERSION=$(grep -oP '(?<=<Version>).*?(?=</Version>)' TablerForNet.csproj)
+        OLD_ASSEMBLY_VERSION=$(grep -oP '(?<=<AssemblyVersion>).*?(?=</AssemblyVersion>)' TablerForNet.csproj)
+        OLD_FILE_VERSION=$(grep -oP '(?<=<FileVersion>).*?(?=</FileVersion>)' TablerForNet.csproj)
+
+        # Parse out the individual parts of the version
+        MAJOR=$(echo $OLD_VERSION | cut -d'.' -f1)
+        MINOR=$(echo $OLD_VERSION | cut -d'.' -f2)
+        PATCH=$(echo $OLD_VERSION | cut -d'.' -f3)
+        
+        # Increment the version number
+        NEW_PATCH=$((PATCH + 1))
+        NEW_VERSION="$MAJOR.$MINOR.$NEW_PATCH.0"
+        NEW_ASSEMBLY_VERSION="$MAJOR.$MINOR.$NEW_PATCH.0"
+        NEW_FILE_VERSION="$MAJOR.$MINOR.$NEW_PATCH.0"
+
+        # Update the .csproj file with the new version numbers
+        sed -i "s/<Version>$OLD_VERSION<\/Version>/<Version>$NEW_VERSION<\/Version>/" TablerForNet.csproj
+        sed -i "s/<AssemblyVersion>$OLD_ASSEMBLY_VERSION<\/AssemblyVersion>/<AssemblyVersion>$NEW_ASSEMBLY_VERSION<\/AssemblyVersion>/" TablerForNet.csproj
+        sed -i "s/<FileVersion>$OLD_FILE_VERSION<\/FileVersion>/<FileVersion>$NEW_FILE_VERSION<\/FileVersion>/" TablerForNet.csproj
 
     - name: Build and Pack
       run: |
