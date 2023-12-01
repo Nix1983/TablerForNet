@@ -13,7 +13,7 @@
      tabindex="-1" style="display: block; z-index: @modalViewSettings.ZIndex" aria-hidden="true">
     <div class="@GetModalCss()" role="document" @ondragend="OnDragEnd" @ondragstart="OnDragStart"
          style=@(GetModalStyle()) @ref="dragContainer">
-        <div class="modal-content @(Options.DarkMode ? "theme-dark": "")" style="border:solid; border-color:@Options.BorderColor; max-height:@Options.MaxHeigth; max-width:@Options.MaxWidth">
+        <div class="modal-content @(Options.DarkMode ? "theme-dark": "")" style=" max-height:@Options.MaxHeigth; max-width:@Options.MaxWidth">
 
             @if (Options.StatusColor != null)
             {

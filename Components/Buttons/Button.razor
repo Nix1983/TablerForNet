@@ -8,7 +8,7 @@
              value="@Text"
              @onclick="OnClick"
              role="button"
-             aria-label="@ArialLabel"
+             aria-label="@(string.IsNullOrEmpty(ArialLabel) ? Text : ArialLabel)"
              @attributes="@UnmatchedParameters">
 
     @if (ChildContent == null)

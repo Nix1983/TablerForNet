@@ -24,7 +24,6 @@
         public IIconType TitleRightIcon { get; set; }
         public TablerColor TitleTextColor { get; set; } = TablerColor.White;
         public bool DarkMode { get; set; } = false;
-        public TablerColor BorderColor = TablerColor.Dark;
         public ModalVerticalPosition VerticalPosition { get; set; }
         public ModalSize Size { get; set; } = ModalSize.Medium;
         public ModalFullscreen Fullscreen { get; set; } = ModalFullscreen.Never;
