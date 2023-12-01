@@ -19956,7 +19956,6 @@ Navbar vertical
 
 .footer {
     border-top: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
-    background-color: #ffffff;
     padding: 2rem 0;
     color: var(--tblr-muted);
     margin-top: auto;
