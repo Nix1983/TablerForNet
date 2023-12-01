@@ -17954,6 +17954,8 @@ textarea.form-control-lg {
     --tblr-line-height-h4: 1.25rem;
     --tblr-line-height-h5: 1rem;
     --tblr-line-height-h6: 1rem;
+    --tblr-footer-color-light: #1d273b;
+    --tblr-footer-color-dark: #ABABAB;
     --tblr-shadow: rgba(var(--tblr-body-color-rgb), 0.04) 0 2px 4px 0;
     --tblr-shadow-transparent: 0 0 0 0 transparent;
     --tblr-shadow-button: 0 1px 0 rgba(var(--tblr-body-color-rgb), 0.04);
@@ -19957,8 +19959,15 @@ Navbar vertical
 .footer {
     border-top: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
     padding: 2rem 0;
-    color: var(--tblr-muted);
+    color: var(--tblr-footer-color-light);
     margin-top: auto;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .footer {
+        color: var(--tblr-footer-color-dark);
+    }
 }
 
 .footer-transparent {
