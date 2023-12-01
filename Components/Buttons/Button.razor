@@ -8,6 +8,7 @@
              value="@Text"
              @onclick="OnClick"
              role="button"
+             aria-label="@ArialLabel"
              @attributes="@UnmatchedParameters">
 
     @if (ChildContent == null)
@@ -34,6 +35,7 @@
     [Parameter] public ButtonSize Size { get; set; } = ButtonSize.Default;
     [Parameter] public ButtonType Type { get; set; } = ButtonType.Button;
     [Parameter] public string LinkTo { get; set; }
+    [Parameter] public string ArialLabel { get; set; }
 
     protected string HtmlTag => Type switch
     {
