@@ -4,20 +4,30 @@
 @inject ToastService ToastService
 
 <div class="card">
-    @if (ShowCopyButton)
-    {
-        <div class="codeblock-copy">
-            <div @onclick="(() => CopyToClipboard(Code))" class="cursor-pointer">
-                <Icon IconType="TablerIcons.Copy" TextColor="@(IsClicked ? TablerColor.Teal : TablerColor.Secondary)" />
-            </div>
+    <div class="row">
+        <!-- Code Spalte -->
+        <div class="col-11">
+            <pre>
+            <code class="language-@(Language.ToString().ToLower())">
+                    @Code
+                </code>
+            </pre>
         </div>
-    }
-    <pre>
-    <code class="language-@(Language.ToString().ToLower())">
-            @Code
-        </code>
-    </pre>
+
+        <!-- Button Spalte -->
+        @if (ShowCopyButton)
+        {
+            <div class="col-1">
+                <div class="codeblock-copy d-flex justify-content-end">
+                    <div @onclick="(() => CopyToClipboard(Code))" class="cursor-pointer">
+                        <Icon IconType="TablerIcons.Copy" TextColor="@(IsClicked ? TablerColor.Teal : TablerColor.Secondary)" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
+
 
 @code {
     [Parameter]
