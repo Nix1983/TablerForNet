@@ -1,0 +1,151 @@
+﻿[data-bs-theme="light"] :not(pre) > code[class*=language-],
+[data-bs-theme="light"] pre[class*=language-] {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: #000;
+    background: var(--tblr-light-bg);
+}
+
+[data-bs-theme="light"] .token.punctuation {
+    color: #000;
+}
+
+[data-bs-theme="light"] .token.comment {
+    color: #008016;
+}
+
+[data-bs-theme="light"] .token.string {
+    color: #E11500;
+}
+
+[data-bs-theme="light"] .token.function {
+    color: #785318;
+}
+
+[data-bs-theme="light"] .token.class-name {
+    color: #0491C1;
+}
+
+[data-bs-theme="light"] .token.doctype,
+[data-bs-theme="light"] .token.prolog {
+    color: #0491C1;
+}
+
+[data-bs-theme="light"] .token.keyword {
+    color: #3200FF;
+}
+
+[data-bs-theme="light"] .token.preprocessor.property {
+    color: #80807F;
+}
+
+[data-bs-theme="light"] .token.selector {
+    color: #B80000;
+}
+
+[data-bs-theme="light"] .token.atrule {
+    color: #3200FF;
+}
+
+[data-bs-theme="light"] .token.tag {
+    color: #B80000;
+}
+
+[data-bs-theme="light"] .token.attr-name {
+    color: #FF0000;
+}
+
+[data-bs-theme="light"] .token.attr-value {
+    color: #3200FF;
+}
+
+[data-bs-theme="light"] code[class*="language-css"] {
+    color: #3200FF;
+}
+
+    [data-bs-theme="light"] code[class*="language-css"] .token.property {
+        color: #B80000;
+    }
+
+    [data-bs-theme="light"] code[class*="language-css"] .token.string {
+        color: #3200FF;
+    }
+
+[data-bs-theme="light"] code[class*="language-markup"] .token.punctuation {
+    color: #3200FF;
+}
+
+[data-bs-theme="dark"] :not(pre) > code[class*=language-],
+[data-bs-theme="dark"] pre[class*=language-] {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    color: #DCDCDA;
+    background: var(--tblr-dark-bg);
+}
+
+[data-bs-theme="dark"] .token.punctuation {
+    color: #DCDCDA;
+}
+
+[data-bs-theme="dark"] .token.comment {
+    color: #23A658;
+}
+
+[data-bs-theme="dark"] .token.string {
+    color: #EA9D78;
+}
+
+[data-bs-theme="dark"] .token.function {
+    color: #A0D7A7;
+}
+
+[data-bs-theme="dark"] .token.class-name {
+    color: #13C9C6;
+}
+
+[data-bs-theme="dark"] .token.doctype,
+[data-bs-theme="dark"] .token.prolog {
+    color: #13C9C6;
+}
+
+[data-bs-theme="dark"] .token.keyword {
+    color: #439CE2;
+}
+
+[data-bs-theme="dark"] .token.preprocessor.property {
+    color: #9B9B99;
+}
+
+[data-bs-theme="dark"] .token.selector {
+    color: #D8BA76;
+}
+
+[data-bs-theme="dark"] .token.atrule {
+    color: #439CE2;
+}
+
+[data-bs-theme="dark"] .token.tag {
+    color: #439CE2;
+}
+
+[data-bs-theme="dark"] .token.attr-name {
+    color: #87DCFF;
+}
+
+[data-bs-theme="dark"] .token.attr-value {
+    color: #C8C8C6;
+}
+
+[data-bs-theme="dark"] code[class*="language-css"] {
+    color: #C8C8C6;
+}
+
+    [data-bs-theme="dark"] code[class*="language-css"] .token.property {
+        color: #67DCFF;
+    }
+
+    [data-bs-theme="dark"] code[class*="language-css"] .token.string {
+        color: #C8C8C6;
+    }
+
+[data-bs-theme="dark"] code[class*="language-markup"] .token.punctuation {
+    color: #80807F;
+}

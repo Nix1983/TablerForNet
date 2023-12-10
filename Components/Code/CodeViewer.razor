@@ -1,0 +1,91 @@
+﻿@namespace TablerForNet.Components
+@inject IJSRuntime JSRuntime
+@inject TablerService tabService
+@inject ToastService ToastService
+
+<div class="card">
+    <div class="row">
+        <!-- Code Spalte -->
+        <div class="col-11">
+            <pre>
+            <code class="language-@(Language.ToString().ToLower())">
+                    @Code
+                </code>
+            </pre>
+        </div>
+
+        <!-- Button Spalte -->
+        @if (ShowCopyButton)
+        {
+            <div class="col-1">
+                <div class="codeblock-copy d-flex justify-content-end">
+                    <div @onclick="(() => CopyToClipboard(Code))" class="cursor-pointer">
+                        <Icon IconType="TablerIcons.Copy" TextColor="@(IsClicked ? TablerColor.Teal : TablerColor.Secondary)" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@code {
+    [Parameter]
+    public string Code { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+    [Parameter]
+    public bool ShowCopyButton { get; set; } = true;
+
+    [Parameter]
+    public bool ShowToast { get; set; } = true;
+
+    [Parameter]
+    public string ToastText { get; set; } = "Code copied";
+
+    [Parameter]
+    public CodeLanguage Language { get; set; } = CodeLanguage.Html;
+
+    private bool IsClicked = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("Prism.highlightAll");
+        }
+    }
+
+    private async Task CopyToClipboard(string code)
+    {
+        await tabService.CopyToClipboard(code);
+
+        if (ShowToast)
+        {
+            try
+            {
+                IsClicked = true;
+                await InvokeAsync(StateHasChanged);
+
+                var options = new ToastOptions
+                    {
+                        Delay = 1,
+                        ShowProgress = true,
+                        ShowHeaderClose = false,
+                        ShowHeader = false
+                    };
+                await ToastService.AddToastAsync(new ToastModel { Title = string.Empty, SubTitle = "", Message = ToastText, Options = options });
+            }
+            finally
+            {
+                await Task.Delay(500);
+                IsClicked = false;
+                await InvokeAsync(StateHasChanged);
+            }
+        }
+
+    }
+}
+
