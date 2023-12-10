@@ -19,7 +19,7 @@ TablerForNet is a versatile and SEO-optimized library for building web applicati
 
 ## Good starting point
 
-Blazor Server .Net7 Example solution with TablerForNet pre installed
+Blazor .Net8 Example solution with TablerForNet pre installed
 
 [![Blazor Server Example Repo](https://img.shields.io/badge/Blazor%20Server%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorServerTablerForNetExample) [![Blazor WASM Example Repo](https://img.shields.io/badge/Blazor%20WASM%20Example-Repo-brightgreen?style=flat&logo=github)](https://github.com/Nix1983/BlazorWasmTablerForNetExample)
 
