@@ -4,28 +4,40 @@
 @inject ToastService ToastService
 
 <div class="card">
-    <div class="row">
-        <!-- Code Spalte -->
-        <div class="col-11">
-            <pre>
-            <code class="language-@(Language.ToString().ToLower())">
-                    @Code
-                </code>
-            </pre>
-        </div>
-
-        <!-- Button Spalte -->
-        @if (ShowCopyButton)
-        {
-            <div class="col-1">
-                <div class="codeblock-copy d-flex justify-content-end">
-                    <div @onclick="(() => CopyToClipboard(Code))" class="cursor-pointer">
-                        <Icon IconType="TablerIcons.Copy" TextColor="@(IsClicked ? TablerColor.Teal : TablerColor.Secondary)" />
+    @if (!_isInit && UsePlaceHolder)
+    {
+        <p class="placeholder-glow text-center m-2">
+            @for (int i = 0; i < PlaceHolderRows; i++)
+            {
+                <span class="placeholder col-12"></span>
+                <span class="placeholder col-10"></span>
+                <span class="placeholder col-8"></span>
+            }
+        </p>
+    }
+    else
+    {
+        <div class="row">
+            <div class="col-11">
+                <pre>
+                    <code class="language-@(Language.ToString().ToLower())">
+                        @Code
+                    </code>
+               </pre>
+            </div>
+            @if (ShowCopyButton)
+            {
+                <div class="col-1">
+                    <div class="codeblock-copy d-flex justify-content-end">
+                        <div @onclick="(() => CopyToClipboard(Code))" class="cursor-pointer">
+                            <Icon IconType="TablerIcons.Copy" TextColor="@(_isClicked ? TablerColor.Teal : TablerColor.Secondary)" />
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
+    }
+
 </div>
 
 
@@ -48,12 +60,21 @@
     [Parameter]
     public CodeLanguage Language { get; set; } = CodeLanguage.Html;
 
-    private bool IsClicked = false;
+    [Parameter]
+    public bool UsePlaceHolder { get; set; } = false;
+
+    [Parameter]
+    public int PlaceHolderRows { get; set; } = 1;
+
+    private bool _isClicked = false;
+    private bool _isInit = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            _isInit = true;
+            await InvokeAsync(StateHasChanged);
             await JSRuntime.InvokeVoidAsync("Prism.highlightAll");
         }
     }
@@ -66,7 +87,7 @@
         {
             try
             {
-                IsClicked = true;
+                _isClicked = true;
                 await InvokeAsync(StateHasChanged);
 
                 var options = new ToastOptions
@@ -81,7 +102,7 @@
             finally
             {
                 await Task.Delay(500);
-                IsClicked = false;
+                _isClicked = false;
                 await InvokeAsync(StateHasChanged);
             }
         }
