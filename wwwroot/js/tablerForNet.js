@@ -193,5 +193,13 @@
         }
     },
 }
+function highlightCode() {
+    var checkExist = setInterval(function () {
+        if (document.querySelector("pre code")) {
+            clearInterval(checkExist);
+            Prism.highlightAll();
+        }
+    }, 100);
+}
 
 

@@ -19,11 +19,35 @@
     {
         <div class="row">
             <div class="col-11">
-                <pre>
-                    <code class="language-@(Language.ToString().ToLower())">
-                        @Code
-                    </code>
-               </pre>
+                @if (!ShowFullCode)
+                {
+                    @if (!_expandCode)
+                    {
+                        <pre>
+                             <code class="language-@(Language.ToString().ToLower())">@GetLimitedCode()</code>                  
+                        </pre>
+                    }
+                    else
+                    {
+                        <pre>                  
+                             <code class="language-@(Language.ToString().ToLower())">@Code</code>
+                        </pre>
+                    }
+                    @if (!ShowFullCode && _linesCount > MaxCodeLines)
+                    {
+                        <div @onclick="ToggleFullCode" class="cursor-pointer m-2">
+                            <Icon IconType="TablerIcons.Dots" />
+                        </div>
+                    }
+
+                }
+                else
+                {
+                    <pre>
+                       <code class="language-@(Language.ToString().ToLower())">@GetLimitedCode()</code>                  
+                    </pre>
+                }
+
             </div>
             @if (ShowCopyButton)
             {
@@ -37,9 +61,7 @@
             }
         </div>
     }
-
 </div>
-
 
 @code {
     [Parameter]
@@ -66,17 +88,45 @@
     [Parameter]
     public int PlaceHolderRows { get; set; } = 1;
 
+    [Parameter]
+    public bool ShowFullCode { get; set; } = false;
+
+    [Parameter]
+    public int MaxCodeLines { get; set; } = 10;
+
     private bool _isClicked = false;
     private bool _isInit = false;
+    private int _linesCount;
+    private bool _expandCode = false;
+
+    protected override Task OnInitializedAsync()
+    {
+        _linesCount = Code.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Length;
+        return base.OnInitializedAsync();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
+            await JSRuntime.InvokeVoidAsync("highlightCode");
             _isInit = true;
             await InvokeAsync(StateHasChanged);
-            await JSRuntime.InvokeVoidAsync("Prism.highlightAll");
         }
+    }
+
+    private string GetLimitedCode()
+    {
+        var lines = Code.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        return string.Join(Environment.NewLine, lines.Take(MaxCodeLines));
+    }
+
+    private async Task ToggleFullCode()
+    {
+       
+        await JSRuntime.InvokeVoidAsync("highlightCode"); 
+        _expandCode = !_expandCode;
+
     }
 
     private async Task CopyToClipboard(string code)
@@ -106,7 +156,8 @@
                 await InvokeAsync(StateHasChanged);
             }
         }
-
     }
+
 }
+
 
