@@ -19,34 +19,11 @@
     {
         <div class="row">
             <div class="col-11">
-                @if (!ShowFullCode)
-                {
-                    @if (!_expandCode)
-                    {
-                        <pre>
-                             <code class="language-@(Language.ToString().ToLower())">@GetLimitedCode()</code>                  
-                        </pre>
-                    }
-                    else
-                    {
-                        <pre>                  
-                             <code class="language-@(Language.ToString().ToLower())">@Code</code>
-                        </pre>
-                    }
-                    @if (!ShowFullCode && _linesCount > MaxCodeLines)
-                    {
-                        <div @onclick="ToggleFullCode" class="cursor-pointer m-2">
-                            <Icon IconType="TablerIcons.Dots" />
-                        </div>
-                    }
 
-                }
-                else
-                {
-                    <pre>
-                       <code class="language-@(Language.ToString().ToLower())">@GetLimitedCode()</code>                  
-                    </pre>
-                }
+                <pre>
+                <code class="language-@(Language.ToString().ToLower())">@Code</code>                  
+                        </pre>
+
 
             </div>
             @if (ShowCopyButton)
@@ -109,22 +86,23 @@
     {
         if (firstRender)
         {
-            await JSRuntime.InvokeVoidAsync("highlightCode");
             _isInit = true;
             await InvokeAsync(StateHasChanged);
+            await JSRuntime.InvokeVoidAsync("highlightCode");
         }
     }
 
     private string GetLimitedCode()
     {
         var lines = Code.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
-        return string.Join(Environment.NewLine, lines.Take(MaxCodeLines));
+        var l = string.Join(Environment.NewLine, lines.Take(MaxCodeLines));
+        return l;
     }
 
     private async Task ToggleFullCode()
     {
-       
-        await JSRuntime.InvokeVoidAsync("highlightCode"); 
+
+        await JSRuntime.InvokeVoidAsync("highlightCode");
         _expandCode = !_expandCode;
 
     }
