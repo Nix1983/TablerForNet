@@ -26,19 +26,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Remove="bundleconfig.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="bundleconfig.json">
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="BuildBundlerMinifier" Version="3.2.449">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
 		<PackageReference Include="LinqKit.Core" Version="1.2.5" />
 	</ItemGroup>
 
@@ -80,5 +67,4 @@
 			<PackagePath>\</PackagePath>
 		</None>
 	</ItemGroup>
-
 </Project>
