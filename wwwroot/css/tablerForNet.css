@@ -250,6 +250,8 @@ body {
     color: var(--tblr-body-color);
     text-align: var(--tblr-body-text-align);
     background-color: var(--tblr-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 hr, .hr {
@@ -304,6 +306,8 @@ abbr[title] {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted;
     cursor: help;
+    -webkit-text-decoration-skip-ink: none;
+    text-decoration-skip-ink: none;
 }
 
 address {
@@ -458,6 +462,7 @@ caption {
 
 th {
     text-align: inherit;
+    text-align: -webkit-match-parent;
 }
 
 thead,
@@ -3033,35 +3038,41 @@ progress {
 
 .table-responsive {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 575.98px) {
     .table-responsive-sm {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
 @media (max-width: 767.98px) {
     .table-responsive-md {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
 @media (max-width: 991.98px) {
     .table-responsive-lg {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
 @media (max-width: 1199.98px) {
     .table-responsive-xl {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
 @media (max-width: 1399.98px) {
     .table-responsive-xxl {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -4113,6 +4124,7 @@ textarea.form-control-lg {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     border: var(--tblr-btn-border-width) solid var(--tblr-btn-border-color);
     border-radius: var(--tblr-btn-border-radius);
     background-color: var(--tblr-btn-bg);
@@ -5616,6 +5628,7 @@ textarea.form-control-lg {
     background-color: var(--tblr-accordion-btn-bg);
     border: 0;
     border-radius: 0;
+    overflow-anchor: none;
     transition: var(--tblr-accordion-transition);
 }
 
@@ -7043,6 +7056,7 @@ textarea.form-control-lg {
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        user-select: none;
         opacity: var(--tblr-btn-close-disabled-opacity);
     }
 
@@ -9292,6 +9306,7 @@ textarea.form-control-lg {
     align-items: center;
     -webkit-text-decoration-color: rgba(var(--tblr-link-color-rgb), var(--tblr-link-opacity, 0.5));
     text-decoration-color: rgba(var(--tblr-link-color-rgb), var(--tblr-link-opacity, 0.5));
+    text-underline-offset: 0.25em;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
@@ -11734,6 +11749,30 @@ textarea.form-control-lg {
     --tblr-link-opacity: 1;
 }
 
+.link-offset-1 {
+    text-underline-offset: 0.125em !important;
+}
+
+.link-offset-1-hover:hover {
+    text-underline-offset: 0.125em !important;
+}
+
+.link-offset-2 {
+    text-underline-offset: 0.25em !important;
+}
+
+.link-offset-2-hover:hover {
+    text-underline-offset: 0.25em !important;
+}
+
+.link-offset-3 {
+    text-underline-offset: 0.375em !important;
+}
+
+.link-offset-3-hover:hover {
+    text-underline-offset: 0.375em !important;
+}
+
 .link-underline-primary {
     --tblr-link-underline-opacity: 1;
     -webkit-text-decoration-color: rgba(var(--tblr-primary-rgb), var(--tblr-link-underline-opacity)) !important;
@@ -12280,12 +12319,14 @@ textarea.form-control-lg {
     -webkit-user-select: auto !important;
     -moz-user-select: auto !important;
     -ms-user-select: auto !important;
+    user-select: auto !important;
 }
 
 .user-select-none {
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
     -ms-user-select: none !important;
+    user-select: none !important;
 }
 
 .pe-none {
@@ -18003,12 +18044,16 @@ body {
     }
 }
 
-*::-webkit-scrollbar {
-    width: 1rem;
-    height: 1rem;
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
+* {
+    scrollbar-color: rgba(var(--tblr-scrollbar-color, var(--tblr-body-color-rgb)), 0.16) transparent;
 }
+
+    *::-webkit-scrollbar {
+        width: 1rem;
+        height: 1rem;
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+    }
 
 @media (prefers-reduced-motion: reduce) {
     *::-webkit-scrollbar {
@@ -18943,6 +18988,7 @@ Navbar vertical
     .navbar-vertical.navbar-expand-sm .navbar-nav {
         flex-direction: column;
         flex-grow: 1;
+        min-height: auto;
     }
 
         .navbar-vertical.navbar-expand-sm .navbar-nav .nav-link {
@@ -19079,6 +19125,7 @@ Navbar vertical
     .navbar-vertical.navbar-expand-md .navbar-nav {
         flex-direction: column;
         flex-grow: 1;
+        min-height: auto;
     }
 
         .navbar-vertical.navbar-expand-md .navbar-nav .nav-link {
@@ -19215,6 +19262,7 @@ Navbar vertical
     .navbar-vertical.navbar-expand-lg .navbar-nav {
         flex-direction: column;
         flex-grow: 1;
+        min-height: auto;
     }
 
         .navbar-vertical.navbar-expand-lg .navbar-nav .nav-link {
@@ -19351,6 +19399,7 @@ Navbar vertical
     .navbar-vertical.navbar-expand-xl .navbar-nav {
         flex-direction: column;
         flex-grow: 1;
+        min-height: auto;
     }
 
         .navbar-vertical.navbar-expand-xl .navbar-nav .nav-link {
@@ -19487,6 +19536,7 @@ Navbar vertical
     .navbar-vertical.navbar-expand-xxl .navbar-nav {
         flex-direction: column;
         flex-grow: 1;
+        min-height: auto;
     }
 
         .navbar-vertical.navbar-expand-xxl .navbar-nav .nav-link {
@@ -19620,6 +19670,7 @@ Navbar vertical
 .navbar-vertical.navbar-expand .navbar-nav {
     flex-direction: column;
     flex-grow: 1;
+    min-height: auto;
 }
 
     .navbar-vertical.navbar-expand .navbar-nav .nav-link {
@@ -20265,6 +20316,7 @@ page.theme-dark .hide-theme-dark, page[data-bs-theme=dark] .hide-theme-dark {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     background: var(--tblr-avatar-bg) no-repeat center/cover;
     border-radius: var(--tblr-border-radius);
     box-shadow: var(--tblr-avatar-shadow);
@@ -20412,6 +20464,7 @@ a.avatar {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     border: var(--tblr-border-width) var(--tblr-border-style) transparent;
     min-width: 1.35714285em;
     font-weight: var(--tblr-font-weight-bold);
@@ -20428,6 +20481,7 @@ a.badge {
     width: 0.5rem;
     height: 0.5rem;
     min-width: 0;
+    min-height: auto;
     padding: 0;
     border-radius: 100rem;
     vertical-align: baseline;
@@ -22737,6 +22791,10 @@ Stacked card
         border-radius: 4px 4px 0 0;
     }
 
+.card-cover-blurred:before {
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
 
 .card-actions {
     margin: -0.5rem -0.5rem -0.5rem auto;
@@ -23141,6 +23199,7 @@ Card list group
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 }
 
     .dropdown-menu.card {
@@ -24002,6 +24061,7 @@ Form control
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 }
 
 .form-control[size] {
@@ -24084,6 +24144,7 @@ Form help
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     background: var(--tblr-gray-100);
     border-radius: 100rem;
     transition: background-color 0.3s, color 0.3s;
@@ -24274,6 +24335,7 @@ Image check
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     border: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
     border-radius: 3px;
 }
@@ -24301,6 +24363,7 @@ Image check
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     background: var(--tblr-bg-forms);
     border: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
     border-radius: var(--tblr-border-radius);
@@ -24420,6 +24483,7 @@ Select group
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
     border: var(--tblr-border-width) var(--tblr-border-style) var(--tblr-border-color);
     border-radius: 3px;
     transition: border-color 0.3s, background 0.3s, color 0.3s;
@@ -24568,6 +24632,7 @@ Form check
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 }
 
     .form-check.form-check-highlight .form-check-input:not(:checked) ~ .form-check-label {
@@ -24870,14 +24935,16 @@ Dimmer
     z-index: 10;
 }
 
-
-
-.modal-body::-webkit-scrollbar {
-    width: 1rem;
-    height: 1rem;
-    -webkit-transition: background 0.3s;
-    transition: background 0.3s;
+.modal-body {
+    scrollbar-color: rgba(var(--tblr-scrollbar-color, var(--tblr-body-color-rgb)), 0.16) transparent;
 }
+
+    .modal-body::-webkit-scrollbar {
+        width: 1rem;
+        height: 1rem;
+        -webkit-transition: background 0.3s;
+        transition: background 0.3s;
+    }
 
 @media (prefers-reduced-motion: reduce) {
     .modal-body::-webkit-scrollbar {
@@ -24938,6 +25005,11 @@ Dimmer
 .modal-footer {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+}
+
+.modal-blur {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
 }
 
 .modal-full-width {
@@ -25064,6 +25136,7 @@ Dimmer
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    user-select: none;
 }
 
 .page-link {
@@ -25656,6 +25729,7 @@ a.step-item {
         text-align: left;
         padding-top: 0;
         padding-left: calc(var(--tblr-steps-dot-size) + 1rem);
+        min-height: auto;
     }
 
         .steps-vertical .step-item:not(:first-child) {
@@ -26612,6 +26686,7 @@ Table sort
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        user-select: none;
     }
 
     .toast button[data-bs-dismiss=toast] {
@@ -26929,6 +27004,10 @@ Hr text
     line-height: 1.4;
 }
 
+a {
+    -webkit-text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
+}
 
 h1 a,
 h2 a,
@@ -28209,6 +28288,7 @@ Scrollable
 .scrollable {
     overflow-x: hidden;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
     .scrollable.hover {
@@ -28231,6 +28311,7 @@ Scrollable
 .scroll-x,
 .scroll-y {
     overflow: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .scroll-y {
