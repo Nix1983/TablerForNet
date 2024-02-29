@@ -5406,7 +5406,7 @@ textarea.form-control-lg {
     display: flex;
     flex-direction: column;
     min-width: 0;
-    height: var(--tblr-card-height);
+    height: auto;
     color: var(--tblr-body-color);
     word-wrap: break-word;
     background-color: var(--tblr-card-bg);
