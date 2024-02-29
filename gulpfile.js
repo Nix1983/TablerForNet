@@ -17,4 +17,11 @@ gulp.task('minify-css', () => {
         .pipe(gulp.dest('wwwroot/css'));
 });
 
+// Beobachtet Änderungen in JS und CSS Dateien
+gulp.task('watch', () => {
+    gulp.watch('wwwroot/js/**/*.js', gulp.series('minify-js'));
+    gulp.watch('wwwroot/css/**/*.css', gulp.series('minify-css'));
+});
+
+// Standardtask, der Minimierungsaufgaben und Watcher startet
 gulp.task('default', gulp.series(['minify-js', 'minify-css', 'watch']));
