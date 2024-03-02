@@ -73,14 +73,8 @@
 
     private bool _isClicked = false;
     private bool _isInit = false;
-    private int _linesCount;
     private bool _expandCode = false;
 
-    protected override Task OnInitializedAsync()
-    {
-        _linesCount = Code.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).Length;
-        return base.OnInitializedAsync();
-    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -99,13 +93,6 @@
         return l;
     }
 
-    private async Task ToggleFullCode()
-    {
-
-        await JSRuntime.InvokeVoidAsync("highlightCode");
-        _expandCode = !_expandCode;
-
-    }
 
     private async Task CopyToClipboard(string code)
     {
